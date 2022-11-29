@@ -1,9 +1,6 @@
 #ifndef MINUNIT_MINUNIT_H
 #define MINUNIT_MINUNIT_H
 
-#include <cub3D.h>
-#include "ults.h"
-
 /* Black, Red, Green, Yellow, Blue, Purple, Cyan, White */
 # define MU_BK "\033[0;30m"
 # define MU_R "\033[0;31m"
