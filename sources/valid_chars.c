@@ -6,17 +6,26 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/01 11:38:55 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:17:08 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-char	*get_line(char **line, int file)
+char	*get_line(t_data *data, char **line)
 {
 	free(*line);
-	*line = get_next_line(file);
+	*line = get_next_line(data->map.fd);
+	data->map.size_y++;
 	return (*line);
+}
+
+void	save_position_player(t_data *data, int x, char c)
+{
+	if (c == '0' || c == '1' || c == '\n')
+		return ;
+	data->map.p_player[P_X] = x;
+	data->map.p_player[P_Y] = data->map.size_y;
 }
 
 void	interactor_chars(t_data *data, char c)
@@ -49,10 +58,11 @@ t_bool	valid_chars_line(t_data *data, char *line)
 	index = -1;
 	while (line[++index])
 	{
-		if (ft_strchr(VALID_CHARS, line[index]))
-			continue ;
+		if (!ft_strchr(VALID_CHARS, line[index]))
+			return (FALSE);
+		interactor_chars(data, line[index]);
+		save_position_player(data, index, line[index]);
 		//die program
-		return (FALSE);
 	}
 	return (TRUE);
 }
@@ -62,7 +72,7 @@ t_bool	valid_chars(t_data *data, int file)
 	char	*line;
 
 	line == NULL;
-	while(get_line(&line, file))
+	while(get_line(data, &line))
 		valid_chars_line(data, line);
 	valid_interactor(data);
 }

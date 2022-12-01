@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/11/30 17:10:28 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/01 12:28:02 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ SOURCES		=	verify_extension.c open_file.c valid_chars.c
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
-CC			=	gcc
-CFLAGS		=	-g3 -Wall -Wextra -Werror
+CC			=	gcc -g3
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
 VPATH		=	. ./sources

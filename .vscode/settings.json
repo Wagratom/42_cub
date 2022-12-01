@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"template": "c"
+		"template": "c",
+		"libft.h": "c"
 	}
 }
