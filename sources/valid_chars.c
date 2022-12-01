@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/01 10:57:32 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:38:55 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ char	*get_line(char **line, int file)
 
 void	interactor_chars(t_data *data, char c)
 {
-	data->map.chars[P_W] = (c == 'W');
-	data->map.chars[P_S] = (c == 'S');
-	data->map.chars[P_N] = (c == 'N');
-	data->map.chars[P_E] = (c == 'E');
+	data->map.chars[P_W] += (c == 'W');
+	data->map.chars[P_S] += (c == 'S');
+	data->map.chars[P_N] += (c == 'N');
+	data->map.chars[P_E] += (c == 'E');
 }
 
 t_bool	valid_interactor(t_data *data)
