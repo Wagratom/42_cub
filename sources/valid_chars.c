@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/01 10:36:51 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:57:32 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ t_bool	valid_interactor(t_data *data)
 		return (TRUE);
 	//die program
 	return (FALSE);
+}
+
+t_bool	valid_chars_line(t_data *data, char *line)
+{
+	int	index;
+
+	index = -1;
+	while (line[++index])
+	{
+		if (ft_strchr(VALID_CHARS, line[index]))
+			continue ;
+		//die program
+		return (FALSE);
+	}
+	return (TRUE);
 }
 
 t_bool	valid_chars(t_data *data, int file)

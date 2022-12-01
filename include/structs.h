@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/11/30 20:32:13 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:02:04 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ typedef struct s_data
 	t_map	map;
 }	t_data;
 
-typedef enum
+typedef enum	s_positions
 {
 	P_N,
 	P_S,
 	P_E,
-	P_W
-};
-
+	P_W,
+}			t_positions;
 
 #endif
