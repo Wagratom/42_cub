@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/11/29 16:56:48 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/11/30 17:10:28 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,28 +14,34 @@ NAME		=	cub3D
 
 LIBFT		=	./libft/libft.a
 MLX			=	mlx/libmlx.a
-
 LIBS		=	$(LIBFT) $(MLX)
 
-INCLUDES	=	./includes
+INCLUDE		=	-I./libft	\
+				-I./mlx		\
+				-I./include
 
-SOURCES		=
+SOURCES		=	verify_extension.c open_file.c valid_chars.c
 
-OBJS_DIR	=	objects
-OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)%.o, $(SOURCES))
+
+OBJS_DIR	=	object
+OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	gcc
 CFLAGS		=	-g3 -Wall -Wextra -Werror
 RM			=	rm -rf
 
-$(OBJS_DIR)%.o:	%.c
+VPATH		=	. ./sources
+
+$(OBJS_DIR)/%.o:	%.c
+			$(CC) -c $< -o $@ $(INCLUDE)
 
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS_DIR) $(OBJECTS)
-				gcc main.c $(LIBS) -o $@
+				$(CC) main.c $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+
 $(OBJS_DIR):
-			mkdir -p objects
+			mkdir -p $@
 
 $(LIBFT):
 			$(MAKE) -C libft
@@ -52,5 +58,51 @@ fclean:		clean
 			$(RM) $(NAME)
 
 re:			fclean all
+
+re_mandatory:
+		$(RM) $(OBJS_DIR)
+		make
+
+################################################################################
+#									TEST
+################################################################################
+
+TST_PATH		=	./test
+
+FILE_TST		=	$(TST_PATH)/$(t).c
+OJBS_TST		=	$(patsubst %.c, %.out, $(FILE_TST))
+
+FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c);
+OJBS_TSTS		=	$(patsubst %.c, %.out, $(FILE_TSTS))
+
+%.out:	%.c
+		$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+		./$@
+		$(RM) $@
+
+test: re_mandatory $(OJBS_TST)
+
+tests: re_mandatory $(OJBS_TSTS)
+
+################################################################################
+#									TESTVG
+################################################################################
+
+TST_PATH		=	./test
+
+VG_FILE_TST		=	$(TST_PATH)/$(t).c
+VG_OJBS_TST		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TST))
+
+VG_FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c)
+VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
+
+%.vg.out:	%.c
+		@$(CC) $< $(LIBS) -o $@ $(INCLUDE)
+		valgrind --leak-check=full ./$@
+		@$(RM) $@
+
+vgtest: re_mandatory $(VG_OJBS_TST)
+
+vgtests: re_mandatory $(VG_OJBS_TSTS)
 
 .PHONY:	fclean clean re
