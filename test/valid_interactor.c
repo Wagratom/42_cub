@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/01 11:39:31 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:16:17 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	test_teardown(void)
 MU_TEST(open_invalid_file_tst)
 {
 	ft_bzero(&foo, sizeof(t_data));
-	interactor_chars(&foo, 'S');
-	interactor_chars(&foo, 'W');
-	interactor_chars(&foo, 'E');
+	interactor_chars_or_die(&foo, 'S');
+	interactor_chars_or_die(&foo, 'W');
+	interactor_chars_or_die(&foo, 'E');
 
 	mu_assert_int_eq(foo.map.chars[P_S], 1);
 	mu_assert_int_eq(foo.map.chars[P_W], 1);
 	mu_assert_int_eq(foo.map.chars[P_E], 1);
 
-	interactor_chars(&foo, 'S');
-	interactor_chars(&foo, 'E');
+	interactor_chars_or_die(&foo, 'S');
+	interactor_chars_or_die(&foo, 'E');
 
 	mu_assert_int_eq(foo.map.chars[P_S], 2);
 	mu_assert_int_eq(foo.map.chars[P_W], 1);
