@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 12:08:41 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:33:03 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static t_bool	is_valid_char(char _char)
 {
 	if (_char == '0' || _char == '1' || _char == '\n')
-		return (TRUE);
-	return (FALSE);
+		return (FALSE);
+	return (TRUE);
 }
 
 void	save_position_player(t_data *data, int position_x, char _char)
