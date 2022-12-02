@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_file.c                                        :+:      :+:    :+:   */
+/*   verify_close.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/01 13:59:00 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:09:19 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,31 @@ t_data	data;
 
 void	test_setup(void)
 {
+	ft_bzero(&data, sizeof(t_data));
+	data.map.size_y = 8;
+	data.map.file_name = "map/map.cub";
+	alloc_map(&data.map);
 }
 void	test_teardown(void)
 {
 }
 
-MU_TEST(open_invalid_file_tst)
+MU_TEST(alloc_map_tst)
 {
-	ft_bzero(&data, sizeof(t_data));
-
-	data.map.file_name = "./map/map.c";
-	mu_assert_int_eq(open_file(&data.map), 0);
-
-	data.map.file_name = "./map/map.cu";
-	mu_assert_int_eq(open_file(&data.map), 0);
-
-	data.map.file_name = "./map/map.cubb";
-	mu_assert_int_eq(open_file(&data.map), 0);
+	check_close(&data.map, 4, 4);
 }
 
-MU_TEST(open_file_tst)
-{
-	data.map.file_name = "./map/map.cub";
-	mu_assert_int_eq(open_file(&data.map), 1);
-}
-
-MU_TEST_SUITE(open_file_suite)
+MU_TEST_SUITE(map)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(open_invalid_file_tst);
-	MU_RUN_TEST(open_file_tst);
+	MU_RUN_TEST(alloc_map_tst);
 }
 
 MU_MAIN
 {
 	MU_DIVIDER;
-	MU_RUN_SUITE(open_file_suite);
+	MU_RUN_SUITE(map);
 	MU_REPORT();
 	return (MU_EXIT_CODE);
 }

@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/01 12:28:02 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/01 17:25:58 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INCLUDE		=	-I./libft	\
 				-I./mlx		\
 				-I./include
 
-SOURCES		=	verify_extension.c open_file.c valid_chars.c
+SOURCES		=	verify_extension.c open_file.c valid_chars.c alloc_map.c verify_exit.c \
+				draw_map.c
 
 
 OBJS_DIR	=	object
