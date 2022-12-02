@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:21:58 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:00:00 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define P_X 1
 
 t_bool		verify_extension(char *file_name);
-t_bool		open_file(t_map *data);
+t_bool		open_file_or_die(t_map *data);
 t_bool		valid_chars_line(t_data *data, char *line);
 t_bool		interactor_chars_or_die(t_data *data, char c, int position_x);
 void		alloc_map_or_die(t_map *data);

@@ -1,54 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extension.c                                        :+:      :+:    :+:   */
+/*   verify_close.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/11/30 16:13:03 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:04:47 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minunit.h"
+#include "../minunit.h"
 
-int	foo;
+t_data	data;
 
 void	test_setup(void)
 {
+	ft_bzero(&data, sizeof(t_data));
+	data.map.size_y = 8;
+	data.map.file_name = "map/map.cub";
+	alloc_map_or_die(&data.map);
 }
 void	test_teardown(void)
 {
 }
 
-MU_TEST(invalid_tst)
+MU_TEST(alloc_map_tst)
 {
-	mu_assert_int_eq(verify_extension("teste.c"), 0);
-	mu_assert_int_eq(verify_extension("teste.cu"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.c"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cu"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cubb"), 0);
+	check_close(&data.map, 4, 4);
 }
 
-MU_TEST(valid_tst)
-{
-	mu_assert_int_eq(verify_extension("teste.cub"), 0);
-	mu_assert_int_eq(verify_extension("teste.cu.cub"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cub"), 0);
-}
-
-MU_TEST_SUITE(extension)
+MU_TEST_SUITE(map)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(invalid_tst);
-	MU_RUN_TEST(valid_tst);
+	MU_RUN_TEST(alloc_map_tst);
 }
 
 MU_MAIN
 {
 	MU_DIVIDER;
-	MU_RUN_SUITE(extension);
+	MU_RUN_SUITE(map);
 	MU_REPORT();
 	return (MU_EXIT_CODE);
 }

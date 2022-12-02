@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:23:53 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:27:06 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	alloc_map(t_map *data)
 
 void	alloc_map_or_die(t_map *data)
 {
-	open_file(data);
+	open_file_or_die(data);
 	alloc_ptr(data);
 	alloc_map(data);
 	//draw_map(data->map);

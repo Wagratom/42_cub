@@ -1,62 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_interactor.c                                 :+:      :+:    :+:   */
+/*   alloc_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/02 11:16:17 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:04:22 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minunit.h"
+#include "../minunit.h"
 
-t_data	foo;
+t_data	data;
 
 void	test_setup(void)
 {
+	ft_bzero(&data, sizeof(t_data));
+	data.map.size_y = 7;
+	data.map.file_name = "map/map.cub";
 }
 void	test_teardown(void)
 {
 }
 
-MU_TEST(open_invalid_file_tst)
+MU_TEST(alloc_map_tst)
 {
-	ft_bzero(&foo, sizeof(t_data));
-	interactor_chars_or_die(&foo, 'S');
-	interactor_chars_or_die(&foo, 'W');
-	interactor_chars_or_die(&foo, 'E');
-
-	mu_assert_int_eq(foo.map.chars[P_S], 1);
-	mu_assert_int_eq(foo.map.chars[P_W], 1);
-	mu_assert_int_eq(foo.map.chars[P_E], 1);
-
-	interactor_chars_or_die(&foo, 'S');
-	interactor_chars_or_die(&foo, 'E');
-
-	mu_assert_int_eq(foo.map.chars[P_S], 2);
-	mu_assert_int_eq(foo.map.chars[P_W], 1);
-	mu_assert_int_eq(foo.map.chars[P_E], 2);
-	mu_assert_int_eq(foo.map.chars[P_N], 0);
+	alloc_map_or_die(&data.map);
+	mu_check(data.map.map != NULL);
 }
 
-MU_TEST(open_file_tst)
-{
-}
-
-MU_TEST_SUITE(open_file_suite)
+MU_TEST_SUITE(map)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(open_invalid_file_tst);
-	MU_RUN_TEST(open_file_tst);
+	MU_RUN_TEST(alloc_map_tst);
 }
 
 MU_MAIN
 {
 	MU_DIVIDER;
-	MU_RUN_SUITE(open_file_suite);
+	MU_RUN_SUITE(map);
 	MU_REPORT();
 	return (MU_EXIT_CODE);
 }

@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"template": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"stdio.h": "c",
+		"minunit.h": "c"
 	}
 }

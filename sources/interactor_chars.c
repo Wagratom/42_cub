@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:16:17 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:08:41 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ t_bool	interactor_chars_or_die(t_data *data, char _char, int position_x)
 	interactor_chars(data, _char, position_x);
 	save_position_player(data, position_x, _char);
 	validator++;
+	return (TRUE);
 }

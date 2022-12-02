@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:17:22 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:06:32 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,8 @@ char	*get_line(t_data *data, char **line)
 t_bool	valid_char_or_die(char letter)
 {
 	if (!ft_strchr(VALID_CHARS, letter))
-		return (TRUE);
+		return (FALSE);
 	//invalid character die
-	return (FALSE);
-}
-
-t_bool	valid_chars_line(t_data *data, char *line)
-{
-	int	letter;
-
-	letter = -1;
-	while (line[++letter])
-	{
-		valid_char_or_die(line[letter]);
-		interactor_chars_or_die(data, line[letter], letter);
-		//die program
-	}
 	return (TRUE);
 }
 
@@ -49,5 +35,20 @@ t_bool	valid_chars(t_data *data, int file)
 	line == NULL;
 	while(get_line(data, &line))
 		valid_chars_line(data, line);
+	return (TRUE);
+}
+
+t_bool	valid_chars_line(t_data *data, char *line)
+{
+	int	letter;
+
+	letter = -1;
+	while (line[++letter])
+	{
+		if (!valid_char_or_die(line[letter])) // if somente para passar nos test pode remover na hr de entregar
+			return (FALSE);
+		interactor_chars_or_die(data, line[letter], letter);
+		//die program
+	}
 	return (TRUE);
 }
