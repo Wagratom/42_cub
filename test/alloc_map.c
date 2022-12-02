@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/01 14:28:48 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:21:58 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	test_teardown(void)
 
 MU_TEST(alloc_map_tst)
 {
-	alloc_map(&data.map);
+	alloc_map_or_die(&data.map);
 	mu_check(data.map.map != NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/01 18:09:19 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:21:58 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	test_setup(void)
 	ft_bzero(&data, sizeof(t_data));
 	data.map.size_y = 8;
 	data.map.file_name = "map/map.cub";
-	alloc_map(&data.map);
+	alloc_map_or_die(&data.map);
 }
 void	test_teardown(void)
 {
