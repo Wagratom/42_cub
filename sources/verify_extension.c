@@ -6,11 +6,11 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:30:29 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/11/30 16:13:10 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 09:39:09 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <cub3D.h>
+#include <cub3D.h>
 
 t_bool	verify_extension(char *file_name)
 {

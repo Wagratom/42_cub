@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 12:33:03 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 09:36:40 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_bool	interactor_chars(t_data *data, char _char, int position_x)
 
 t_bool	interactor_chars_or_die(t_data *data, char _char, int position_x)
 {
-	int static validator = 0;
+	int static	validator = 0;
 
 	if (!is_valid_char(_char))
 		return (FALSE);

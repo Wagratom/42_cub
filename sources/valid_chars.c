@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 12:06:32 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 09:37:20 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	valid_chars(t_data *data, int file)
 	char	*line;
 
 	line == NULL;
-	while(get_line(data, &line))
+	while (get_line(data, &line))
 		valid_chars_line(data, line);
 	return (TRUE);
 }

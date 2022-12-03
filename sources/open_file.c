@@ -6,11 +6,11 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:30:29 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:29:21 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 09:36:50 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <cub3D.h>
+#include <cub3D.h>
 
 t_bool	open_file(t_map *data)
 {
@@ -19,6 +19,7 @@ t_bool	open_file(t_map *data)
 		return (FALSE);
 	return (TRUE);
 }
+
 t_bool	open_file_or_die(t_map *data)
 {
 	if (!open_file(data))
