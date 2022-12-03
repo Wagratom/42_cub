@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/02 11:14:37 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/02 14:07:42 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,10 @@ fclean:		clean
 			$(RM) $(NAME)
 
 re:			fclean all
+
+norm:
+	@echo "\n			INCLUDES\n" && norminette include
+	@echo "\n			SOURCES\n" && norminette source
 
 re_mandatory:
 		$(RM) $(OBJS_DIR)
