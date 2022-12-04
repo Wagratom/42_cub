@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/02 12:04:31 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 22:58:25 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ void	test_teardown(void)
 
 MU_TEST(invalid_tst)
 {
-	mu_assert_int_eq(verify_extension("teste.c"), 0);
-	mu_assert_int_eq(verify_extension("teste.cu"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.c"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cu"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cubb"), 0);
+	mu_assert_int_eq(verify_extension("teste.c"), FALSE);
+	mu_assert_int_eq(verify_extension("teste.cu"), FALSE);
+	mu_assert_int_eq(verify_extension("teste.cub.c"), FALSE);
+	mu_assert_int_eq(verify_extension("teste.cub.cu"), FALSE);
+	mu_assert_int_eq(verify_extension("teste.cub.cubb"), FALSE);
 }
 
 MU_TEST(valid_tst)
 {
-	mu_assert_int_eq(verify_extension("teste.cub"), 0);
-	mu_assert_int_eq(verify_extension("teste.cu.cub"), 0);
-	mu_assert_int_eq(verify_extension("teste.cub.cub"), 0);
+	mu_assert_int_eq(verify_extension("teste.cub"), TRUE);
+	mu_assert_int_eq(verify_extension("teste.cu.cub"), TRUE);
+	mu_assert_int_eq(verify_extension("teste.cub.cub"), TRUE);
 }
 
 MU_TEST_SUITE(extension)

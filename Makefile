@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/03 09:36:06 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/03 22:34:01 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ INCLUDE		=	-I./libft	\
 				-I./mlx		\
 				-I./include
 
-SOURCES		=	verify_extension.c open_file.c valid_chars.c alloc_map.c verify_exit.c \
-				draw_map.c interactor_chars.c \
+SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c \
+				alloc_map.c draw_map.c\
 
 
 OBJS_DIR	=	object
@@ -81,9 +81,9 @@ FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c);
 OJBS_TSTS		=	$(patsubst %.c, %.out, $(FILE_TSTS))
 
 %.out:	%.c
-		$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
-		./$@
-		$(RM) $@
+		@$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+		@./$@
+		@$(RM) $@
 
 test: re_mandatory $(OJBS_TST)
 
@@ -102,8 +102,8 @@ VG_FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c)
 VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
 
 %.vg.out:	%.c
-		@$(CC) $< $(LIBS) -o $@ $(INCLUDE)
-		valgrind --leak-check=full ./$@
+		@$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+		@valgrind --leak-check=full ./$@
 		@$(RM) $@
 
 vgtest: re_mandatory $(VG_OJBS_TST)
