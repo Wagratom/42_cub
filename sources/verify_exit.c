@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 23:05:23 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/04 13:44:05 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_bool	move_up(t_map *data, int position_x, int *position_y)
 t_bool	verify_not_close(t_map *data, int position_x, int position_y, t_bool *status)
 {
 	if (data->map[position_y][position_x] == ' ')
+		*status = FALSE;
+	if (data->map[position_y][position_x] == '\n')
 		*status = FALSE;
 	return (*status);
 }
