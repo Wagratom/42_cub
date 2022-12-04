@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 22:36:18 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/04 15:56:13 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char	*get_line(t_map *data, char **line)
 
 t_bool	valid_char_or_die(char letter)
 {
-	if (!ft_strchr(VALID_CHARS, letter))
-		return (FALSE);
-	//invalid character die
-	return (TRUE);
+	if (ft_strchr(VALID_CHARS, letter))
+		return (TRUE);
+	printf("invalid character \"%c\"", letter); // die program
+	return (FALSE);
 }
 
 t_bool	interactor_chars(t_map *data, char _char)

@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 22:43:51 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/04 15:57:18 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ t_bool	interactor_chars_or_die(t_map *data, char _char)
 	int static	validator = 0;
 
 	if (!is_valid_char(_char))
-		return (FALSE);
+		return (-1);
 	if (validator > 0)
+	{
+		printf("Error: many characters of positions\n"); // die program
 		return (FALSE);
-		//die_program
+	}
 	interactor_chars(data, _char);
 	validator++;
 	return (TRUE);
@@ -46,7 +48,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	{
 		if (valid_chars_line(data, line))
 			continue ;
-		printf("Error: invalid line\n");
+		//printf("Error: invalid line | position %d\n", data->size_y);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -55,15 +57,19 @@ t_bool	valid_chars_or_die(t_map *data)
 t_bool	valid_chars_line(t_map *data, char *line)
 {
 	int	letter;
+	int	status;
 
 	letter = -1;
 	while (line[++letter])
 	{
-		if (!valid_char_or_die(line[letter])) // if somente para passar nos test pode remover na hr de entregar
+		status = valid_char_or_die(line[letter]); // esse status e somente para passar nos test pode remover na hr de entregar
+		if (status == FALSE)
 			return (FALSE);
-		if (interactor_chars_or_die(data, line[letter]))
+		status = interactor_chars_or_die(data, line[letter]);
+		if (status == FALSE)
+			return (FALSE);
+		else if (status == TRUE)
 			save_position_player(data, letter, line[letter]);
-
 		//die program
 	}
 	return (TRUE);

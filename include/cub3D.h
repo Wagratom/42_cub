@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 23:05:03 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:16:49 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 
 char		*get_line(t_map *data, char **line);
-t_bool		valid_char_or_die(char letter);
 t_bool		interactor_chars(t_map *data, char _char);
 t_bool		is_valid_char(char _char);
+t_bool		valid_char_or_die(char letter);
+
+
 
 
 t_bool		interactor_chars_or_die(t_map *data, char _char);
