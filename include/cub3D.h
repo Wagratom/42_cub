@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 22:28:05 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 23:05:03 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_bool		is_valid_char(char _char);
 
 t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		alloc_map_or_die(t_map *data);
-void		verify_is_closed(t_map *data, int position_x, int position_y, int *status);
 t_bool		verify_exit_or_die(t_map *data);
 
 void		draw_map(char **map);

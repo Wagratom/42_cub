@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:30:29 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 09:39:09 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/03 22:59:42 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_bool	verify_extension(char *file_name)
 	char	*extension;
 
 	extension = ft_strrchr(file_name, '.');
-	if (ft_str_eq(extension, file_name))
+	if (ft_str_eq(extension, ".cub"))
 		return (TRUE);
 	//printf("Invalid Extension\n");
 	return (FALSE);
