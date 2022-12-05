@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:04:05 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/11/16 16:22:36 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:15:18 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_bool	init_windows(t_data *data)
 	data->win = mlx_new_window(data->mlx, 1000, 1000, "Cub3D");
 	if (data->win == NULL)
 	{
-		die_program_msg("Erro creat windows");
+		printf("Erro creat windows"); //die
 		return (FALSE);
 	}
 	return (TRUE);
@@ -27,7 +27,7 @@ t_bool	init_windows_or_die(t_data *data)
 {
 	if (data->mlx == NULL)
 	{
-		die_program_msg("Not creat windows, mlx pointer null");
+		printf("Not creat windows, mlx pointer null"); //die
 		return (FALSE);
 	}
 	return (init_windows(data));

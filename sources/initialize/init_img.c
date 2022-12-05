@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 11:32:19 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:15:30 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ static void	get_addr_img(t_img *img)
 {
 	get_addr(img,  &img->bits_per_pixel, &img->line_length, &img->endian);
 	if (img->addr == NULL)
-		die_program_msg("Erro in get img addr\n");
+		printf("Erro in get img addr\n"); //die
 }
 
 static void	creat_img(t_data *data)
 {
 	data->img.img = mlx_new_image(data->mlx, 600, 600);
 	if (data->img.img == NULL)
-		die_program_msg("Image not created\n");
+		printf("Image not created\n"); //die
 }
 
 t_bool	init_img(t_data *data)
 {
 	if (data->mlx == NULL)
 	{
-		die_program_msg("not creat image, Pointer mlx null");
+		printf("not creat image, Pointer mlx null"); //die
 		return (FALSE);
 	}
 	creat_img(data);
