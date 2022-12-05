@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/05 13:29:19 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/05 13:34:24 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c);
 OJBS_TSTS		=	$(patsubst %.c, %.out, $(FILE_TSTS))
 
 %.out:	%.c
-		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) -o $@ $(INCLUDE)
+		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 		@./$@
 		@$(RM) $@
 
@@ -103,7 +103,7 @@ VG_FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c)
 VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
 
 %.vg.out:	%.c
-		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) -o $@ $(INCLUDE)
+		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 		@valgrind --leak-check=full ./$@
 		@$(RM) $@
 
