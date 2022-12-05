@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/03 22:34:01 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/05 10:15:22 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC			=	gcc -g3
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
-VPATH		=	. ./sources
+VPATH		=	. ./sources ./sources/map
 
 $(OBJS_DIR)/%.o:	%.c
 			$(CC) -c $< -o $@ $(INCLUDE)

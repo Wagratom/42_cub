@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/04 14:16:49 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:33:44 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ t_bool		valid_char_or_die(char letter);
 t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		alloc_map_or_die(t_map *data);
 t_bool		verify_exit_or_die(t_map *data);
+
+
+
+t_bool		init_mlx_or_die(t_data *data);
+t_bool		init_windows_or_die(t_data *data);
+t_bool		init_img(t_data *data);
 
 void		draw_map(char **map);
 
