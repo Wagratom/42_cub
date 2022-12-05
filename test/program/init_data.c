@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   imgs.c                                             :+:      :+:    :+:   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:15:40 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/11/17 07:38:17 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:26:59 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	test_teardown(void)
 {
 }
 
-MU_TEST(init_imgs_tst)
+MU_TEST(init_data_tst)
 {
 	int index;
 
 	mu_assert_int_eq(init_img(&data), FALSE);
 
 	init_data(&data);
+	mu_check(data.mlx != NULL);
 	mu_check(data.img.img != NULL);
 	mu_check(data.img.addr != NULL);
-	clear_program(&data);
 }
 
 
@@ -39,7 +39,7 @@ MU_TEST_SUITE(test_suite)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(init_imgs_tst);
+	MU_RUN_TEST(init_data_tst);
 }
 
 MU_MAIN
