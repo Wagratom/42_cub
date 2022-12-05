@@ -6,7 +6,11 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/12/05 10:15:22 by wwallas-         ###   ########.fr        #
+=======
+#    Updated: 2022/12/03 09:42:02 by wwallas-         ###   ########.fr        #
+>>>>>>> 1141672ff98c523c1cbd42376962918ac14cbc88
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +106,11 @@ VG_FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c)
 VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
 
 %.vg.out:	%.c
+<<<<<<< HEAD
 		@$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+=======
+		@$(CC) $< $(LIBS) -o $@ $(INCLUDE)
+>>>>>>> 1141672ff98c523c1cbd42376962918ac14cbc88
 		@valgrind --leak-check=full ./$@
 		@$(RM) $@
 
