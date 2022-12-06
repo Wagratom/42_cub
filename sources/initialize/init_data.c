@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 11:26:30 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:33:13 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	init_data(t_data *data)
 {
 	init_struct(data);
 	init_mlx_or_die(data);
-	init_windows_or_die(data);
+	//init_windows_or_die(data);
 	init_img(data);
 }

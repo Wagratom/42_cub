@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.c                                        :+:      :+:    :+:   */
+/*   save_x.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 10:28:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 14:27:43 by wwallas-         ###   ########.fr       */
+/*   Created: 2022/11/12 09:56:27 by wwallas-          #+#    #+#             */
+/*   Updated: 2022/11/18 14:31:38 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static void	valid_map_chars(t_map *data)
+static int	*value_x(void)
 {
-	data->file_name = ft_strdup("map/map.cub");
-	open_file_or_die(data);
-	valid_chars_or_die(data);
-	close(data->fd);
+	static int	save = 0;
+
+	return (&save);
 }
 
-static void	valid_map_exit(t_map *data)
+void	save_value_x(int nbr)
 {
-	open_file_or_die(data);
-	alloc_map_or_die(data);
-	verify_exit_or_die(data);
-	close(data->fd);
+	*value_x() = nbr;
 }
 
-t_bool	valid_map(t_map *data)
+int	get_save_x(void)
 {
-	valid_map_chars(data);
-	valid_map_exit(data);
-	return (TRUE);
-
+	return (*value_x());
 }
+
+int	get_size_y(int nbr)
+{
+	return (nbr + 8);
+}
+

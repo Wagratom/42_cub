@@ -3,6 +3,9 @@
 		"template": "c",
 		"libft.h": "c",
 		"stdio.h": "c",
-		"minunit.h": "c"
+		"minunit.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c"
 	}
 }
