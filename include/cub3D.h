@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 14:22:00 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:46:05 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_bool		interactor_chars_or_die(t_map *data, char _char);
 t_bool		verify_exit_or_die(t_map *data);
 
 void		alloc_map_or_die(t_map *data);
+void		delete_map(char **map);
 
 /*							ULTS											  */
 
