@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/03 22:34:01 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/05 13:34:24 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,18 @@ INCLUDE		=	-I./libft	\
 				-I./include
 
 SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c \
-				alloc_map.c draw_map.c\
-
+				alloc_map.c draw_map.c init_data.c init_img.c init_mlx.c init_windows.c\
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	gcc -g3
 CFLAGS		=	-Wall -Wextra -Werror
+FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
+
 RM			=	rm -rf
 
-VPATH		=	. ./sources
+VPATH		=	. ./sources ./sources/map ./sources/initialize
 
 $(OBJS_DIR)/%.o:	%.c
 			$(CC) -c $< -o $@ $(INCLUDE)
@@ -39,7 +40,7 @@ $(OBJS_DIR)/%.o:	%.c
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS_DIR) $(OBJECTS)
-				$(CC) main.c $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+				$(CC) main.c $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 
 $(OBJS_DIR):
 			mkdir -p $@
@@ -81,7 +82,7 @@ FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c);
 OJBS_TSTS		=	$(patsubst %.c, %.out, $(FILE_TSTS))
 
 %.out:	%.c
-		@$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 		@./$@
 		@$(RM) $@
 
@@ -102,7 +103,7 @@ VG_FILE_TSTS		=	$(wildcard $(TST_PATH)/**/*.c)
 VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
 
 %.vg.out:	%.c
-		@$(CC) $< $(OBJECTS) $(LIBS) -o $@ $(INCLUDE)
+		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 		@valgrind --leak-check=full ./$@
 		@$(RM) $@
 
