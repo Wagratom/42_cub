@@ -6,12 +6,11 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/06 15:45:31 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/13 17:21:00 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	cub3D
-MAIN		=	./sources/main.c
 
 LIBFT		=	./libft/libft.a
 MLX			=	mlx/libmlx.a
@@ -21,9 +20,9 @@ INCLUDE		=	-I./libft	\
 				-I./mlx		\
 				-I./include
 
-SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c \
+SOURCES		=	main.c verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c \
 				alloc_map.c draw_map.c init_data.c init_img.c init_mlx.c init_windows.c draw_map_debug.c  \
-				print_larger_pixel.c save_x.c delet_map.c
+				print_larger_pixel.c save_x.c delet_map.c testes.c filter_keyboard.c moviments_play.c updates.c
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
@@ -38,7 +37,8 @@ VPATH		=	.						\
 				./sources				\
 				./sources/map 			\
 				./sources/initialize	\
-				./sources/draw_map
+				./sources/draw_map		\
+				./sources/program
 
 $(OBJS_DIR)/%.o:	%.c
 			$(CC) -c $< -o $@ $(INCLUDE)
@@ -46,7 +46,7 @@ $(OBJS_DIR)/%.o:	%.c
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS_DIR) $(OBJECTS)
-				$(CC) $(MAIN) $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
+				$(CC) $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 
 $(OBJS_DIR):
 			mkdir -p $@

@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 15:10:39 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:02:50 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	print_block(t_data *data, int x, int y, char block)
 {
-	usleep(50000);
-	printf("block = %c\n", block);
+	//usleep(50000);
+	//printf("block = %c\n", block);
 	if (block == '0')
-		print_larger_pixel(data, (x * 8), (y * 8), RGB_WHITE);
+		print_larger_pixel(data, (x * 30), (y * 30), RGB_WHITE);
 	else if (block == '1')
-		print_larger_pixel(data, (x * 8), (y * 8), RGB_MAROON);
+		print_larger_pixel(data, (x * 30), (y * 30), RGB_MAROON);
 	else if (block == 'W')
-		print_larger_pixel(data, (x * 8), (y * 8), RGB_RED);
+		print_larger_pixel(data, (x * 30), (y * 30), RGB_RED);
 }
 
 static void	draw_line(t_data *data, int y)
@@ -51,6 +51,7 @@ int	draw_map(t_data *data)
 
 int	draw_map_or_die(t_data *data)
 {
+	printf("draw_map\n");
 	if (data->map.map == NULL)
 	{
 		printf("can't draw the map, map doesn't exist");
