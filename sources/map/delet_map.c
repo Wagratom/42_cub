@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   delet_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 16:48:32 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/11/29 16:48:43 by wwallas-         ###   ########.fr       */
+/*   Created: 2022/12/06 15:37:22 by wwallas-          #+#    #+#             */
+/*   Updated: 2022/12/06 15:45:40 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(void)
+#include <cub3D.h>
+
+void	delete_map(char **map)
 {
-	return (0);
+	int	index;
+
+	index = -1;
+	while (map[++index])
+		free(map[index]);
+	free(map);
 }
