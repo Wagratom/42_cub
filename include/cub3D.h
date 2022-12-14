@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:48:29 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:53:03 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_bool		valid_char_or_die(char letter);
 /*							INITIALIZE										  */
 /******************************************************************************/
 
-void		init_data(t_data *data);
+void		init_data(t_data *data, char *file_name);
 t_bool		init_mlx_or_die(t_data *data);
 t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);

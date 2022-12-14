@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 10:28:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 14:27:43 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:51:59 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	valid_map_chars(t_map *data)
 {
-	data->file_name = ft_strdup("map/map.cub");
 	open_file_or_die(data);
 	valid_chars_or_die(data);
 	close(data->fd);
