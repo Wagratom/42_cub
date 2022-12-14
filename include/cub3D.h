@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:46:54 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:48:29 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_bool		valid_map(t_map *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 t_bool		interactor_chars_or_die(t_map *data, char _char);
+void		save_position_player(t_map *data, int position_x, char _char);
 t_bool		verify_exit_or_die(t_map *data);
 
 void		alloc_map_or_die(t_map *data);
@@ -96,17 +97,15 @@ int			get_size_y(int nbr);
 /*							PROGRAM											  */
 /******************************************************************************/
 
-void	start_game(t_data *data);
+void		start_game(t_data *data);
 
-int		filter_keyboard(int key, t_data *data);
-void	map_move_up(t_map *map, int x, int y);
-void	map_move_right(t_map *map, int x, int y);
-void	map_move_left(t_map *map, int x, int y);
-void	map_move_down(t_map *map, int x, int y);
-void	update_p_char(t_map *map, int x, int y);
-void	update_p_player(t_map *map, int x, int y);
-
-void	save_position_player(t_map *data, int position_x, char _char);
+int			filter_keyboard(int key, t_data *data);
+void		map_move_up(t_map *map, int x, int y);
+void		map_move_right(t_map *map, int x, int y);
+void		map_move_left(t_map *map, int x, int y);
+void		map_move_down(t_map *map, int x, int y);
+void		update_p_char(t_map *map, int x, int y);
+void		update_p_player(t_map *map, int x, int y);
 
 void		draw_map_debug(char **map);
 
