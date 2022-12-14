@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   save_x.c                                           :+:      :+:    :+:   */
+/*   start_program.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 09:56:27 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:03:02 by wwallas-         ###   ########.fr       */
+/*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
+/*   Updated: 2022/12/13 22:44:16 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static int	*value_x(void)
+void	start_game(t_data *data)
 {
-	static int	save = 0;
-
-	return (&save);
+	printf ("			staring game\n good gameplay XD\n");
+	draw_map_or_die(data);
+	//mlx_hook(data->win, EXIT, 0, &clear_program, data);
+	//mlx_hook(data->win, FOCUS, 1L << 21, &draw_map, data);
+	mlx_key_hook(data->win, &filter_keyboard, data);
+	mlx_loop(data->mlx);
 }
-
-void	save_value_x(int nbr)
-{
-	*value_x() = nbr;
-}
-
-int	get_save_x(void)
-{
-	return (*value_x());
-}
-
-int	get_size_y(int nbr)
-{
-	return (nbr + 30);
-}
-
+//10000000W00000001

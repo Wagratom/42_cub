@@ -6,13 +6,13 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 15:46:30 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:18:55 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	move_right(char **map, int *position_x, int position_y)
+static t_bool	val_move_right(char **map, int *position_x, int position_y)
 {
 	if (map[position_y][*position_x + 1] == '1' || map[position_y][*position_x + 1] == '4')
 		return (FALSE);
@@ -20,7 +20,7 @@ t_bool	move_right(char **map, int *position_x, int position_y)
 	return (TRUE);
 }
 
-t_bool	move_down(char **map, int position_x, int *position_y)
+static t_bool	val_move_down(char **map, int position_x, int *position_y)
 {
 	if (map[*position_y + 1] == NULL)
 		return (FALSE);
@@ -30,7 +30,7 @@ t_bool	move_down(char **map, int position_x, int *position_y)
 	return (TRUE);
 }
 
-t_bool	move_left(char **map, int *position_x, int position_y)
+static t_bool	val_move_left(char **map, int *position_x, int position_y)
 {
 	if (*position_x - 1 < 0)
 		return (FALSE);
@@ -40,7 +40,7 @@ t_bool	move_left(char **map, int *position_x, int position_y)
 	return (TRUE);
 }
 
-t_bool	move_up(char **map, int position_x, int *position_y)
+static t_bool	val_move_up(char **map, int position_x, int *position_y)
 {
 	if (*position_y - 1 < 0)
 		return (FALSE);
@@ -50,7 +50,7 @@ t_bool	move_up(char **map, int position_x, int *position_y)
 	return (TRUE);
 }
 
-t_bool	verify_not_close(char **map, int position_x, int position_y, t_bool *status)
+static t_bool	verify_not_close(char **map, int position_x, int position_y, t_bool *status)
 {
 	if (map[position_y][position_x] == ' ')
 		*status = FALSE;
@@ -63,22 +63,22 @@ void	verify_is_closed(char **map, int position_x, int position_y, t_bool *status
 {
 	if (!verify_not_close(map, position_x, position_y, status))
 		return ;
-	usleep(40000);
+	//usleep(40000);
 	map[position_y][position_x] = '4';
 	//draw_map_debug(map->map);
-	if (move_right(map, &position_x, position_y))
+	if (val_move_right(map, &position_x, position_y))
 	{
 		verify_is_closed(map, position_x, position_y, status);
 	}
-	else if (move_down(map, position_x, &position_y))
+	else if (val_move_down(map, position_x, &position_y))
 	{
 		verify_is_closed(map, position_x, position_y, status);
 	}
-	else if (move_left(map, &position_x, position_y))
+	else if (val_move_left(map, &position_x, position_y))
 	{
 		verify_is_closed(map, position_x, position_y, status);
 	}
-	else if (move_up(map, position_x, &position_y))
+	else if (val_move_up(map, position_x, &position_y))
 	{
 		verify_is_closed(map, position_x, position_y, status);
 	}

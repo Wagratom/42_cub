@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/04 15:56:13 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:13:54 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_bool	interactor_chars(t_map *data, char _char)
 	data->chars[P_E] += (_char == 'E');
 }
 
-t_bool	is_valid_char(char _char)
+t_bool	is_special_char(char _char)
 {
 	if (_char == '0' || _char == '1' || _char == '\n')
 		return (FALSE);

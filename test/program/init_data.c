@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:15:40 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 13:26:59 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:57:23 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ MU_TEST(init_data_tst)
 
 	mu_assert_int_eq(init_img(&data), FALSE);
 
-	init_data(&data);
+	init_data(&data, "blabla");
 	mu_check(data.mlx != NULL);
 	mu_check(data.img.img != NULL);
 	mu_check(data.img.addr != NULL);
