@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:02:50 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/13 22:43:37 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	draw_map(t_data *data)
 
 int	draw_map_or_die(t_data *data)
 {
-	printf("draw_map\n");
 	if (data->map.map == NULL)
 	{
 		printf("can't draw the map, map doesn't exist");

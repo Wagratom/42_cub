@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   updates.c                                          :+:      :+:    :+:   */
+/*   start_program.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:25:55 by wwallas-         ###   ########.fr       */
+/*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
+/*   Updated: 2022/12/13 22:44:16 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	update_p_char(t_map *map, int x, int y)
+void	start_game(t_data *data)
 {
-	map->map[y][x] = 'W';
+	printf ("			staring game\n good gameplay XD\n");
+	draw_map_or_die(data);
+	//mlx_hook(data->win, EXIT, 0, &clear_program, data);
+	//mlx_hook(data->win, FOCUS, 1L << 21, &draw_map, data);
+	mlx_key_hook(data->win, &filter_keyboard, data);
+	mlx_loop(data->mlx);
 }
-
-void	update_p_player(t_map *map, int position_x, int position_y)
-{
-	map->p_player[P_X] = position_x;
-	map->p_player[P_Y] = position_y;
-}
+//10000000W00000001

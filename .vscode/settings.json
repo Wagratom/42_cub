@@ -7,6 +7,7 @@
 		"array": "c",
 		"string": "c",
 		"string_view": "c",
-		"system_error": "c"
+		"system_error": "c",
+		"cub3d.h": "c"
 	}
 }
