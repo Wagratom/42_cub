@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 13:15:30 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:09:14 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ static char	*get_addr(t_img *img, int *bits, int *length, int *endian)
 	img->addr = mlx_get_data_addr(img->img, bits, length, endian);
 }
 
-static void	get_addr_img(t_img *img)
+void	get_addr_img(t_img *img)
 {
 	get_addr(img,  &img->bits_per_pixel, &img->line_length, &img->endian);
 	if (img->addr == NULL)
 		printf("Erro in get img addr\n"); //die
 }
 
-static void	creat_img(t_data *data)
+void	creat_img(t_data *data)
 {
-	data->img.img = mlx_new_image(data->mlx, 600, 600);
+	data->img.img = mlx_new_image(data->mlx, 640, 480);
 	if (data->img.img == NULL)
 		printf("Image not created\n"); //die
 }

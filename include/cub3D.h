@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:53:03 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:12:58 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,8 @@ void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, int x, int y);
 
 void		draw_map_debug(char **map);
+void		testes(t_data *data);
+
+void		creat_img(t_data *data);
 
 #endif

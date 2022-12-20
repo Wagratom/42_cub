@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 16:50:29 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/20 13:40:14 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_map
 	int		chars[4];
 	int		p_player[2];
 	int		size_y;
+	int		size_x;
 	int		fd;
 
 }	t_map;

@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/13 22:49:16 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/20 12:03:39 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,9 @@ norm:
 re_mandatory:
 		$(RM) $(OBJS_DIR)
 		make
+
+textured:
+	$(CC) 01_untextured_raycast.c $(LIBS) $(FLAGS_MLX) teste $(INCLUDE)
 
 ################################################################################
 #									TEST
