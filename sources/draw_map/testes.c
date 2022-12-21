@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 11:56:02 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:26:16 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	testes(t_data *data)
 	t_raycast	itens;
 
 	init_raycast(&itens);
-
 	for (int x = 0; x < 640; x++)
    	{
 		//calculate ray position and direction
@@ -68,10 +67,6 @@ void	testes(t_data *data)
 		// which box of the map we're in
 		itens.map[P_X] = (int)player_posX(data);
 		itens.map[P_Y] = (int)player_posY(data);
-
-		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
 
 		double deltaDistX = fabs(1 / itens.rayDir[P_X]);
 		double deltaDistY = fabs(1 / itens.rayDir[P_Y]);
@@ -84,26 +79,26 @@ void	testes(t_data *data)
 		int hit = 0; //was there a wall hit?
 		int side; //was a NS or a EW wall hit?
 
-
+		//sideDist = length of ray from current position to next x or y-side
 		if (itens.rayDir[P_X] < 0)
 		{
 			stepX = -1;
-			sideDistX = (player_posX(data) - itens.map[P_X]) * deltaDistX;
+			itens.sideDist[P_X] = (player_posX(data) - itens.map[P_X]) * deltaDistX;
 		}
 		else
 		{
 			stepX = 1;
-			sideDistX = (itens.map[P_X] + 1.0 - player_posX(data)) * deltaDistX;
+			itens.sideDist[P_X] = (itens.map[P_X] + 1.0 - player_posX(data)) * deltaDistX;
 		}
 		if (itens.rayDir[P_Y] < 0)
 		{
 			stepY = -1;
-			sideDistY = (player_posY(data) - itens.map[P_Y]) * deltaDistY;
+			itens.sideDist[P_Y] = (player_posY(data) - itens.map[P_Y]) * deltaDistY;
 		}
 		else
 		{
 			stepY = 1;
-			sideDistY = (itens.map[P_Y] + 1.0 - player_posY(data)) * deltaDistY;
+			itens.sideDist[P_Y] = (itens.map[P_Y] + 1.0 - player_posY(data)) * deltaDistY;
 		}
 
 		//printf("%f %f\n", deltaDistX, deltaDistY);
@@ -114,15 +109,15 @@ void	testes(t_data *data)
 		while (hit == 0)
 		{
 			//jump to next map square, OR in x-direction, OR in y-direction
-			if (sideDistX < sideDistY)
+			if (itens.sideDist[P_X] < itens.sideDist[P_Y])
 			{
-				sideDistX += deltaDistX;
+				itens.sideDist[P_X] += deltaDistX;
 				itens.map[P_X] += stepX;
 				side = 0;
 			}
 			else
 			{
-				sideDistY += deltaDistY;
+				itens.sideDist[P_Y] += deltaDistY;
 				itens.map[P_Y] += stepY;
 				side = 1;
 			}
