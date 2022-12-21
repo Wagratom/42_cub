@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/20 16:12:58 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:36:05 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,8 @@ void		draw_map_debug(char **map);
 void		testes(t_data *data);
 
 void		creat_img(t_data *data);
+double		player_posX(t_data *data);
+double		player_posY(t_data *data);
+
 
 #endif
