@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 11:43:59 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:47:39 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,27 @@ void	verLine(t_data *data, int x, int y1, int y2, int color)
 	}
 }
 
+void	init_raycast(t_raycast *itens)
+{
+	itens->dir[P_X] = -1;		//initial direction vector
+	itens->dir[P_Y] = 0;
+
+	itens->plane[P_X] = 0;
+	itens->plane[P_Y] = 0.66;
+}
+
 void	testes(t_data *data)
 {
-	double	dirX = -1, dirY = 0;						//initial direction vector
+	t_raycast	itens;
 
-	double planeX = 0, planeY = 0.66;					// 0.66
+	init_raycast(&itens);
 
 	for (int x = 0; x < 640; x++)
    	{
 		//calculate ray position and direction
 		double cameraX = 2 * x / (double)640 - 1; //x-coordinate in camera space
-		double rayDirX = dirX + planeX * cameraX;
-		double rayDirY = dirY + planeY * cameraX;
+		double rayDirX = itens.dir[P_X] + itens.plane[P_X] * cameraX;
+		double rayDirY = itens.dir[P_Y] + itens.plane[P_Y] * cameraX;
 
 		// printf("rayDirX = %f rayDirY = %f\n", rayDirX, rayDirY);
 		// print_larger_pixel_tst(data, rayDirX, rayDirY, RGB_RED);
