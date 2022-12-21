@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 11:47:39 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:52:19 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	verLine(t_data *data, int x, int y1, int y2, int color)
 
 void	init_raycast(t_raycast *itens)
 {
+	ft_bzero(itens, sizeof(t_raycast));
 	itens->dir[P_X] = -1;		//initial direction vector
 	itens->dir[P_Y] = 0;
 
@@ -60,9 +61,9 @@ void	testes(t_data *data)
 	for (int x = 0; x < 640; x++)
    	{
 		//calculate ray position and direction
-		double cameraX = 2 * x / (double)640 - 1; //x-coordinate in camera space
-		double rayDirX = itens.dir[P_X] + itens.plane[P_X] * cameraX;
-		double rayDirY = itens.dir[P_Y] + itens.plane[P_Y] * cameraX;
+		itens.cameraX = 2 * x / (double)640 - 1; //x-coordinate in camera space
+		itens.rayDir[P_X] = itens.dir[P_X] + itens.plane[P_X] * itens.cameraX;
+		itens.rayDir[P_Y] = itens.dir[P_Y] + itens.plane[P_Y] * itens.cameraX;
 
 		// printf("rayDirX = %f rayDirY = %f\n", rayDirX, rayDirY);
 		// print_larger_pixel_tst(data, rayDirX, rayDirY, RGB_RED);
@@ -82,8 +83,8 @@ void	testes(t_data *data)
 		//double deltaDistX = (rayDirX == 0) ? 1e30 : abs(1 / rayDirX);
 		//double deltaDistY = (rayDirY == 0) ? 1e30 : abs(1 / rayDirY);
 
-		double deltaDistX = fabs(1 / rayDirX);
-		double deltaDistY = fabs(1 / rayDirY);
+		double deltaDistX = fabs(1 / itens.rayDir[P_X]);
+		double deltaDistY = fabs(1 / itens.rayDir[P_Y]);
 
 		//printf("rayDirX = %f rayDirY = %f\n", deltaDistX, deltaDistY);
 
@@ -97,7 +98,7 @@ void	testes(t_data *data)
 		int side; //was a NS or a EW wall hit?
 
 
-		if (rayDirX < 0)
+		if (itens.rayDir[P_X] < 0)
 		{
 			stepX = -1;
 			sideDistX = (player_posX(data) - mapX) * deltaDistX;
@@ -107,7 +108,7 @@ void	testes(t_data *data)
 			stepX = 1;
 			sideDistX = (mapX + 1.0 - player_posX(data)) * deltaDistX;
 		}
-		if (rayDirY < 0)
+		if (itens.rayDir[P_Y] < 0)
 		{
 			stepY = -1;
 			sideDistY = (player_posY(data) - mapY) * deltaDistY;
@@ -143,9 +144,9 @@ void	testes(t_data *data)
 			if (data->map.map[mapY][mapX] == '1') hit = 1;
 		}
 		if (side == 0)
-			perpWallDist = (mapX - player_posX(data) + (1 - stepX) / 2) / rayDirX;
+			perpWallDist = (mapX - player_posX(data) + (1 - stepX) / 2) / itens.rayDir[P_X];
 		else
-			perpWallDist = (mapY - player_posY(data) + (1 - stepY) / 2) / rayDirY;
+			perpWallDist = (mapY - player_posY(data) + (1 - stepY) / 2) / itens.rayDir[P_Y];
 
 		int lineHeight = (int)(480 / perpWallDist);
 		//printf("%d\n", lineHeight);

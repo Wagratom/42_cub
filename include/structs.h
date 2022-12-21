@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 11:46:54 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:50:11 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ typedef enum s_positions
 
 typedef struct s_raycast
 {
+	double	cameraX;
 	double	dir[2];
 	double	plane[2];
+	double	rayDir[2];
 }t_raycast;
 
 #endif
