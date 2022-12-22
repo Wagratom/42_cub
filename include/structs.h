@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 17:21:56 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:51:49 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,14 @@ typedef enum s_positions
 typedef struct s_raycast
 {
 	int		map[2];
-	double	cameraX;
+	int		step[2]; //what direction to step in x or y-direction (either +1 or -1)
 	double	dir[2];
 	double	plane[2];
 	double	rayDir[2];
 	double	sideDist[2];
+	double	deltaDist[2];
+	double	perpWallDist;
+	double	cameraX;
 }t_raycast;
 
 #endif

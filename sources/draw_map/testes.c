@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 17:26:16 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:52:12 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,10 @@ void	testes(t_data *data)
 		itens.map[P_X] = (int)player_posX(data);
 		itens.map[P_Y] = (int)player_posY(data);
 
-		double deltaDistX = fabs(1 / itens.rayDir[P_X]);
-		double deltaDistY = fabs(1 / itens.rayDir[P_Y]);
-		double perpWallDist;
+		itens.deltaDist[P_X] = fabs(1 / itens.rayDir[P_X]);
+		itens.deltaDist[P_Y] = fabs(1 / itens.rayDir[P_Y]);
 
-		//what direction to step in x or y-direction (either +1 or -1)
-		int stepX;
-		int stepY;
+		itens.step[P_X];
 
 		int hit = 0; //was there a wall hit?
 		int side; //was a NS or a EW wall hit?
@@ -82,23 +79,23 @@ void	testes(t_data *data)
 		//sideDist = length of ray from current position to next x or y-side
 		if (itens.rayDir[P_X] < 0)
 		{
-			stepX = -1;
-			itens.sideDist[P_X] = (player_posX(data) - itens.map[P_X]) * deltaDistX;
+			itens.step[P_X] = -1;
+			itens.sideDist[P_X] = (player_posX(data) - itens.map[P_X]) * itens.deltaDist[P_X];
 		}
 		else
 		{
-			stepX = 1;
-			itens.sideDist[P_X] = (itens.map[P_X] + 1.0 - player_posX(data)) * deltaDistX;
+			itens.step[P_X] = 1;
+			itens.sideDist[P_X] = (itens.map[P_X] + 1.0 - player_posX(data)) * itens.deltaDist[P_X];
 		}
 		if (itens.rayDir[P_Y] < 0)
 		{
-			stepY = -1;
-			itens.sideDist[P_Y] = (player_posY(data) - itens.map[P_Y]) * deltaDistY;
+			itens.step[P_Y] = -1;
+			itens.sideDist[P_Y] = (player_posY(data) - itens.map[P_Y]) * itens.deltaDist[P_Y];
 		}
 		else
 		{
-			stepY = 1;
-			itens.sideDist[P_Y] = (itens.map[P_Y] + 1.0 - player_posY(data)) * deltaDistY;
+			itens.step[P_Y] = 1;
+			itens.sideDist[P_Y] = (itens.map[P_Y] + 1.0 - player_posY(data)) * itens.deltaDist[P_Y];
 		}
 
 		//printf("%f %f\n", deltaDistX, deltaDistY);
@@ -111,14 +108,14 @@ void	testes(t_data *data)
 			//jump to next map square, OR in x-direction, OR in y-direction
 			if (itens.sideDist[P_X] < itens.sideDist[P_Y])
 			{
-				itens.sideDist[P_X] += deltaDistX;
-				itens.map[P_X] += stepX;
+				itens.sideDist[P_X] += itens.deltaDist[P_X];
+				itens.map[P_X] += itens.step[P_X];
 				side = 0;
 			}
 			else
 			{
-				itens.sideDist[P_Y] += deltaDistY;
-				itens.map[P_Y] += stepY;
+				itens.sideDist[P_Y] += itens.deltaDist[P_Y];
+				itens.map[P_Y] += itens.step[P_Y];
 				side = 1;
 			}
 			//Check if ray has hit a wall
@@ -127,11 +124,11 @@ void	testes(t_data *data)
 		}
 
 		if (side == 0)
-			perpWallDist = (itens.map[P_X] - player_posX(data) + (1 - stepX) / 2) / itens.rayDir[P_X];
+			itens.perpWallDist = (itens.map[P_X] - player_posX(data) + (1 - itens.step[P_X]) / 2) / itens.rayDir[P_X];
 		else
-			perpWallDist = (itens.map[P_Y] - player_posY(data) + (1 - stepY) / 2) / itens.rayDir[P_Y];
+			itens.perpWallDist = (itens.map[P_Y] - player_posY(data) + (1 - itens.step[P_Y]) / 2) / itens.rayDir[P_Y];
 
-		int lineHeight = (int)(480 / perpWallDist);
+		int lineHeight = (int)(480 / itens.perpWallDist);
 		//printf("%d\n", lineHeight);
 
 		int drawStart = -lineHeight / 2 + 480 / 2;

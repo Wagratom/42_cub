@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/21 11:27:30 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:42:19 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ int	draw_map(t_data *data)
 	while (data->map.map[++line])
 		draw_line(data, line);
 	testes(data);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	//mlx_destroy_image(data->mlx, data->img.img);
-	//creat_img(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	mlx_destroy_image(data->mlx, data->img.img);
+	creat_img(data);
+	get_addr_img(&data->img);
 	return (0);
 }
 

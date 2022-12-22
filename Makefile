@@ -6,7 +6,7 @@
 #    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/21 11:34:31 by wwallas-         ###   ########.fr        #
+#    Updated: 2022/12/22 11:37:18 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
-CC			=	gcc -g3
+CC			=	cc -g3
 CFLAGS		=	-Wall -Wextra -Werror
 FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
 
