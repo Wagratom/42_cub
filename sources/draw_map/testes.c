@@ -6,7 +6,7 @@
 /*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/23 21:59:07 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/23 22:08:34 by wwallas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	player_position_on_map(t_raycast *itens, t_data *data)
 	itens->map[P_Y] = (int)player_posY(data);
 }
 
-void	len_ray_next_position(t_raycast *itens)
+void	length_of_ray_from_current_position_to_next_x_or_y_side(t_raycast *itens)
 {
 	itens->deltaDist[P_X] = fabs(1 / itens->rayDir[P_X]);
 	itens->deltaDist[P_Y] = fabs(1 / itens->rayDir[P_Y]);
@@ -100,55 +100,57 @@ void	side_y(t_raycast * itens, t_data *data)
 	}
 }
 
-void	len_ray_x_or_y_next_position_x_or_y(t_raycast *itens, t_data *data)
+void	length_of_ray_from_one_x_or_y_side_to_next_x_or_y_side(t_raycast *itens, t_data *data)
 {
 	side_x(itens, data);
 	side_y(itens, data);
 }
 
+int	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit)
+{
+	int side;
+
+	while (hit == 0)
+	{
+		//jump to next map square, OR in x-direction, OR in y-direction
+		if (itens->sideDist[P_X] < itens->sideDist[P_Y])
+		{
+			itens->sideDist[P_X] += itens->deltaDist[P_X];
+			itens->map[P_X] += itens->step[P_X];
+			side = 0;
+		}
+		else
+		{
+			itens->sideDist[P_Y] += itens->deltaDist[P_Y];
+			itens->map[P_Y] += itens->step[P_Y];
+			side = 1;
+		}
+		//Check if ray has hit a wall
+		print_larger_pixel_tst(data, itens->map[P_X] * 5, itens->map[P_Y] * 5, RGB_RED);
+		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1') hit = 1;
+	}
+	return (side);
+}
+
 void	testes(t_data *data)
 {
 	t_raycast	itens;
+	int 		side; //was a NS or a EW wall hit?
 
 	init_raycast(&itens);
 	for (int x = 0; x < 640; x++)
    	{
 		calculate_ray_position_direction(&itens, x);
 		player_position_on_map(&itens, data);
-		len_ray_next_position(&itens);
-		len_ray_x_or_y_next_position_x_or_y(&itens, data);
-		//sideDist = length of ray from current position to next x or y-side
-	
-		int side;		//was a NS or a EW wall hit?
-		int hit = 0;	//was there a wall hit?
-		while (hit == 0)
-		{
-			//jump to next map square, OR in x-direction, OR in y-direction
-			if (itens.sideDist[P_X] < itens.sideDist[P_Y])
-			{
-				itens.sideDist[P_X] += itens.deltaDist[P_X];
-				itens.map[P_X] += itens.step[P_X];
-				side = 0;
-			}
-			else
-			{
-				itens.sideDist[P_Y] += itens.deltaDist[P_Y];
-				itens.map[P_Y] += itens.step[P_Y];
-				side = 1;
-			}
-			//Check if ray has hit a wall
-			print_larger_pixel_tst(data, itens.map[P_X] * 5, itens.map[P_Y] * 5, RGB_RED);
-			if (data->map.map[itens.map[P_Y]][itens.map[P_X]] == '1') hit = 1;
-		}
-
+		length_of_ray_from_current_position_to_next_x_or_y_side(&itens);
+		length_of_ray_from_one_x_or_y_side_to_next_x_or_y_side(&itens, data);
+		side = jump_next_square_and_verify_hit_wall(&itens, data, 0);
 		if (side == 0)
 			itens.perpWallDist = (itens.map[P_X] - player_posX(data) + (1 - itens.step[P_X]) / 2) / itens.rayDir[P_X];
 		else
 			itens.perpWallDist = (itens.map[P_Y] - player_posY(data) + (1 - itens.step[P_Y]) / 2) / itens.rayDir[P_Y];
 
 		int lineHeight = (int)(480 / itens.perpWallDist);
-		//printf("%d\n", lineHeight);
-
 		int drawStart = -lineHeight / 2 + 480 / 2;
 		if(drawStart < 0)
 			drawStart = 0;
