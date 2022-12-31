@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:28:50 by hectfern          #+#    #+#             */
-/*   Updated: 2022/12/31 12:17:47 by hectfern         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:39:58 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	dda_algorithm(t_data *data)
 	set_perp_wall_dist(data);
 }
 
-void	draw_line(t_data *data, int x)
+void	draw_line_ray(t_data *data, int x)
 {
 	int	end;
 	int	start;
