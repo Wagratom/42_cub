@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:53:03 by wwallas-         ###   ########.fr       */
+/*   Updated: 2022/12/31 11:19:07 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,21 @@
 # include <mlx.h>
 # include <structs.h>
 
+# include <math.h>
 # include <stdio.h>
+# include <stdlib.h>
+
+# define WIDTH 640
+# define HEIGHT 480
 
 # define VALID_CHARS "01NSEW\n"
 
-# define KEY_ESQ 65307
 
 /******************************************************************************/
 /*								KEYBOARD									  */
 /******************************************************************************/
+
+# define KEY_ESQ 65307
 
 # define KEY_W 119
 # define KEY_D 100
