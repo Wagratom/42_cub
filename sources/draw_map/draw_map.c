@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:43:37 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:47:03 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	print_block(t_data *data, int x, int y, char block)
 {
-	//usleep(50000);
-	//printf("block = %c\n", block);
 	if (block == '0')
 		print_larger_pixel(data, (x * 30), (y * 30), RGB_WHITE);
 	else if (block == '1')
