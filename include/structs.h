@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/22 14:04:43 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 13:27:59 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef enum s_positions
 
 typedef struct s_raycast
 {
-	int		map[2];	
+	int		map[2];
 	int		step[2];	//what direction to step in x or y-direction (either +1 or -1)
 	double	dir[2];
 	double	plane[2];
@@ -67,6 +67,10 @@ typedef struct s_raycast
 	double	deltaDist[2];
 	double	perpWallDist;
 	double	cameraX;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+	int		side;
 }t_raycast;
 
 #endif

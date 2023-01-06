@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/23 22:08:34 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/06 13:58:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void	init_raycast(t_raycast *itens)
 	itens->plane[P_Y] = 0.66;
 }
 
-void	calculate_ray_position_direction(t_raycast *itens, int x)
+void	calculate_ray_position_direction(t_raycast *itens, t_data *data, int x)
 {
-	itens->cameraX = 2 * x / (double)640 - 1; //x-coordinate in camera space
+	itens->cameraX = 2 * x / (double)640 - 1;				//x-coordinate in camera space
 	itens->rayDir[P_X] = itens->dir[P_X] + itens->plane[P_X] * itens->cameraX;
 	itens->rayDir[P_Y] = itens->dir[P_Y] + itens->plane[P_Y] * itens->cameraX;
 }
 
 // which box of the map we're in
-void	player_position_on_map(t_raycast *itens, t_data *data)
+void	position_player_map(t_raycast *itens, t_data *data)
 {
 	itens->map[P_X] = (int)player_posX(data);
 	itens->map[P_Y] = (int)player_posY(data);
@@ -106,9 +106,8 @@ void	length_of_ray_from_one_x_or_y_side_to_next_x_or_y_side(t_raycast *itens, t_
 	side_y(itens, data);
 }
 
-int	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit)
+void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit)
 {
-	int side;
 
 	while (hit == 0)
 	{
@@ -117,19 +116,37 @@ int	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hi
 		{
 			itens->sideDist[P_X] += itens->deltaDist[P_X];
 			itens->map[P_X] += itens->step[P_X];
-			side = 0;
+			itens->side = 0;
 		}
 		else
 		{
 			itens->sideDist[P_Y] += itens->deltaDist[P_Y];
 			itens->map[P_Y] += itens->step[P_Y];
-			side = 1;
+			itens->side = 1;
 		}
 		//Check if ray has hit a wall
 		print_larger_pixel_tst(data, itens->map[P_X] * 5, itens->map[P_Y] * 5, RGB_RED);
 		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1') hit = 1;
 	}
-	return (side);
+	if (itens->side == 0)
+		itens->perpWallDist = (itens->map[P_X] - player_posX(data) + (1 - itens->step[P_X]) / 2) / itens->rayDir[P_X];
+	else
+		itens->perpWallDist = (itens->map[P_Y] - player_posY(data) + (1 - itens->step[P_Y]) / 2) / itens->rayDir[P_Y];
+}
+
+void	calculate_height_of_line_to_draw_on_screen(t_raycast *itens, t_data *data)
+{
+	itens->lineHeight = (int)(480 / itens->perpWallDist);
+	itens->drawStart = - itens->lineHeight / 2 + 480 / 2;
+}
+
+void	calculate_lowest_and_highest_pixel_to_fill_in_current_stripe(t_raycast *itens, t_data *data)
+{
+	if(itens->drawStart < 0)
+		itens->drawStart = 0;
+	itens->drawEnd = itens->lineHeight / 2 + 480 / 2;
+	if(itens->drawEnd >= 480)
+		itens->drawEnd = 480 - 1;
 }
 
 void	testes(t_data *data)
@@ -140,24 +157,14 @@ void	testes(t_data *data)
 	init_raycast(&itens);
 	for (int x = 0; x < 640; x++)
    	{
-		calculate_ray_position_direction(&itens, x);
-		player_position_on_map(&itens, data);
+		calculate_ray_position_direction(&itens, data, x);
+		position_player_map(&itens, data);
 		length_of_ray_from_current_position_to_next_x_or_y_side(&itens);
 		length_of_ray_from_one_x_or_y_side_to_next_x_or_y_side(&itens, data);
-		side = jump_next_square_and_verify_hit_wall(&itens, data, 0);
-		if (side == 0)
-			itens.perpWallDist = (itens.map[P_X] - player_posX(data) + (1 - itens.step[P_X]) / 2) / itens.rayDir[P_X];
-		else
-			itens.perpWallDist = (itens.map[P_Y] - player_posY(data) + (1 - itens.step[P_Y]) / 2) / itens.rayDir[P_Y];
-
-		int lineHeight = (int)(480 / itens.perpWallDist);
-		int drawStart = -lineHeight / 2 + 480 / 2;
-		if(drawStart < 0)
-			drawStart = 0;
-		int drawEnd = lineHeight / 2 + 480 / 2;
-		if(drawEnd >= 480)
-			drawEnd = 480 - 1;
-		verLine(data, x, drawStart, drawEnd, RGB_RED);
+		jump_next_square_and_verify_hit_wall(&itens, data, 0);
+		calculate_height_of_line_to_draw_on_screen(&itens, data);
+		calculate_lowest_and_highest_pixel_to_fill_in_current_stripe(&itens, data);
+		verLine(data, x, itens.drawStart, itens.drawEnd, RGB_RED);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	}
 }
