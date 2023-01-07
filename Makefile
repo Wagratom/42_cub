@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2022/12/22 11:37:18 by wwallas-         ###   ########.fr        #
+#    Updated: 2023/01/07 13:00:35 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ INCLUDE		=	-I./libft	\
 				-I./mlx		\
 				-I./include
 
-SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c \
-				alloc_map.c draw_map.c init_data.c init_img.c init_mlx.c init_windows.c draw_map_debug.c  \
-				print_larger_pixel.c save_x.c delet_map.c testes.c filter_keyboard.c moviments_play.c updates.c  \
-				start_program.c control.c
+SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c	\
+				alloc_map.c draw_map.c init_data.c init_img.c init_mlx.c init_windows.c draw_map_debug.c	\
+				print_larger_pixel.c save_x.c delet_map.c filter_keyboard.c moviments_play.c updates.c 		\
+				start_program.c control.c raycast.c calculetePixel.c positionMap.c radiusCalculation.c		\
+				screen.c
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
@@ -39,7 +40,8 @@ VPATH		=	.						\
 				./sources/map 			\
 				./sources/initialize	\
 				./sources/draw_map		\
-				./sources/program
+				./sources/program		\
+				./sources/raycast
 
 $(OBJS_DIR)/%.o:	%.c
 			$(CC) -c $< -o $@ $(INCLUDE)

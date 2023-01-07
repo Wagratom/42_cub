@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   control.c                                          :+:      :+:    :+:   */
+/*   position_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/21 11:32:20 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:04:01 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/07 12:33:14 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/07 12:33:23 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-double	player_posX(t_data *data)
+// which box of the map we're in
+void	position_player_map(t_raycast *itens, t_data *data)
 {
-	return (data->map.p_player[P_X]);
-}
-
-double	player_posY(t_data *data)
-{
-	return (data->map.p_player[P_Y]);
+	itens->map[P_X] = (int)player_posX(data);
+	itens->map[P_Y] = (int)player_posY(data);
 }

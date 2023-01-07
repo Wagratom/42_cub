@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/22 11:40:52 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:02:07 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <libft.h>
 # include <mlx.h>
 # include <structs.h>
+# include <math.h>
+
 
 # include <stdio.h>
 
@@ -114,6 +116,20 @@ void		creat_img(t_data *data);
 void		get_addr_img(t_img *img);
 double		player_posX(t_data *data);
 double		player_posY(t_data *data);
+
+
+/******************************************************************************/
+/*								RAYCAST										  */
+/******************************************************************************/
+
+void	raycast(t_data *data);
+void	calculate_ray_position_direction(t_raycast *itens, int x);
+void	calculateHeightLinen(t_raycast *itens, t_data *data);
+void	position_player_map(t_raycast *itens, t_data *data);
+void	lengthRay(t_raycast *itens);
+void	lengthRayNext_x_y(t_raycast *itens, t_data *data);
+void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit);
+void	calculatePixel(t_raycast *itens, t_data *data);
 
 
 #endif

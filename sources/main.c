@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:52:25 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/07 13:03:06 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	valid_arguments(t_data *data)
 {
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_data	data;
 
