@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 13:15:30 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:25:49 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	get_addr_img(t_img *img)
 
 static void	creat_img(t_data *data)
 {
-	data->img.img = mlx_new_image(data->mlx, 600, 600);
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->img.img == NULL)
 		printf("Image not created\n"); //die
 }
@@ -35,7 +35,7 @@ t_bool	init_img(t_data *data)
 {
 	if (data->mlx == NULL)
 	{
-		printf("not creat image, Pointer mlx null"); //die
+		printf("not create image, Pointer mlx null"); //die
 		return (FALSE);
 	}
 	creat_img(data);

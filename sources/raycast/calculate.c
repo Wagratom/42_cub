@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 12:03:45 by hectfern          #+#    #+#             */
-/*   Updated: 2022/12/31 12:17:08 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:27:27 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	calculate_ray_dir(t_data *data, int x)
 
 	ray = &data->ray;
 	player = &data->player;
-	ray->camera_x = 2 * x / (double)WIDTH - 1;
+	ray->camera_x = 2 * x / (WIDTH - 1);
 	ray->direction.x = player->dir.x + player->plane.x * ray->camera_x;
 	ray->direction.y = player->dir.y + player->plane.y * ray->camera_x;
 }
@@ -49,6 +49,7 @@ void	calculate(t_data *data)
 			ray->line_start = 0;
 		if (ray->line_end >= HEIGHT)
 			ray->line_end = HEIGHT - 1;
+		dda_algorithm(data);
 		draw_line_ray(data, x);
 	}
 }

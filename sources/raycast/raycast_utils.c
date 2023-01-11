@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:28:50 by hectfern          #+#    #+#             */
-/*   Updated: 2022/12/31 15:39:58 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:28:31 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	dda_algorithm(t_data *data)
 
 	hit = 0;
 	map = data->map.map;
+	// printf("\nray.side_dist += ray.delta_dist\n");
+	// printf("ray.pos += ray.step\n\n");
 	while (!hit)
 	{
 		if (data->ray.side_dist.x < data->ray.side_dist.y)
@@ -81,8 +83,13 @@ void	dda_algorithm(t_data *data)
 			data->ray.pos.y += data->ray.step.y;
 			data->ray.side = 1;
 		}
+		printf("ray.pos.x: %d ray.pos.y: %d\n", (int)data->ray.pos.x, (int)data->ray.pos.y);
+		printf("ray.side_dist.x: %.1f ray.side_dist.y: %.1f\n", data->ray.side_dist.x, data->ray.side_dist.y);
+		printf("ray.step.x: %.1f ray.step.y: %.1f\n", data->ray.step.x, data->ray.step.y);
+		printf("\n");
+		usleep(500);
 		if (map[(int)data->ray.pos.x][(int)data->ray.pos.y] == '1')
-			hit = 1;
+			hit = !hit;
 	}
 	set_perp_wall_dist(data);
 }
