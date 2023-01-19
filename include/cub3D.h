@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/05 18:03:17 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:04:49 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int			get_size_y(int nbr);
 
 int		render(t_data *data);
 void	calculate(t_data *data);
-void	check_ray_dir(t_ray *ray);
+void	check_ray_dir(t_data *data);
 void	dda_algorithm(t_data *data);
 void	set_perp_wall_dist(t_data *data);
 void	draw_line_ray(t_data *data, int x);
