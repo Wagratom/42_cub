@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:43:37 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:04:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 static void	print_block(t_data *data, int x, int y, char block)
 {
-	//usleep(50000);
-	//printf("block = %c\n", block);
 	if (block == '0')
-		print_larger_pixel(data, (x * 30), (y * 30), RGB_WHITE);
+		print_larger_pixel(data, (x * 5), (y * 5), RGB_WHITE);
 	else if (block == '1')
-		print_larger_pixel(data, (x * 30), (y * 30), RGB_MAROON);
+		print_larger_pixel(data, (x * 5), (y * 5), RGB_MAROON);
 	else if (block == 'W')
-		print_larger_pixel(data, (x * 30), (y * 30), RGB_RED);
+		print_larger_pixel(data, (x * 5), (y * 5), RGB_RED);
 }
 
 static void	draw_line(t_data *data, int y)
@@ -41,10 +39,7 @@ int	draw_map(t_data *data)
 
 	line = -1;
 	while (data->map.map[++line])
-	{
 		draw_line(data, line);
-		printf("\n");
-	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
 }

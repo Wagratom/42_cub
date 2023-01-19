@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 11:28:50 by hectfern          #+#    #+#             */
-/*   Updated: 2023/01/14 14:54:22 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:24:48 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void	dda_algorithm(t_data *data)
 		// printf("ray.step.x: %.1f ray.step.y: %.1f\n", data->ray.step.x, data->ray.step.y);
 		// printf("\n");
 		// usleep(5000);
+		print_larger_pixel(data, (int)data->ray.pos.y * 5, (int)data->ray.pos.x * 5, RGB_RED);
 		if (map[(int)data->ray.pos.x][(int)data->ray.pos.y] == '1')
 			hit = !hit;
 	}

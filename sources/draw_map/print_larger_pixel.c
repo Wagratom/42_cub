@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_larger_pixel.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:38:49 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:02:57 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:04:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_larger_pixel(t_data *data, int x, int y, int color)
 	int			size_y;
 
 	save_value_x(x);
-	len_x = get_save_x() + 30;
+	len_x = get_save_x() + 5;
 	size_y = get_size_y(y);
 	while (y++ < size_y - 1)
 	{
