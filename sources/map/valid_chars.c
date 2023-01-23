@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:44:08 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:02:26 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	save_position_player(t_map *data, int position_x, char _char)
 		return ;
 	printf("saving position \n");
 	printf("X = %d y = %d\n", position_x, data->size_y - 1);
-	data->p_player[P_X] = position_x;
-	data->p_player[P_Y] = data->size_y - 1;
+	data->player[P_X] = position_x;
+	data->player[P_Y] = data->size_y - 1;
 }
 
 t_bool	interactor_chars_or_die(t_map *data, char _char)

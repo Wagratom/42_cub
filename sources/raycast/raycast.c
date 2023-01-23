@@ -6,20 +6,20 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:00:54 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:30:52 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	init_raycast(t_raycast *itens)
+void	init_raycast(t_raycast *itens, t_data *data)
 {
 	ft_bzero(itens, sizeof(t_raycast));
-	itens->dir[P_X] = -1;		//initial direction vector
-	itens->dir[P_Y] =  0;
+	itens->dir[P_X] = data->map.dir[P_X];		//initial direction vector
+	itens->dir[P_Y] = data->map.dir[P_Y];
 
-	itens->plane[P_X] = 0;
-	itens->plane[P_Y] = 0.66;
+	itens->plane[P_X] = data->map.plane[P_X];
+	itens->plane[P_Y] = data->map.plane[P_Y];
 }
 
 void	verLine(t_data *data, int x, int y1, int y2, int color)
@@ -60,7 +60,7 @@ void	raycast(t_data *data)
 {
 	t_raycast	itens;
 
-	init_raycast(&itens);
+	init_raycast(&itens, data);
 	for (int x = 0; x < 640; x++)
    	{
 		calculate_ray_position_direction(&itens, x);

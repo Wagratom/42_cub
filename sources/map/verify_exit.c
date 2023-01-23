@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_exit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:18:55 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:02:26 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_bool	verify_exit_or_die(t_map *data)
 	status = TRUE;
 	copy_map = ft_array_dup(data->map);
 	printf("validando mapa...\n");
-	verify_is_closed(copy_map, data->p_player[P_X], data->p_player[P_Y], &status);
+	verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
 	delete_map(copy_map);
 	printf("map OK...\n");
 	return (status);

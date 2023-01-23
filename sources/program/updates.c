@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updates.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:25:55 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:02:26 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	update_p_char(t_map *map, int x, int y)
 
 void	update_p_player(t_map *map, int position_x, int position_y)
 {
-	map->p_player[P_X] = position_x;
-	map->p_player[P_Y] = position_y;
+	map->player[P_X] = position_x;
+	map->player[P_Y] = position_y;
 }

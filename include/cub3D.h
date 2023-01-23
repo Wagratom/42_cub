@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:02:07 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:29:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,21 @@
 
 # define VALID_CHARS "01NSEW\n"
 
-# define KEY_ESQ 65307
+
+# define RGB_RED 0x00FF0000
+# define RGB_MAROON 0x00800000
+# define RGB_WHITE 0x00FFFFFF
+
+# define P_Y 0
+# define P_X 1
+
+# define PRESS_KEY 2
 
 /******************************************************************************/
 /*								KEYBOARD									  */
 /******************************************************************************/
+
+# define KEY_ESQ 65307
 
 # define KEY_W 119
 # define KEY_D 100
@@ -38,13 +48,6 @@
 # define ARROW_RIGHT 65363
 # define ARROW_DOWN 65364
 # define ARROW_LEFT 65361
-
-# define RGB_RED 0x00FF0000
-# define RGB_MAROON 0x00800000
-# define RGB_WHITE 0x00FFFFFF
-
-# define P_Y 0
-# define P_X 1
 
 /******************************************************************************/
 /*							VALIDACION MAP									  */
@@ -102,10 +105,10 @@ int			get_size_y(int nbr);
 void		start_game(t_data *data);
 
 int			filter_keyboard(int key, t_data *data);
-void		map_move_up(t_map *map, int x, int y);
-void		map_move_right(t_map *map, int x, int y);
-void		map_move_left(t_map *map, int x, int y);
-void		map_move_down(t_map *map, int x, int y);
+void		map_move_up(t_map *map);
+void		map_move_right(t_map *map);
+void		map_move_left(t_map *map);
+void		map_move_down(t_map *map);
 void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, int x, int y);
 
