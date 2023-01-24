@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:47:41 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/07 12:55:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:25:41 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	calculatePixel(t_raycast *itens, t_data *data)
 {
 	if (itens->drawStart < 0)
 		itens->drawStart = 0;
-	itens->drawEnd = itens->lineHeight / 2 + 480 / 2;
-	if (itens->drawEnd >= 480)
-		itens->drawEnd = 480 - 1;
+	itens->drawEnd = itens->lineHeight / 2 + HEIGHT / 2;
+	if (itens->drawEnd >= HEIGHT)
+		itens->drawEnd = HEIGHT - 1;
 }

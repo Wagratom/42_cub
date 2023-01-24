@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:32:09 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/07 12:54:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:25:02 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	calculate_ray_position_direction(t_raycast *itens, int x)
 {
-	itens->cameraX = 2 * x / (double)640 - 1;
+	itens->cameraX = 2 * x / (double)WIDTH - 1;
 	itens->rayDir[P_X] = itens->dir[P_X] + itens->plane[P_X] * itens->cameraX;
 	itens->rayDir[P_Y] = itens->dir[P_Y] + itens->plane[P_Y] * itens->cameraX;
 }
@@ -23,6 +23,6 @@ void	calculate_ray_position_direction(t_raycast *itens, int x)
 
 void	calculateHeightLinen(t_raycast *itens, t_data *data)
 {
-	itens->lineHeight = (int)(480 / itens->perpWallDist);
-	itens->drawStart = - itens->lineHeight / 2 + 480 / 2;
+	itens->lineHeight = (int)(HEIGHT / itens->perpWallDist);
+	itens->drawStart = - itens->lineHeight / 2 + HEIGHT / 2;
 }

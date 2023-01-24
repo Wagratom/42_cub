@@ -6,11 +6,39 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:01:41 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:22:43 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	render_background(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			my_mlx_pixel_put(&data->img, x, y, 0x87CEEB);
+			x++;
+		}
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			my_mlx_pixel_put(&data->img, x, y, 0x8B4513);
+			x++;
+		}
+		y++;
+	}
+}
 
 static void	print_block(t_data *data, int x, int y, char block)
 {
@@ -18,8 +46,8 @@ static void	print_block(t_data *data, int x, int y, char block)
 		print_larger_pixel(data, (x * 5), (y * 5), RGB_WHITE);
 	else if (block == '1')
 		print_larger_pixel(data, (x * 5), (y * 5), RGB_MAROON);
-	else if (block == 'W')
-		print_larger_pixel(data, (x * 5), (y * 5), RGB_RED);
+	// else if (block == 'W')
+		// print_larger_pixel(data, (x * 5), (y * 5), RGB_RED);
 }
 
 static void	draw_line(t_data *data, int y)

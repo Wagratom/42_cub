@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 14:08:13 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:16:21 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	update_dir_left(t_map *map, double dir[])
 	set_cos_and_sin_left(&cos_rotation, &sin_rotation, map->rot_speed);
 	dir[P_X] = dir[P_X] * cos_rotation - dir[P_Y] * sin_rotation;
 	dir[P_Y] = old_dir_x * sin_rotation + dir[P_Y] * cos_rotation;
-
 }
 
 static void	update_plane_left(t_map *map, double plane[])
