@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 14:24:51 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 16:51:00 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,11 @@ double		player_posY(t_data *data);
 
 void	raycast(t_data *data);
 void	calculate_ray_position_direction(t_raycast *itens, int x);
-void	calculateHeightLinen(t_raycast *itens, t_data *data);
+void	calculate_height_line(t_raycast *itens, t_data *data);
 void	position_player_map(t_raycast *itens, t_data *data);
 void	lengthRay(t_raycast *itens);
 void	lengthRayNext_x_y(t_raycast *itens, t_data *data);
-void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit);
+void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data);
 void	calculatePixel(t_raycast *itens, t_data *data);
 
 
