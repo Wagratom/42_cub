@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:28:32 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 10:44:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void	map_move_up(t_map *map)
 
 void	map_move_down(t_map *map)
 {
-	// map->map[y][x] = '0';
-	// update_p_char(map, x, (y + 1));
-	// update_p_player(map, x, (y + 1));
+	if (is_valid_poosition(map, map->player[P_X] - map->dir[P_X] * map->speed, map->player[P_Y]))
+		map->player[P_X] -= map->dir[P_X] * map->speed;
+	if (is_valid_poosition(map, map->player[P_X], map->player[P_Y] - map->dir[P_Y] * map->speed))
+		map->player[P_Y] -= map->dir[P_Y] * map->speed;
 }
 
