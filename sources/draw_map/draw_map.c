@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 14:22:43 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:29:42 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	draw_map(t_data *data)
 	int	line;
 
 	line = -1;
+	render_background(data);
 	while (data->map.map[++line])
 		draw_line(data, line);
 	raycast(data);

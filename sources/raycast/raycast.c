@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/23 15:30:52 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 14:30:42 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,5 @@ void	raycast(t_data *data)
 		calculateHeightLinen(&itens, data);
 		calculatePixel(&itens, data);
 		verLine(data, x, itens.drawStart, itens.drawEnd, RGB_RED);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	}
 }
