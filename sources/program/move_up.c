@@ -6,13 +6,13 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 12:13:17 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/24 12:47:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	check_avance_x(t_map *map, double position_y, double position_x)
+static void	check_avance_x(t_map *map, double position_y, double position_x)
 {
 	double	next_x;
 
@@ -22,7 +22,7 @@ void	check_avance_x(t_map *map, double position_y, double position_x)
 	update_p_player(map, position_y, next_x);
 }
 
-void	check_avance_y(t_map *map, double position_y, double position_x)
+static void	check_avance_y(t_map *map, double position_y, double position_x)
 {
 	double	next_y;
 
