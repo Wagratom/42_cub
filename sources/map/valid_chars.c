@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 15:48:15 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 11:56:44 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_bool	interactor_chars_or_die(t_map *data, char _char)
 		return (-1);
 	if (validator > 0)
 	{
-		printf("Error: many characters of positions\n"); // die program
+		printf("Error: many characters of positions\n");
 		return (FALSE);
 	}
 	interactor_chars(data, _char);
@@ -48,9 +48,11 @@ t_bool	valid_chars_or_die(t_map *data)
 	line = ft_strdup("");
 	while (get_line(data, &line))
 	{
-		if (valid_chars_line(data, line))
+		if (valid_chars_line(data, line)) // corrigr vazamento
 			continue ;
-		//printf("Error: invalid line | position %d\n", data->size_y);
+		printf("Error: invalid line | position %d\n", data->size_y);
+		printf("line = %s\n", line);
+		free(line);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -70,7 +72,6 @@ t_bool	valid_chars_line(t_map *data, char *line)
 		if (!interactor_chars_or_die(data, line[letter]))
 			return (FALSE);
 		save_position_player(data, letter, line[letter]);
-		//die program
 	}
 	return (TRUE);
 }

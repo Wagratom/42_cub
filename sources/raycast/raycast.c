@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 16:50:43 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 10:33:47 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,38 @@ void	init_raycast(t_raycast *itens, t_data *data)
 	itens->plane[P_Y] = data->map.plane[P_Y];
 }
 
-void	verLine(t_data *data, int x, int y1, int y2, int color)
+void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 {
-	y1--;
+	int	y1;
+	int	y2;
+
+	y1 = itens->drawStart - 1;
+	y2 = itens->drawEnd;
 	while (++y1 <= y2)
 		my_mlx_pixel_put(&data->img, x, y1, color);
 }
 
 void	nao_sei_oq_ta_acontecendo(t_raycast *itens, t_data *data)
 {
+	double	aux;
+
+	aux = itens->map[P_X] - player_p_x(data) + (1 - itens->step[P_X]) / 2;
 	if (itens->side == 0)
-		itens->perpWallDist = (itens->map[P_X] - player_posX(data) + (1 - itens->step[P_X]) / 2) / itens->rayDir[P_X];
+		itens->perpWallDist = aux / itens->rayDir[P_X];
 	else
-		itens->perpWallDist = (itens->map[P_Y] - player_posY(data) + (1 - itens->step[P_Y]) / 2) / itens->rayDir[P_Y];
+	{
+		aux = itens->map[P_Y] - player_p_y(data) + (1 - itens->step[P_Y]) / 2;
+		itens->perpWallDist = aux / itens->rayDir[P_Y];
+	}
 }
 
-void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data)
+void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data)
 {
 	int	hit;
 
 	hit = 0;
 	while (hit == 0)
 	{
-		//jump to next map square, OR in x-direction, OR in y-direction
 		if (itens->sideDist[P_X] < itens->sideDist[P_Y])
 		{
 			itens->sideDist[P_X] += itens->deltaDist[P_X];
@@ -56,9 +65,9 @@ void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data)
 			itens->map[P_Y] += itens->step[P_Y];
 			itens->side = 1;
 		}
-		//Check if ray has hit a wall
 		print_larger_pixel(data, itens->map[P_X] * 5, itens->map[P_Y] * 5, RGB_RED);
-		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1') hit = 1;
+		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1')
+			hit = 1;
 	}
 	nao_sei_oq_ta_acontecendo(itens, data);
 }
@@ -66,17 +75,19 @@ void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data)
 void	raycast(t_data *data)
 {
 	t_raycast	itens;
+	int			x;
 
+	x = -1;
 	init_raycast(&itens, data);
-	for (int x = 0; x < 640; x++)
-   	{
+	while (++x < WIDTH)
+	{
 		calculate_ray_position_direction(&itens, x);
 		position_player_map(&itens, data);
-		lengthRay(&itens);
-		lengthRayNext_x_y(&itens, data);
+		length_ray(&itens);
+		length_ray_next_x_y(&itens, data);
 		jump_next_square_and_verify_hit_wall(&itens, data);
 		calculate_height_line(&itens, data);
-		calculatePixel(&itens, data);
-		verLine(data, x, itens.drawStart, itens.drawEnd, RGB_RED);
+		calculate_pixel(&itens, data);
+		ver_line(data, &itens, x, RGB_RED);
 	}
 }

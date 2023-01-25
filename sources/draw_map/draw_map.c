@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 14:29:42 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 10:50:57 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ static void	print_block(t_data *data, int x, int y, char block)
 		print_larger_pixel(data, (x * 5), (y * 5), RGB_WHITE);
 	else if (block == '1')
 		print_larger_pixel(data, (x * 5), (y * 5), RGB_MAROON);
-	// else if (block == 'W')
-		// print_larger_pixel(data, (x * 5), (y * 5), RGB_RED);
 }
 
 static void	draw_line(t_data *data, int y)
@@ -71,9 +69,7 @@ int	draw_map(t_data *data)
 		draw_line(data, line);
 	raycast(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	mlx_destroy_image(data->mlx, data->img.img);
-	creat_img(data);
-	get_addr_img(&data->img);
+	// mlx_destroy_image(data->mlx, data->img.img);
 	return (0);
 }
 

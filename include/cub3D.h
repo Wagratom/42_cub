@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/24 16:51:00 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 11:09:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define P_X 1
 
 # define PRESS_KEY 2
+# define EXIT 17
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -60,7 +61,7 @@ t_bool		verify_extension(char *file_name);
 
 t_bool		open_file_or_die(t_map *data);
 
-t_bool		valid_map(t_map *data);
+t_bool		valid_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 t_bool		interactor_chars_or_die(t_map *data, char _char);
@@ -120,8 +121,8 @@ void		testes(t_data *data);
 
 void		creat_img(t_data *data);
 void		get_addr_img(t_img *img);
-double		player_posX(t_data *data);
-double		player_posY(t_data *data);
+double		player_p_x(t_data *data);
+double		player_p_y(t_data *data);
 
 
 /******************************************************************************/
@@ -132,12 +133,13 @@ void	raycast(t_data *data);
 void	calculate_ray_position_direction(t_raycast *itens, int x);
 void	calculate_height_line(t_raycast *itens, t_data *data);
 void	position_player_map(t_raycast *itens, t_data *data);
-void	lengthRay(t_raycast *itens);
-void	lengthRayNext_x_y(t_raycast *itens, t_data *data);
+void	length_ray(t_raycast *itens);
+void	length_ray_next_x_y(t_raycast *itens, t_data *data);
 void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data);
-void	calculatePixel(t_raycast *itens, t_data *data);
+void	calculate_pixel(t_raycast *itens, t_data *data);
 
 
 int		is_valid_poosition(t_map *map, double x, double y);
+int		cleanup_program(t_data *data);
 
 #endif
