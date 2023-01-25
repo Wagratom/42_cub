@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 10:33:47 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 17:37:20 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,9 @@ void	nao_sei_oq_ta_acontecendo(t_raycast *itens, t_data *data)
 	}
 }
 
-void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data)
+void	lance_ray_in_wall(t_raycast *itens, t_data *data)
 {
-	int	hit;
-
-	hit = 0;
-	while (hit == 0)
+	while (TRUE)
 	{
 		if (itens->sideDist[P_X] < itens->sideDist[P_Y])
 		{
@@ -65,10 +62,16 @@ void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data)
 			itens->map[P_Y] += itens->step[P_Y];
 			itens->side = 1;
 		}
-		print_larger_pixel(data, itens->map[P_X] * 5, itens->map[P_Y] * 5, RGB_RED);
+		print_larger_pixel(data, itens->map[P_X] * 5, \
+		itens->map[P_Y] * 5, RGB_RED);
 		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1')
-			hit = 1;
+			return ;
 	}
+}
+
+void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data)
+{
+	lance_ray_in_wall(itens, data);
 	nao_sei_oq_ta_acontecendo(itens, data);
 }
 
