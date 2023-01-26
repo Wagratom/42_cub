@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/26 15:25:56 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/26 18:52:48 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
 void	calculate_height_line(t_raycast *itens, t_data *data);
 void	calculate_pixel(t_raycast *itens, t_data *data);
 
-int		is_valid_poosition(t_map *map, double x, double y);
+int		is_valid_position(t_map *map, double x, double y);
 int		cleanup_program(t_data *data);
 
 #endif
