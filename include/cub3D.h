@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:41:13 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:25:56 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,9 @@ void		start_game(t_data *data);
 int			filter_keyboard(int key, t_data *data);
 void		map_move_up(t_map *map);
 void		map_move_right(t_map *map);
+void		map_look_right(t_map *map);
 void		map_move_left(t_map *map);
+void		map_look_left(t_map *map);
 void		map_move_down(t_map *map);
 void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, double position_y, double position_x);
