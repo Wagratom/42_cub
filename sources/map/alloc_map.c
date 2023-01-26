@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 14:07:46 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 22:00:46 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,21 @@ void	alloc_map(t_map *data)
 	data->map[tmp] = get_next_line(data->fd);
 }
 
+void	remove_char_of_player(t_map *data)
+{
+	int	posi_y;
+	int	posi_x;
+
+	posi_y = (int)data->player[P_Y];
+	posi_x = (int)data->player[P_X];
+	data->map[posi_y][posi_x] = '0';
+}
+
 void	alloc_map_or_die(t_map *data)
 {
 	open_file_or_die(data);
 	alloc_ptr(data);
 	alloc_map(data);
+	remove_char_of_player(data);
 	draw_map_debug(data->map);
 }
