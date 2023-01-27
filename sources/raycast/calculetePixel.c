@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_program.c                                    :+:      :+:    :+:   */
+/*   calculetePixel.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:42:21 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/07 12:47:41 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/24 17:38:08 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	start_game(t_data *data)
+//	calculate lowest and highest pixel to fill in current stripe
+
+void	calculate_pixel(t_raycast *itens, t_data *data)
 {
-	printf ("			staring game\n good gameplay XD\n");
-	draw_map_or_die(data);
-	mlx_hook(data->win, EXIT, 0, &cleanup_program, data);
-	mlx_hook(data->win, PRESS_KEY, (1L << 0), &filter_keyboard, data);
-	mlx_loop(data->mlx);
+	if (itens->drawStart < 0)
+		itens->drawStart = 0;
+	itens->drawEnd = itens->lineHeight / 2 + HEIGHT / 2;
+	if (itens->drawEnd >= HEIGHT)
+		itens->drawEnd = HEIGHT - 1;
 }

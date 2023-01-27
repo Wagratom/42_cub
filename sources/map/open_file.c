@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   open_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:30:29 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/03 22:47:44 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:56:54 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_bool	open_file_or_die(t_map *data)
 {
 	if (open_file(data))
 		return (TRUE);
-	printf("Error: Not open file\n");	// perror with die
+	perror("");
 	return (FALSE);
 }

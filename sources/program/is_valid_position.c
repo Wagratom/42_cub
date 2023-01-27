@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   is_valid_position.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 13:15:14 by wwallas-         ###   ########.fr       */
+/*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
+/*   Updated: 2023/01/26 18:51:49 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	init_mlx_or_die(t_data *data)
+int	is_valid_position(t_map *map, double x, double y)
 {
-	data->mlx = mlx_init();
-	if (data->mlx == NULL)
-	{
-		printf("Error: Not init mlx"); //die
+	if (map->map[(int)y][(int)x] == '1')
 		return (FALSE);
-	}
 	return (TRUE);
 }
-

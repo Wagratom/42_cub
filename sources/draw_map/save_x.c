@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_x.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 09:56:27 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:03:02 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:24:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	get_save_x(void)
 
 int	get_size_y(int nbr)
 {
-	return (nbr + 30);
+	return (nbr + 5);
 }
-

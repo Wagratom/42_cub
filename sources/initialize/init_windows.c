@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_windows.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:04:05 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/05 13:15:18 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:25:23 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static t_bool	init_windows(t_data *data)
 {
-	data->win = mlx_new_window(data->mlx, 1000, 1000, "Cub3D");
+	data->win = mlx_new_window(data->mlx, 640, 480, "Cub3D");
 	if (data->win == NULL)
 	{
-		printf("Erro creat windows"); //die
+		printf("Erro creat windows");
 		return (FALSE);
 	}
 	return (TRUE);
@@ -27,7 +27,7 @@ t_bool	init_windows_or_die(t_data *data)
 {
 	if (data->mlx == NULL)
 	{
-		printf("Not creat windows, mlx pointer null"); //die
+		printf("Not creat windows, mlx pointer null");
 		return (FALSE);
 	}
 	return (init_windows(data));

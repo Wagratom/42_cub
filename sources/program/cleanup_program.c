@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_program.c                                    :+:      :+:    :+:   */
+/*   cleanup_program.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:42:21 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/27 15:14:17 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	start_game(t_data *data)
+void	clean_conections(t_data *data)
 {
-	printf ("			staring game\n good gameplay XD\n");
-	draw_map_or_die(data);
-	mlx_hook(data->win, EXIT, 0, &cleanup_program, data);
-	mlx_hook(data->win, PRESS_KEY, (1L << 0), &filter_keyboard, data);
-	mlx_loop(data->mlx);
+	if (data->img.img)
+		mlx_destroy_image(data->mlx, data->img.img);
+	if (data->win)
+		mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+}
+
+int	cleanup_program(t_data *data)
+{
+	clean_conections(data);
+	exit(0);
+	return (0);
 }
