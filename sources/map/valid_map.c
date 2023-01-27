@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 10:28:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:35:16 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 22:13:44 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ static t_bool	valid_map_exit(t_map *data)
 {
 	if (open_file_or_die(data) == FALSE)
 		return (FALSE);
-	alloc_map_or_die(data);
-	verify_exit_or_die(data);
+	if (alloc_map_status(data) == FALSE)
+		return (FALSE);
+	if (verify_exit_or_die(data) == FALSE)
+		return (FALSE);
 	close(data->fd);
 	return (TRUE);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/26 18:52:48 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:17:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 # include <stdio.h>
 
-# define VALID_CHARS "01NSEW\n"
+# define VALID_CHARS "01NSEW\n\t "
+# define ESPECIAL_CHARS "NSEW"
 
 
 # define RGB_RED 0x00FF0000
@@ -68,7 +69,7 @@ t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		save_position_player(t_map *data, int position_x, char _char);
 t_bool		verify_exit_or_die(t_map *data);
 
-void		alloc_map_or_die(t_map *data);
+t_bool		alloc_map_status(t_map *data);
 void		delete_map(char **map);
 
 /*							ULTS											  */
@@ -76,7 +77,7 @@ void		delete_map(char **map);
 char		*get_line(t_map *data, char **line);
 t_bool		interactor_chars(t_map *data, char _char);
 t_bool		is_special_char(char _char);
-t_bool		valid_char_or_die(char letter);
+t_bool		valid_char_or_die(char _char);
 
 /******************************************************************************/
 /*							INITIALIZE										  */
@@ -111,9 +112,7 @@ void		start_game(t_data *data);
 int			filter_keyboard(int key, t_data *data);
 void		map_move_up(t_map *map);
 void		map_move_right(t_map *map);
-void		map_look_right(t_map *map);
 void		map_move_left(t_map *map);
-void		map_look_left(t_map *map);
 void		map_move_down(t_map *map);
 void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, double position_y, double position_x);
@@ -143,4 +142,7 @@ void	calculate_pixel(t_raycast *itens, t_data *data);
 int		is_valid_position(t_map *map, double x, double y);
 int		cleanup_program(t_data *data);
 
+
+void	map_look_right(t_map *map);
+void	map_look_left(t_map *map);
 #endif
