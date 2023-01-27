@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:09:41 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:19:39 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	init_data(t_data *data, char *file_name)
 		clean_conections(data);
 	debug_print(has_flag(), "Sucess: Create Connections\n\n");
 	data->map.file_name = file_name;
-	data->map.dir[P_X] = -1;
+	data->map.dir[P_X] = 0;
 	data->map.dir[P_Y] = 0;
 	data->map.plane[P_X] = 0;
-	data->map.plane[P_Y] = 0.66;
+	data->map.plane[P_Y] = 0;
 	data->map.speed = 0.15;
 	data->map.rot_speed = 0.08;
 }
