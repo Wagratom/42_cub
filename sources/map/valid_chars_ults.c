@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars_ults.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/20 13:40:09 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:55:06 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	valid_char_or_die(char letter)
 {
 	if (ft_strchr(VALID_CHARS, letter))
 		return (TRUE);
-	printf("invalid character \"%c\"", letter); // die program
+	printf("invalid character \"%c\"", letter);
 	return (FALSE);
 }
 

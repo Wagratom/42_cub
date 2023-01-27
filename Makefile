@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
+#    By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/01/07 13:00:35 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/01/26 15:31:21 by hectfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ INCLUDE		=	-I./libft	\
 
 SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c	\
 				alloc_map.c draw_map.c init_data.c init_img.c init_mlx.c init_windows.c draw_map_debug.c	\
-				print_larger_pixel.c save_x.c delet_map.c filter_keyboard.c moviments_play.c updates.c 		\
-				start_program.c control.c raycast.c calculetePixel.c positionMap.c radiusCalculation.c		\
-				screen.c
+				print_larger_pixel.c save_x.c delet_map.c filter_keyboard.c updates.c  control.c \
+				start_program.c raycast.c calculetePixel.c positionMap.c radiusCalculation.c screen.c		\
+				is_valid_position.c move_up.c move_down.c move_right.c move_left.c cleanup_program.c \
+				jump_next_square.c look_left.c look_right.c
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/20 17:09:14 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:25:44 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ static char	*get_addr(t_img *img, int *bits, int *length, int *endian)
 
 void	get_addr_img(t_img *img)
 {
-	get_addr(img,  &img->bits_per_pixel, &img->line_length, &img->endian);
+	get_addr(img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	if (img->addr == NULL)
-		printf("Erro in get img addr\n"); //die
+		printf("Erro in get img addr\n");
 }
 
 void	creat_img(t_data *data)
 {
 	data->img.img = mlx_new_image(data->mlx, 640, 480);
 	if (data->img.img == NULL)
-		printf("Image not created\n"); //die
+		printf("Image not created\n");
 }
 
 t_bool	init_img(t_data *data)
 {
 	if (data->mlx == NULL)
 	{
-		printf("not creat image, Pointer mlx null"); //die
+		printf("not creat image, Pointer mlx null");
 		return (FALSE);
 	}
 	creat_img(data);

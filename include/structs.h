@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/06 13:27:59 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/23 16:20:33 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,15 @@ typedef struct s_map
 	char	*file_name;
 	char	**map;
 	int		chars[4];
-	int		p_player[2];
 	int		size_y;
 	int		size_x;
 	int		fd;
+
+	double		player[2];
+	double		speed;
+	double		rot_speed;
+	double		dir[2];
+	double		plane[2];
 
 }	t_map;
 
@@ -46,6 +51,7 @@ typedef struct s_data
 
 	t_map	map;
 	t_img	img;
+
 }	t_data;
 
 typedef enum s_positions

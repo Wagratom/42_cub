@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:02:07 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/26 18:52:48 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,25 @@
 
 # define VALID_CHARS "01NSEW\n"
 
-# define KEY_ESQ 65307
+
+# define RGB_RED 0x00FF0000
+# define RGB_MAROON 0x00800000
+# define RGB_WHITE 0x00FFFFFF
+
+# define P_Y 0
+# define P_X 1
+
+# define PRESS_KEY 2
+# define EXIT 17
+
+#define WIDTH 640
+#define HEIGHT 480
 
 /******************************************************************************/
 /*								KEYBOARD									  */
 /******************************************************************************/
+
+# define KEY_ESQ 65307
 
 # define KEY_W 119
 # define KEY_D 100
@@ -39,13 +53,6 @@
 # define ARROW_DOWN 65364
 # define ARROW_LEFT 65361
 
-# define RGB_RED 0x00FF0000
-# define RGB_MAROON 0x00800000
-# define RGB_WHITE 0x00FFFFFF
-
-# define P_Y 0
-# define P_X 1
-
 /******************************************************************************/
 /*							VALIDACION MAP									  */
 /******************************************************************************/
@@ -54,7 +61,7 @@ t_bool		verify_extension(char *file_name);
 
 t_bool		open_file_or_die(t_map *data);
 
-t_bool		valid_map(t_map *data);
+t_bool		valid_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 t_bool		interactor_chars_or_die(t_map *data, char _char);
@@ -102,20 +109,22 @@ int			get_size_y(int nbr);
 void		start_game(t_data *data);
 
 int			filter_keyboard(int key, t_data *data);
-void		map_move_up(t_map *map, int x, int y);
-void		map_move_right(t_map *map, int x, int y);
-void		map_move_left(t_map *map, int x, int y);
-void		map_move_down(t_map *map, int x, int y);
+void		map_move_up(t_map *map);
+void		map_move_right(t_map *map);
+void		map_look_right(t_map *map);
+void		map_move_left(t_map *map);
+void		map_look_left(t_map *map);
+void		map_move_down(t_map *map);
 void		update_p_char(t_map *map, int x, int y);
-void		update_p_player(t_map *map, int x, int y);
+void		update_p_player(t_map *map, double position_y, double position_x);
 
 void		draw_map_debug(char **map);
 void		testes(t_data *data);
 
 void		creat_img(t_data *data);
 void		get_addr_img(t_img *img);
-double		player_posX(t_data *data);
-double		player_posY(t_data *data);
+double		player_p_x(t_data *data);
+double		player_p_y(t_data *data);
 
 
 /******************************************************************************/
@@ -124,12 +133,14 @@ double		player_posY(t_data *data);
 
 void	raycast(t_data *data);
 void	calculate_ray_position_direction(t_raycast *itens, int x);
-void	calculateHeightLinen(t_raycast *itens, t_data *data);
 void	position_player_map(t_raycast *itens, t_data *data);
-void	lengthRay(t_raycast *itens);
-void	lengthRayNext_x_y(t_raycast *itens, t_data *data);
-void	jump_next_square_and_verify_hit_wall(t_raycast * itens, t_data *data, int hit);
-void	calculatePixel(t_raycast *itens, t_data *data);
+void	length_ray(t_raycast *itens);
+void	length_ray_next_x_y(t_raycast *itens, t_data *data);
+void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
+void	calculate_height_line(t_raycast *itens, t_data *data);
+void	calculate_pixel(t_raycast *itens, t_data *data);
 
+int		is_valid_position(t_map *map, double x, double y);
+int		cleanup_program(t_data *data);
 
 #endif

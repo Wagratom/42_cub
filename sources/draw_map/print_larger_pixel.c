@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_larger_pixel.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:38:49 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/20 16:04:26 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:24:30 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	char	*dst;
 
 	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 void	print_larger_pixel(t_data *data, int x, int y, int color)
@@ -36,4 +36,3 @@ void	print_larger_pixel(t_data *data, int x, int y, int color)
 	}
 	save_value_x(0);
 }
-

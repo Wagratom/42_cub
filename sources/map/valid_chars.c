@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/13 22:44:08 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:45:16 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	save_position_player(t_map *data, int position_x, char _char)
 		return ;
 	printf("saving position \n");
 	printf("X = %d y = %d\n", position_x, data->size_y - 1);
-	data->p_player[P_X] = position_x;
-	data->p_player[P_Y] = data->size_y - 1;
+	data->player[P_X] = position_x;
+	data->player[P_Y] = data->size_y - 1;
 }
 
 t_bool	interactor_chars_or_die(t_map *data, char _char)
@@ -30,16 +30,17 @@ t_bool	interactor_chars_or_die(t_map *data, char _char)
 		return (-1);
 	if (validator > 0)
 	{
-		printf("Error: many characters of positions\n"); // die program
+		printf("Error: many characters of positions\n");
 		return (FALSE);
 	}
 	interactor_chars(data, _char);
 	validator++;
 	return (TRUE);
 }
-/*******************************************************************************/
-/*									INIT									   */
-/*******************************************************************************/
+
+/******************************************************************************/
+/*									INIT									  */
+/******************************************************************************/
 
 t_bool	valid_chars_or_die(t_map *data)
 {
@@ -48,9 +49,11 @@ t_bool	valid_chars_or_die(t_map *data)
 	line = ft_strdup("");
 	while (get_line(data, &line))
 	{
-		if (valid_chars_line(data, line))
+		if (valid_chars_line(data, line)) // corrigr vazamento
 			continue ;
-		//printf("Error: invalid line | position %d\n", data->size_y);
+		printf("Error: invalid line | position %d\n", data->size_y);
+		printf("line = %s\n", line);
+		free(line);
 		return (FALSE);
 	}
 	return (TRUE);
@@ -70,7 +73,6 @@ t_bool	valid_chars_line(t_map *data, char *line)
 		if (!interactor_chars_or_die(data, line[letter]))
 			return (FALSE);
 		save_position_player(data, letter, line[letter]);
-		//die program
 	}
 	return (TRUE);
 }

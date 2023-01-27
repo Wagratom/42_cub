@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/07 13:03:06 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 11:10:20 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 
 	//valid_arguments();
 	init_data(&data, argv[1]);
-	valid_map(&data.map);
+	valid_map(&data);
 	init_windows_or_die(&data);
 	start_game(&data);
 	mlx_loop(data.mlx);
