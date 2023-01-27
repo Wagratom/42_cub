@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:02:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:57:48 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	verify_is_closed(char **map, int posi_x, int posi_y, t_bool *status)
 {
 	if (!verify_not_close(map, posi_x, posi_y, status))
 		return ;
-	//usleep(40000);
 	map[posi_y][posi_x] = '4';
 	//draw_map_debug(map->map);
 	if (val_move_right(map, &posi_x, posi_y))
@@ -92,11 +91,11 @@ t_bool	verify_exit_or_die(t_map *data)
 	t_bool	status;
 	char	**copy_map;
 
+	debug_print(has_flag(), "validando exit mapa...\n");
 	if (data->map == NULL)
 		return (FALSE);
 	status = TRUE;
 	copy_map = ft_array_dup(data->map);
-	debug_print(has_flag(), "validando exit mapa...\n");
 	verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
 	delete_map(copy_map);
 	debug_print(has_flag(), "Exit OK...\n");

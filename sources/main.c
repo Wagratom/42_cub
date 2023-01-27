@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 14:52:55 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:49:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_bool	check_mod_debug(char *flag)
 {
 	if (!ft_str_eq(flag, "-D"))
 		return (FALSE);
-
 	set_flag(TRUE);
 	write(1, MOD_DEBUG, ft_strlen(MOD_DEBUG));
 	return (TRUE);

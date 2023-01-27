@@ -10,6 +10,7 @@
 		"system_error": "c",
 		"cub3d.h": "c",
 		"cmath": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"functional": "c"
 	}
 }
