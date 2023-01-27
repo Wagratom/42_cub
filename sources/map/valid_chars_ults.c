@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 11:55:06 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:16:22 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ char	*get_line(t_map *data, char **line)
 	return (*line);
 }
 
-t_bool	valid_char_or_die(char letter)
+t_bool	valid_char_or_die(char _char)
 {
-	if (ft_strchr(VALID_CHARS, letter))
+	if (ft_strchr(VALID_CHARS, _char))
 		return (TRUE);
-	printf("invalid character \"%c\"", letter);
+	printf("invalid character \"%c\" ", _char);
 	return (FALSE);
 }
 
@@ -45,7 +45,7 @@ t_bool	interactor_chars(t_map *data, char _char)
 
 t_bool	is_special_char(char _char)
 {
-	if (_char == '0' || _char == '1' || _char == '\n')
-		return (FALSE);
-	return (TRUE);
+	if (ft_strchr(ESPECIAL_CHARS, _char))
+		return (TRUE);
+	return (FALSE);
 }

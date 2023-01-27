@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:45:16 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:17:40 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	save_position_player(t_map *data, int position_x, char _char)
 {
 	if (!is_special_char(_char))
 		return ;
-	printf("saving position \n");
-	printf("X = %d y = %d\n", position_x, data->size_y - 1);
+	printf("saving position\n");
+	printf("X(%d) Y(%d) char(%c)\n", position_x, data->size_y - 1, _char);
 	data->player[P_X] = position_x;
 	data->player[P_Y] = data->size_y - 1;
 }
@@ -51,7 +51,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	{
 		if (valid_chars_line(data, line)) // corrigr vazamento
 			continue ;
-		printf("Error: invalid line | position %d\n", data->size_y);
+		printf("position line %d\n", data->size_y);
 		printf("line = %s\n", line);
 		free(line);
 		return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 12:01:57 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:17:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 
 # include <stdio.h>
 
-# define VALID_CHARS "01NSEW\n"
+# define VALID_CHARS "01NSEW\n\t "
+# define ESPECIAL_CHARS "NSEW"
 
 
 # define RGB_RED 0x00FF0000
@@ -76,7 +77,7 @@ void		delete_map(char **map);
 char		*get_line(t_map *data, char **line);
 t_bool		interactor_chars(t_map *data, char _char);
 t_bool		is_special_char(char _char);
-t_bool		valid_char_or_die(char letter);
+t_bool		valid_char_or_die(char _char);
 
 /******************************************************************************/
 /*							INITIALIZE										  */
@@ -138,7 +139,10 @@ void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
 void	calculate_height_line(t_raycast *itens, t_data *data);
 void	calculate_pixel(t_raycast *itens, t_data *data);
 
-int		is_valid_poosition(t_map *map, double x, double y);
+int		is_valid_position(t_map *map, double x, double y);
 int		cleanup_program(t_data *data);
 
+
+void	map_look_right(t_map *map);
+void	map_look_left(t_map *map);
 #endif
