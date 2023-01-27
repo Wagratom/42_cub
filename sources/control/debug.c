@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 10:24:46 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/27 14:15:45 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/27 14:42:46 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	init_mlx_or_die(t_data *data)
+void	debug_print(t_bool mod_debug, char *msg)
 {
-	data->mlx = mlx_init();
-	if (data->mlx == NULL)
-	{
-		printf("Error: Not init mlx");
-		return (FALSE);
-	}
-	return (TRUE);
+	if (mod_debug)
+		write(1, msg, ft_strlen(msg));
+}
+
+t_bool	*flag(void)
+{
+	static t_bool	store;
+
+	return (&store);
+}
+
+void	set_flag(t_bool _flag)
+{
+	*flag() = _flag;
+}
+
+t_bool	has_flag(void)
+{
+	return (*flag());
 }

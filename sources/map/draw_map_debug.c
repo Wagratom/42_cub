@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_debug.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 14:03:53 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/27 17:14:06 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	draw_map_debug(char **map)
+void	draw_mapingD(char **map)
 {
+	debug_print(has_flag(), "\tMap allocated\n\n");
 	while (*map)
 	{
 		printf("%s", *map);

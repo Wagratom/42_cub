@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 13:16:22 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:24:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	proportions_map(t_map *data, int size_x)
 {
-	data->size_y += 1;
 	if (size_x > data->size_x)
 		data->size_x = size_x;
 }
@@ -23,6 +22,7 @@ char	*get_line(t_map *data, char **line)
 {
 	free(*line);
 	*line = get_next_line(data->fd);
+	data->size_y += 1;
 	proportions_map(data, ft_strlen(*line));
 	return (*line);
 }
@@ -31,7 +31,7 @@ t_bool	valid_char_or_die(char _char)
 {
 	if (ft_strchr(VALID_CHARS, _char))
 		return (TRUE);
-	printf("invalid character \"%c\" ", _char);
+	write(2, "Error: Invalid line\n", 20);
 	return (FALSE);
 }
 

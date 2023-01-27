@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 13:17:05 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:58:39 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@
 
 #define WIDTH 640
 #define HEIGHT 480
+
+# define MOD_DEBUG "\tDEBUG MODE ON\n\n"
+# define INVALID_ARGC "Invalid number of argument\n"
+# define INVALID_ARGV "Invalid arguments passed\n"
+# define NULL_ARGV "Invalid flag passed\n"
+
+# define MLX_NULL "Error: Not init mlx\n"
 
 /******************************************************************************/
 /*								KEYBOARD									  */
@@ -84,7 +91,6 @@ t_bool		valid_char_or_die(char _char);
 /******************************************************************************/
 
 void		init_data(t_data *data, char *file_name);
-t_bool		init_mlx_or_die(t_data *data);
 t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
 
@@ -117,11 +123,10 @@ void		map_move_down(t_map *map);
 void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, double position_y, double position_x);
 
-void		draw_map_debug(char **map);
+void		draw_mapingD(char **map);
 void		testes(t_data *data);
 
 void		creat_img(t_data *data);
-void		get_addr_img(t_img *img);
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
 
@@ -145,4 +150,17 @@ int		cleanup_program(t_data *data);
 
 void	map_look_right(t_map *map);
 void	map_look_left(t_map *map);
+
+t_bool	*flag(void);
+void	set_flag(t_bool _flag);
+t_bool	has_flag(void);
+
+void	debug_print(t_bool mod_debug, char *msg);
+
+void	exit_msg(char *msg);
+void	clean_conections(t_data *data);
+
+void	wrong_write_line(int position, char *line);
+void	write_info_save(int position_x, int position_y, char _char);
+
 #endif

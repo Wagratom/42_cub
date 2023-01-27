@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/25 11:19:53 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:14:17 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	clean_conections(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->img.img);
+	if (data->img.img)
+		mlx_destroy_image(data->mlx, data->img.img);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
