@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:41:13 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/25 22:13:50 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		save_position_player(t_map *data, int position_x, char _char);
 t_bool		verify_exit_or_die(t_map *data);
 
-void		alloc_map_or_die(t_map *data);
+t_bool		alloc_map_status(t_map *data);
 void		delete_map(char **map);
 
 /*							ULTS											  */
