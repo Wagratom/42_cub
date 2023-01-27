@@ -3,47 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   move_right.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:44:20 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/26 20:57:54 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static void	set_cos_and_sin_r(double *ptr_cos, double *ptr_sin, double rotation)
+static void	check_side_x(t_map *map, double position_y, double position_x)
 {
-	*ptr_cos = cos(-rotation);
-	*ptr_sin = sin(-rotation);
+	double	next_x;
+
+	next_x = position_x + map->dir[P_Y] * map->speed;
+	if (is_valid_position(map, next_x, map->player[P_Y]))
+		update_p_player(map, position_y, next_x);
 }
 
-static void	update_dir_right(t_map *map, double dir[])
+static void	check_side_y(t_map *map, double position_y, double position_x)
 {
-	double	old_dir_x;
-	double	cos_rotation;
-	double	sin_rotation;
+	double	next_y;
 
-	old_dir_x = map->dir[P_X];
-	set_cos_and_sin_r(&cos_rotation, &sin_rotation, map->rot_speed);
-	dir[P_X] = dir[P_X] * cos_rotation - dir[P_Y] * sin_rotation;
-	dir[P_Y] = old_dir_x * sin_rotation + dir[P_Y] * cos_rotation;
-}
-
-static void	update_plane_right(t_map *map, double plane[])
-{
-	double	old_plane_x;
-	double	cos_rotation;
-	double	sin_rotation;
-
-	old_plane_x = map->plane[P_X];
-	set_cos_and_sin_r(&cos_rotation, &sin_rotation, map->rot_speed);
-	plane[P_X] = plane[P_X] * cos_rotation - plane[P_Y] * sin_rotation;
-	plane[P_Y] = old_plane_x * sin_rotation + plane[P_Y] * cos_rotation;
+	next_y = position_y - map->dir[P_X] * map->speed;
+	if (is_valid_position(map, map->player[P_X], next_y))
+		update_p_player(map, next_y, position_x);
 }
 
 void	map_move_right(t_map *map)
 {
-	update_dir_right(map, map->dir);
-	update_plane_right(map, map->plane);
+	check_side_x(map, map->player[P_Y], map->player[P_X]);
+	check_side_y(map, map->player[P_Y], map->player[P_X]);
 }
