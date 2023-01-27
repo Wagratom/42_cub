@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 13:17:05 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:54:39 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,9 @@ void		creat_img(t_data *data);
 void		get_addr_img(t_img *img);
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
+
+int			is_direction(char c);
+void		set_direction_player(t_map *data, char c);
 
 
 /******************************************************************************/

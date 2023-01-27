@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 13:17:40 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:17:24 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_bool	valid_chars_line(t_map *data, char *line)
 		if (!interactor_chars_or_die(data, line[letter]))
 			return (FALSE);
 		save_position_player(data, letter, line[letter]);
+		if (is_direction(line[letter]))
+			set_direction_player(data, line[letter]);
 	}
 	return (TRUE);
 }
