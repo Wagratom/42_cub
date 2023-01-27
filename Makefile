@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/01/27 17:20:15 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/01/27 17:22:48 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SOURCES		=	main.c verify_extension.c open_file.c valid_map.c valid_chars.c valid
 				print_larger_pixel.c save_x.c delet_map.c filter_keyboard.c updates.c  control.c \
 				start_program.c raycast.c calculetePixel.c positionMap.c radiusCalculation.c screen.c		\
 				is_valid_position.c move_up.c move_down.c move_right.c move_left.c cleanup_program.c \
-				jump_next_square.c look_left.c look_right.c debug.c debug_ready_msgs.c
+				jump_next_square.c look_left.c look_right.c debug.c debug_ready_msgs.c set_direction.c \
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
