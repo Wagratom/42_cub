@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:57:48 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:30:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	verify_is_closed(char **map, int posi_x, int posi_y, t_bool *status)
 	if (!verify_not_close(map, posi_x, posi_y, status))
 		return ;
 	map[posi_y][posi_x] = '4';
-	//draw_map_debug(map->map);
+	// draw_mapingD(map);
 	if (val_move_right(map, &posi_x, posi_y))
 	{
 		verify_is_closed(map, posi_x, posi_y, status);
@@ -86,7 +86,7 @@ void	verify_is_closed(char **map, int posi_x, int posi_y, t_bool *status)
 	verify_is_closed(map, posi_x, posi_y, status);
 }
 
-t_bool	verify_exit_or_die(t_map *data)
+t_bool	verify_exit_status(t_map *data)
 {
 	t_bool	status;
 	char	**copy_map;

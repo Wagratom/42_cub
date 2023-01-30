@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:08:51 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:37:31 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ t_bool mlx_is_null(void	*mlx)
 	if (mlx == NULL)
 	{
 		write(2, "Error: Not creat image, Pointer mlx null\n", 34);
-		return (FALSE);
+		return (TRUE);
 	}
+	return (FALSE);
 }
 
 t_bool	init_img(t_data *data)

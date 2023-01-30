@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   alloc_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/02 12:04:22 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:03:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	test_teardown(void)
 
 MU_TEST(alloc_map_tst)
 {
-	alloc_map_or_die(&data.map);
+	alloc_map_status(&data.map);
 	mu_check(data.map.map != NULL);
 }
 

@@ -6,17 +6,11 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:49:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:06:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
-void	exit_msg(char *msg)
-{
-	write(1, msg, ft_strlen(msg));
-	exit(0);
-}
 
 t_bool	check_mod_debug(char *flag)
 {
