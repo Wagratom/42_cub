@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_first_word.c                                   :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:39:34 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 10:24:00 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:12:16 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	test_teardown(void)
 
 MU_TEST(get_first_word_tst)
 {
+		mu_assert_string_eq(first_word(NULL), NULL);
+		mu_assert_string_eq(first_word(""), NULL);
+
 		mu_assert_string_eq(first_word("NO ./path_to_the_north_texture\n"), "NO");
 		mu_assert_string_eq(first_word("N ./path_to_the_north_texture\n"), "N");
 		mu_assert_string_eq(first_word("NOO ./path_to_the_north_texture\n"), "NOO");

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path_coordinate.c                              :+:      :+:    :+:   */
+/*   get_firts_number.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 17:04:05 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 13:14:06 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/30 15:39:34 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/31 10:24:00 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,27 @@ void	test_teardown(void)
 {
 }
 
-MU_TEST(north)
+MU_TEST(get_firts_number_tst)
 {
-	char *result;
+		mu_assert_string_eq(firts_number(NULL), NULL);
+		mu_assert_string_eq(firts_number(""), NULL);
+		mu_assert_string_eq(firts_number("220,100,0\n"), "220");
+		mu_assert_string_eq(firts_number("120,100,0\n"), "120");
+		mu_assert_string_eq(firts_number("0,100,0\n"), "0");
 
-	mu_assert_string_eq(get_data_parser(NULL), NULL);
-	mu_assert_string_eq(get_data_parser(""), NULL);
-
-	result = "./path_to_the_north_texture\n";
-	mu_assert_string_eq(get_data_parser("NO ./path_to_the_north_texture\n"), result);
-
-	result = "./e dois real a palma da banana\n";
-	mu_assert_string_eq(get_data_parser("NO ./e dois real a palma da banana\n"), result);
 }
 
-MU_TEST_SUITE(suite_coordinate)
+MU_TEST_SUITE(suite_get_firts_number)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(north);
-
+	MU_RUN_TEST(get_firts_number_tst);
 }
 
 MU_MAIN
 {
 	MU_DIVIDER;
-	MU_RUN_SUITE(suite_coordinate);
+	MU_RUN_SUITE(suite_get_firts_number);
 	MU_REPORT();
 	return (MU_EXIT_CODE);
 }

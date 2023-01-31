@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 13:02:49 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:27:46 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, double position_y, double position_x);
 
 void		draw_mapingD(char **map);
-void		testes(t_data *data);
+// void		testes(t_data *data);
 
-void		creat_img(t_data *data);
+// void		creat_img(t_data *data);
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
 
@@ -138,40 +138,42 @@ void		set_direction_player(t_map *data, char c);
 /*								RAYCAST										  */
 /******************************************************************************/
 
-void	raycast(t_data *data);
-void	calculate_ray_position_direction(t_raycast *itens, int x);
-void	position_player_map(t_raycast *itens, t_data *data);
-void	length_ray(t_raycast *itens);
-void	length_ray_next_x_y(t_raycast *itens, t_data *data);
-void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
-void	calculate_height_line(t_raycast *itens, t_data *data);
-void	calculate_pixel(t_raycast *itens, t_data *data);
+void		raycast(t_data *data);
+void		calculate_ray_position_direction(t_raycast *itens, int x);
+void		position_player_map(t_raycast *itens, t_data *data);
+void		length_ray(t_raycast *itens);
+void		length_ray_next_x_y(t_raycast *itens, t_data *data);
+void		jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
+void		calculate_height_line(t_raycast *itens, t_data *data);
+void		calculate_pixel(t_raycast *itens, t_data *data);
 
-int		is_valid_position(t_map *map, double x, double y);
-int		cleanup_program(t_data *data);
+int			is_valid_position(t_map *map, double x, double y);
+int			cleanup_program(t_data *data);
 
 
-void	map_look_right(t_map *map);
-void	map_look_left(t_map *map);
+void		map_look_right(t_map *map);
+void		map_look_left(t_map *map);
 
-t_bool	*flag(void);
-void	set_flag(t_bool _flag);
-t_bool	has_flag(void);
+t_bool		*flag(void);
+void		set_flag(t_bool _flag);
+t_bool		has_flag(void);
 
-void	debug_print(t_bool mod_debug, char *msg);
+void		debug_print(t_bool mod_debug, char *msg);
 
-void	exit_msg(char *msg);
-void	clean_conections(t_data *data);
+void		exit_msg(char *msg);
+void		clean_conections(t_data *data);
 
-void	wrong_write_line(int position, char *line);
-void	write_info_save(int position_x, int position_y, char _char);
-void	exit_msg(char *msg);
-void	delete_map(char **map);
+void		wrong_write_line(int position, char *line);
+void		write_info_save(int position_x, int position_y, char _char);
+void		exit_msg(char *msg);
+void		delete_map(char **map);
 
-t_bool	compare_strings(char *first_word, char *coordinate);
-char	*firts_number(char *str);
-char	*first_word(char *str);
+t_bool		compare_strings(char *first_word, char *coordinate);
+char		*firts_number(char *str);
+char		*first_word(char *str);
 
-char	*get_data_parser(char *str);
+t_bool		cpy_int_valid(char **dst, char *data);
+
+char		*get_data_parser(char *str);
 
 #endif
