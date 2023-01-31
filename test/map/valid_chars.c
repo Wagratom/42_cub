@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/04 16:02:07 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/01/31 15:57:30 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ MU_TEST(map_valid_tst)
 {
 	ft_bzero(&data, sizeof(t_map));
 	data.file_name = "map/map.cub";
-	open_file_or_die(&data);
+	open_file_status(&data);
 	mu_assert_int_eq(valid_chars_or_die(&data), TRUE);
 }
 
@@ -61,7 +61,7 @@ MU_TEST(map_invalid_tst)
 {
 	ft_bzero(&data, sizeof(t_map));
 	data.file_name = "map/many_character.cub";
-	open_file_or_die(&data);
+	open_file_status(&data);
 	mu_assert_int_eq(valid_chars_or_die(&data), FALSE);
 }
 

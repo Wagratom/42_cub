@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 13:27:46 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:55:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@
 
 t_bool		verify_extension(char *file_name);
 
-t_bool		open_file_or_die(t_map *data);
+t_bool		open_file_status(t_map *data);
 
 t_bool		valid_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
@@ -174,6 +174,10 @@ char		*first_word(char *str);
 
 t_bool		cpy_int_valid(char **dst, char *data);
 
-char		*get_data_parser(char *str);
+char		*data_in_line(char *str);
 
+t_bool		extract_colors(int dst[], char *str);
+int			coordinates(char *line);
+int			open_texture(int coordinates, char *path_file, t_parser *data);
+int			open_file_parser(int *dst, char *path_file);
 #endif

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 11:23:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:57:14 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ typedef struct s_parser
 {
 	int	f[3];
 	int	c[3];
-
+	int	north;
+	int	south;
+	int	west;
+	int	east;
 }	t_parser;
 
 typedef struct s_map

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/30 15:22:57 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 15:09:49 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	remove_char_of_player(t_map *data)
 t_bool	alloc_map_status(t_map *data)
 {
 	debug_print(has_flag(), "\tallocating the map\n");
-	if (open_file_or_die(data) == FALSE)
+	if (open_file_status(data) == FALSE)
 		return (FALSE);
 	if (alloc_ptr_status(data) == FALSE)
 		return (FALSE);
