@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/30 15:47:18 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/30 18:29:38 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,8 @@ void	write_info_save(int position_x, int position_y, char _char);
 void	exit_msg(char *msg);
 void	delete_map(char **map);
 
-t_bool	is_texture_north(char *str);
-t_bool	is_texture_south(char *str);
-t_bool	is_texture_west(char *str);
-t_bool	is_texture_east(char *str);
+char	*first_word(char *str);
+t_bool	compare_strings(char *first_word, char *coordinate);
+char	*get_path_coordinate(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:20:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/30 17:54:38 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 # define STRUCTS_H
 
 # include <cub3D.h>
+
+typedef struct s_parser
+{
+	int	fr;
+	int	fg;
+	int	fb;
+	int	cr;
+	int	cg;
+	int	cb;
+
+}	t_parser;
 
 typedef struct s_map
 {
@@ -24,11 +35,11 @@ typedef struct s_map
 	int		size_x;
 	int		fd;
 
-	double		player[2];
-	double		speed;
-	double		rot_speed;
-	double		dir[2];
-	double		plane[2];
+	double	player[2];
+	double	speed;
+	double	rot_speed;
+	double	dir[2];
+	double	plane[2];
 
 }	t_map;
 
@@ -42,7 +53,6 @@ typedef struct s_img
 	int		endian;
 
 }	t_img;
-
 
 typedef struct s_data
 {

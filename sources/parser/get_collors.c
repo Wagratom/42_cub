@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coordinate.c                                       :+:      :+:    :+:   */
+/*   get_collors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/30 18:29:38 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/30 18:31:38 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-char	*get_path_coordinate(char *str)
-{
-	return (ft_strchr(str, '.'));
-}
-
-
-t_bool	compare_strings(char *first_word, char *coordinate)
+t_bool	extract_colors_f(char *str)
 {
 	t_bool	status;
+	char	*floor;
 
 	status = TRUE;
-	if (!ft_str_eq(first_word, coordinate))
-		status = FALSE ;
-	free(first_word);
+	floor = first_word(str);
+	if (!ft_str_eq(floor, "F"))
+		status = FALSE;
+	free(floor);
+	floor = NULL;
 	return (status);
 }
