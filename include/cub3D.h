@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 10:07:12 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 13:02:49 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,10 @@ void	write_info_save(int position_x, int position_y, char _char);
 void	exit_msg(char *msg);
 void	delete_map(char **map);
 
-char	*first_word(char *str);
 t_bool	compare_strings(char *first_word, char *coordinate);
+char	*firts_number(char *str);
+char	*first_word(char *str);
+
 char	*get_data_parser(char *str);
 
 #endif

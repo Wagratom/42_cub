@@ -6,13 +6,11 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:04:05 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 10:07:49 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 10:24:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minunit.h"
-
-int	foo;
 
 void	test_setup(void)
 {

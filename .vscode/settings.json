@@ -13,6 +13,11 @@
 		"mlx.h": "c",
 		"functional": "c",
 		"initializer_list": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"memory": "c",
+		"tuple": "c",
+		"math.h": "c",
+		"structs.h": "c",
+		"fcntl.h": "c"
 	}
 }

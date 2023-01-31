@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/30 17:54:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 11:23:03 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 
 typedef struct s_parser
 {
-	int	fr;
-	int	fg;
-	int	fb;
-	int	cr;
-	int	cg;
-	int	cb;
+	int	f[3];
+	int	c[3];
 
 }	t_parser;
 

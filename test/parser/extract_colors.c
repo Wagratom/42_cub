@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_collors.c                                      :+:      :+:    :+:   */
+/*   extract_colors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 10:08:16 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/01/31 10:23:22 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/01/31 10:37:44 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3D.h>
+#include "../minunit.h"
 
-t_bool	extract_colors_f(char *str)
+void	test_setup(void)
 {
-	t_bool	status;
-	char	*floor;
+}
+void	test_teardown(void)
+{
+}
 
-	
-	return (status);
+MU_TEST(collors)
+{
+}
+
+MU_TEST_SUITE(suite_collor_f)
+{
+	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
+
+	MU_RUN_TEST(collors);
+
+}
+
+MU_MAIN
+{
+	MU_DIVIDER;
+	MU_RUN_SUITE(suite_collor_f);
+	MU_REPORT();
+	return (MU_EXIT_CODE);
 }
