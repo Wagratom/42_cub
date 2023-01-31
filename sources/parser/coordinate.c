@@ -6,15 +6,15 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/30 18:29:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/01/31 10:07:28 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-char	*get_path_coordinate(char *str)
+char	*get_data_parser(char *str)
 {
-	return (ft_strchr(str, '.'));
+	return ((ft_strchr(str, ' ') + 1));
 }
 
 
