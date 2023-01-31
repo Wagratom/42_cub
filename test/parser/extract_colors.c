@@ -24,7 +24,9 @@ MU_TEST(collors_tst1)
 	t_parse parse;
 
 	ft_bzero(&parse, sizeof(t_parse));
-	extract_colors(parse.f, "250,140,0\n");
+
+	mu_assert_int_eq(extract_colors(parse.f, "250,140,0\n"), TRUE);
+
 	mu_assert_int_eq(parse.f[0], 250);
 	mu_assert_int_eq(parse.f[1], 140);
 	mu_assert_int_eq(parse.f[2], 0);
@@ -35,10 +37,11 @@ MU_TEST(collors_tst2)
 	t_parse parse;
 
 	ft_bzero(&parse, sizeof(t_parse));
-	extract_colors(parse.f, "0,0,0\n");
-	mu_assert_int_eq(parse.f[0], 0);
-	mu_assert_int_eq(parse.f[1], 0);
-	mu_assert_int_eq(parse.f[2], 0);
+	mu_assert_int_eq(extract_colors(parse.c, "0,0,0\n"), TRUE);
+
+	mu_assert_int_eq(parse.c[0], 0);
+	mu_assert_int_eq(parse.c[1], 0);
+	mu_assert_int_eq(parse.c[2], 0);
 }
 
 MU_TEST(collors_many_numbers)
