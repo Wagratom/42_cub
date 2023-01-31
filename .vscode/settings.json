@@ -18,6 +18,8 @@
 		"tuple": "c",
 		"math.h": "c",
 		"structs.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"numbers": "c",
+		"ults.h": "c"
 	}
 }
