@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 17:45:44 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:31:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ t_bool		*flag(void);
 void		set_flag(t_bool _flag);
 t_bool		has_flag(void);
 
-void		debug_print(t_bool mod_debug, char *msg);
+void		debug_print(t_bool mod_debug, char *prefix, char *msg);
 
 void		exit_msg(char *msg);
 void		clean_conections(t_data *data);
@@ -176,7 +176,7 @@ t_bool		cpy_int_valid(char **dst, char *data);
 
 char		*data_in_line(char *str);
 
-t_bool		extract_colors(int dst[], char *str);
+t_bool		extract_colors(int dst[], char *numbers);
 int			coordinates(char *line);
 
 int			open_texture(int coordinates, char *path_file, t_parse *data);

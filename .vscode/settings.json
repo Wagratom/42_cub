@@ -20,6 +20,9 @@
 		"structs.h": "c",
 		"fcntl.h": "c",
 		"numbers": "c",
-		"ults.h": "c"
+		"ults.h": "c",
+		"deque": "c",
+		"unordered_map": "c",
+		"vector": "c"
 	}
 }

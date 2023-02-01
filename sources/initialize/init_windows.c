@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:04:05 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:28:49 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:39:23 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_bool	init_windows(t_data *data)
 
 t_bool	init_windows_or_die(t_data *data)
 {
-	debug_print(has_flag(), "\tInitializing Windowns\n");
+	debug_print(has_flag(), NULL,  "\tInitializing Windowns\n");
 	if (data->mlx == NULL)
 	{
 		printf("Not creat windows, mlx pointer null");
@@ -33,6 +33,6 @@ t_bool	init_windows_or_die(t_data *data)
 	}
 	if (init_windows(data) == FALSE)
 		return (FALSE);
-	debug_print(has_flag(), "Windowns: Ok\n");
+	debug_print(has_flag(), "Windowns: ", "Ok");
 	return (TRUE);
 }

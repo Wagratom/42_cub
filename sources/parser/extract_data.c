@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 18:29:26 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:40:27 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	open_file_parser(int *dst, char *path_file)
 	*dst =  open(path_file, O_RDONLY);
 	if (*dst >= 0)
 		return (0);
-	debug_print(has_flag(), "Error in oping file in path\n");
+	debug_print(has_flag(), "Error in oping file in path\n", path_file);
 	perror("");
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/30 15:30:05 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:49:25 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,13 @@ t_bool	verify_exit_status(t_map *data)
 	t_bool	status;
 	char	**copy_map;
 
-	debug_print(has_flag(), "validando exit mapa...\n");
+	debug_print(has_flag(), NULL, "\tValidating map exit...");
 	if (data->map == NULL)
 		return (FALSE);
 	status = TRUE;
 	copy_map = ft_array_dup(data->map);
 	verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
 	delete_map(copy_map);
-	debug_print(has_flag(), "Exit OK...\n");
+	debug_print(has_flag(), "validacion: ", "Exit OK");
 	return (status);
 }

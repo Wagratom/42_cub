@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 18:27:48 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:40:52 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int	coordinates(char *line)
 {
-	debug_print(has_flag(), "Get line: ");
-	debug_print(has_flag(), line);
+	debug_print(has_flag(), "Get line: ", line);
 	if (compare_strings(first_word(line), "NO"))
 		return (1);
 	else if (compare_strings(first_word(line), "SO"))
@@ -29,8 +28,7 @@ int	coordinates(char *line)
 
 int	open_texture(int coordinates, char *path_file, t_parse *data)
 {
-	debug_print(has_flag(), "Path file: ");
-	debug_print(has_flag(), path_file);
+	debug_print(has_flag(), "Path file: ", path_file);
 	if (coordinates == 0)
 		return (0);
 	if (coordinates == 1)
