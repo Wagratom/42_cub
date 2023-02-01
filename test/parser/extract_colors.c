@@ -65,17 +65,16 @@ MU_TEST(collors_few_numbers)
 
 	ft_bzero(&parse, sizeof(t_parse));
 	mu_assert_int_eq(extract_colors(parse.f,  "250\n"), FALSE);
-
-	// mu_assert_int_eq(extract_colors(parse.f,  "250,140\n"), FALSE);
+	mu_assert_int_eq(extract_colors(parse.f,  "250,140\n"), FALSE);
 }
 
 MU_TEST_SUITE(suite_collor_f)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	// MU_RUN_TEST(collors_tst1);
-	// MU_RUN_TEST(collors_tst2);
-	// MU_RUN_TEST(collors_many_numbers);
+	MU_RUN_TEST(collors_tst1);
+	MU_RUN_TEST(collors_tst2);
+	MU_RUN_TEST(collors_many_numbers);
 	MU_RUN_TEST(collors_few_numbers);
 
 }

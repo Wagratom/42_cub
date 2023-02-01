@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 10:39:49 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 10:59:42 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,25 @@ t_bool	is_valid_or_clear(char **dst)
 		return (FALSE);
 	if (!ft_is_int_nbr(*dst))
 	{
-		write(2, "Errorrrr\n", 8);
+		debug_print(has_flag(), "Error number not integer: ", *dst);
+		write(2, "Error\n", 6);
 		ft_free_ptr(dst, NULL);
 		return (FALSE);
 	}
 	return (TRUE);
 }
 
-t_bool	cpy_int_valid(char **dst, char *numbers)
+t_bool	cpy_int_valid(char **dst, char *data_line)
 {
 	char	*number;
 
-	debug_print(has_flag(), "Numeros: ", numbers);
+	debug_print(has_flag(), "Data line: ", data_line);
 	if (dst == NULL)
 		return (FALSE);
-	if (numbers == NULL || *numbers == '\0')
+	if (data_line == NULL || *data_line == '\0')
 		return (FALSE);
-	*dst =  firts_number(numbers);
-	debug_print(has_flag(), "dst: ", *dst);
+	*dst =  firts_number(data_line);
+	debug_print(has_flag(), "Write in dst: ", *dst);
 	return (is_valid_or_clear(dst));
 }
 
@@ -71,24 +72,25 @@ int	avance_is_check_end(char **data, char *number)
 	*data += ft_strlen(number) + 1;
 	ft_free_ptr(&number, NULL);
 }
+
 t_bool	extract_colors(int dst[], char *data_line)
 {
 	char	*number;
 	int		counter;
 
 	counter = -1;
-	while (++counter <= 2 && *data_line != '\0')
+	while (++counter <= 2)
 	{
 		if (!cpy_int_valid(&number, data_line))
 			return (FALSE);
 		save_in_dst(dst, counter, number);
 		avance_is_check_end(&data_line, number);
-		printf("s = %s\n", data_line);
 	}
-	printf("s = %s\n", data_line);
-	if (*data_line != '\0')
-		return (FALSE);
-	return (TRUE);
+	if (*data_line == '\0')
+		return (TRUE);
+	debug_print(has_flag(), NULL, "Error: Past numbers in very large date");
+	debug_print(has_flag(), " left over: ", data_line);
+	return (FALSE);
 }
 
 
