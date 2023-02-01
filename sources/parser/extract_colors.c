@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 14:41:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,54 @@
 
 char	*get_valid_end_number(char *data_line)
 {
-	char	*is_end;
+	char	*end;
 
-	is_end = ft_strchr(data_line, ',');
-	if (is_end != NULL)
-		return (is_end);
+	end = ft_strchr(data_line, ',');
+	if (end != NULL)
+		return (end);
 	return (ft_strchr(data_line, '\n'));
 }
 
 char	*firts_number(char *data_line)
 {
-	char	*comma;
+	char	*end_number;
 	int		len_number;
 
 	if (data_line == NULL || *data_line == '\0')
 		return (NULL);
-	comma = get_valid_end_number(data_line);
-	len_number = comma - data_line;
+	end_number = get_valid_end_number(data_line);
+	if (end_number == NULL)
+		return (NULL);
+	len_number = end_number - data_line;
 	return (ft_substr(data_line, 0, len_number));
 }
 
-t_bool	is_valid_or_clear(char **dst)
+t_bool	is_valid_or_clear(char *dst)
 {
-	if (dst == NULL || *dst == NULL)
+	if (dst == NULL)
 		return (FALSE);
-	if (!ft_is_int_nbr(*dst))
+	if (!ft_is_int_nbr(dst))
 	{
-		debug_printC(has_flag(), "Error number not integer: ", *dst);
+		debug_printC(has_flag(), "Error number not integer: ", dst);
 		write(2, "Error\n", 6);
-		ft_free_ptr(dst, NULL);
+		free(dst);
 		return (FALSE);
 	}
 	return (TRUE);
 }
 
-t_bool	cpy_int_valid(char **dst, char *data_line)
+t_bool	get_int_valid(char **dst, char *data_line)
 {
 	char	*number;
 
-	debug_printC(has_flag(), "Data line: ", data_line);
-	if (dst == NULL)
-		return (FALSE);
 	if (data_line == NULL || *data_line == '\0')
 		return (FALSE);
+	if (dst == NULL)
+		return (FALSE);
+	debug_printC(has_flag(), "Data line: ", data_line);
 	*dst =  firts_number(data_line);
 	debug_printC(has_flag(), "Write in dst: ", *dst);
-	return (is_valid_or_clear(dst));
+	return (is_valid_or_clear(*dst));
 }
 
 void	save_in_dst(int dst[], int index, char *number)
@@ -73,7 +75,7 @@ int	avance_is_check_end(char **data_line, char *number)
 	ft_free_ptr(&number, NULL);
 }
 
-t_bool	extract_colors(int dst[], char *data_line)
+int	extract_rgb(int dst[], char *data_line)
 {
 	char	*number;
 	int		counter;
@@ -81,8 +83,8 @@ t_bool	extract_colors(int dst[], char *data_line)
 	counter = -1;
 	while (++counter <= 2)
 	{
-		if (!cpy_int_valid(&number, data_line))
-			return (FALSE);
+		if (!get_int_valid(&number, data_line))
+			return (-1);
 		save_in_dst(dst, counter, number);
 		avance_is_check_end(&data_line, number);
 	}
@@ -90,7 +92,14 @@ t_bool	extract_colors(int dst[], char *data_line)
 		return (TRUE);
 	debug_printC(has_flag(), NULL, "Error: Past numbers in very large date");
 	debug_printC(has_flag(), " left over: ", data_line);
-	return (FALSE);
+	return (-1);
 }
 
-
+int	extract_colors_status(int dst[], char *data_line)
+{
+	if (dst == NULL)
+		return (-1);
+	if (data_line == NULL)
+		return (-1);
+	return (extract_rgb(dst, data_line));
+}

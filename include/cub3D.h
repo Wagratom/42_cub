@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:55 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 14:32:28 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ t_bool		extract_data(t_parse *data, char **full_map);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
-int			open_file_parser(int *dst, char *path_file);
+int			open_file_is_clear_path(int *dst, char *path_file);
 
 char		*first_word(char *str);
 char		*firts_number(char *str);
@@ -187,8 +187,8 @@ int			open_texture(int coordinates, char *path_file, t_parse *data);
 
 int			fill_collor(int collor, char *numbers, t_parse *data);
 int			collor_rgb(char *line);
-t_bool		extract_colors(int dst[], char *numbers);
-t_bool		cpy_int_valid(char **dst, char *data);
+int			extract_colors_status(int dst[], char *numbers);
+t_bool		get_int_valid(char **dst, char *data);
 
 
 

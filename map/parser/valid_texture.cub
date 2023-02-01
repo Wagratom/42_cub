@@ -1,7 +1,7 @@
-NO ./map/parser/north
-SO ./map/parser/south
-WE ./map/parser/west
-EA ./map/parser/east
+NO ./texture/north
+SO ./texture/south
+WE ./texture/west
+EA ./texture/east
 
 F 220,100,0
 C 225,30,0

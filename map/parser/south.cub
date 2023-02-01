@@ -1,5 +1,5 @@
-NO ./map/parser/north
-SO ./map/parser/south
+NO ./texture/north
+SO ./texture/south
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:58:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	int		dst[10];
 
 	int teste;
-	open_file_parser(&teste, "./texture/north");
+	open_file_is_clear_path(&teste, "./texture/north");
 	printf("teste = %d\n", teste);
 	// check_mod_debug(argv[2]);
 	// valid_arguments(argc, &argv[1]);

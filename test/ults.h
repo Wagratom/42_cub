@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 13:53:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 18:23:14 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:45:00 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ char	**retorne_fake_map(int size, char *file_name)
 
 	map = (char **)malloc(sizeof(char *) * size);
 	fd = open(file_name, O_RDONLY);
-	for (int i = 0; i < 24; i++)
-		map[i] = get_next_line(fd);
+	if (fd < 1)
+		printf("Error: not open file in ults.h\n");
+	else
+	{
+		for (int i = 0; i < 24; i++)
+			map[i] = get_next_line(fd);
+	}
 	return (map);
 }
