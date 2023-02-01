@@ -20,6 +20,29 @@ void	test_teardown(void)
 {
 }
 
+MU_TEST(not_break_line)
+{
+	t_parse parse;
+
+	ft_bzero(&parse, sizeof(t_parse));
+	mu_assert_int_eq(extract_colors_status(parse.f,  "250,140,120"), TRUE);
+	mu_assert_int_eq(parse.f[0], 250);
+	mu_assert_int_eq(parse.f[1], 140);
+	mu_assert_int_eq(parse.f[2], 120);
+}
+
+MU_TEST(letters_tst)
+{
+	t_parse parse;
+
+	ft_bzero(&parse, sizeof(t_parse));
+	mu_assert_int_eq(extract_colors_status(parse.f,  "250,a,120"), -1);
+	mu_assert_int_eq(extract_colors_status(parse.f,  "a,150,120"), -1);
+	mu_assert_int_eq(extract_colors_status(parse.f,  "250,150,a"), -1);
+	mu_assert_int_eq(extract_colors_status(parse.f,  "250,150,120,a"), -1);
+	mu_assert_int_eq(extract_colors_status(parse.f,  "250,a,120"), -1);
+}
+
 MU_TEST(collors_tst1)
 {
 	t_parse parse;
@@ -73,6 +96,8 @@ MU_TEST_SUITE(suite_collor_f)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
+	MU_RUN_TEST(not_break_line);
+	MU_RUN_TEST(letters_tst);
 	MU_RUN_TEST(collors_tst1);
 	MU_RUN_TEST(collors_tst2);
 	MU_RUN_TEST(collors_many_numbers);

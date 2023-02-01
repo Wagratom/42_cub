@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/01/31 15:56:32 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:35:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_data	data;
 
 void	test_setup(void)
 {
+	set_flag(TRUE);
 }
 void	test_teardown(void)
 {

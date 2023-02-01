@@ -14,6 +14,7 @@
 
 void	test_setup(void)
 {
+	set_flag(TRUE);
 }
 void	test_teardown(void)
 {

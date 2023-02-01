@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 14:41:36 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:29:38 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*get_valid_end_number(char *data_line)
 	end = ft_strchr(data_line, ',');
 	if (end != NULL)
 		return (end);
-	return (ft_strchr(data_line, '\n'));
+	end = ft_strchr(data_line, '\n');
+	if (end != NULL)
+		return (end);
+	return (ft_strchr(data_line, '\0'));
 }
 
 char	*firts_number(char *data_line)
@@ -71,7 +74,9 @@ void	save_in_dst(int dst[], int index, char *number)
 
 int	avance_is_check_end(char **data_line, char *number)
 {
-	*data_line += ft_strlen(number) + 1;
+	*data_line += ft_strlen(number);
+	if (*(*data_line) != '\0')
+		*data_line += 1;
 	ft_free_ptr(&number, NULL);
 }
 

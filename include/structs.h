@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/31 17:45:34 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:25:07 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ typedef struct s_data
 
 	t_map	map;
 	t_img	img;
-	t_parse	data_map;
+	t_parse	d_map;
+	int		end_d_map;
 
 }	t_data;
 

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/01/30 15:03:04 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:35:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_data	data;
 void	test_setup(void)
 {
 	ft_bzero(&data, sizeof(t_data));
+	set_flag(TRUE);
 	data.map.size_y = 7;
 	data.map.file_name = "map/map.cub";
 }

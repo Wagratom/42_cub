@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_interactor.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/03 23:00:55 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:35:34 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_data	data;
 
 void	test_setup(void)
 {
+	set_flag(TRUE);
 }
 void	test_teardown(void)
 {

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 15:38:58 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 16:28:06 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	extract_data_line(t_parse *data, char *line)
 	if (status != NOT_COMPATIBLE)
 		return (status);
 	status = fill_collor(collor_rgb(line), data_in_line(line), data);
-	if (status != NOT_COMPATIBLE)
+	if (status == NOT_COMPATIBLE)
 		return (END_READ);
 	return (status);
 }
 
-t_bool	extract_data_map(t_data *data, char **full_map)
+int	extract_data_map(t_data *data, char **full_map)
 {
 	int	index;
 	int	status;
@@ -60,25 +60,35 @@ t_bool	extract_data_map(t_data *data, char **full_map)
 	index = -1;
 	while (full_map[++index])
 	{
-		status = extract_data_line(&data->data_map, full_map[index]);
+		status = extract_data_line(&data->d_map, full_map[index]);
 		if (status == NEW_LINE)
 			continue;
 		if (status == INVALID_DATA)
-			return (FALSE);
+			return (-1);
 		if (status == END_READ)
 			break;
-		return (FALSE);
+		return (-1);
 	}
-	return (TRUE);
+	return (index);
+}
+
+void	save_size_end_data(t_data *data, int end)
+{
+	data->end_d_map = end;
 }
 
 t_bool	extract_data_status(t_data *data, char **full_map)
 {
 	int		status;
+	int		size_end;
 
 	if (full_map == NULL || *full_map == NULL)
 		return (FALSE);
 	if (data == NULL)
 		return (FALSE);
-	return (extract_data_map(data, full_map));
+	size_end = extract_data_map(data, full_map);
+	if (size_end == -1)
+		return (FALSE);
+	save_size_end_data(data, size_end);
+	return (TRUE);
 }
