@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 14:32:28 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:39:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@
 # define NULL_ARGV "Invalid flag passed\n"
 
 # define MLX_NULL "Error: Not init mlx\n"
+
+
+# define NOT_COMPATIBLE 0
+# define NEW_LINE 1
+# define END_READ 2
+# define INVALID_DATA -1
 
 /******************************************************************************/
 /*								KEYBOARD									  */
@@ -173,7 +179,7 @@ void		delete_map(char **map);
 /******************************************************************************/
 /*								PARSER										  */
 /******************************************************************************/
-t_bool		extract_data(t_parse *data, char **full_map);
+t_bool		extract_data_status(t_data *data, char **full_map);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);

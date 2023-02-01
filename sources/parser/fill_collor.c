@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 14:24:04 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:45:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int collor_rgb(char *line)
 
 int	fill_collor(int collor, char *numbers, t_parse *data)
 {
+	debug_printI(has_flag(), "Collor: ", collor);
+	debug_printC(has_flag(), "Numbers: ", numbers);
 	if (collor == 0)
 		return (0);
 	if (collor == 1)

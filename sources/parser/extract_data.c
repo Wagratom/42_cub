@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 14:22:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 15:38:58 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,48 @@ int	open_file_is_clear_path(int *dst, char *path_file)
 	return (-1);
 }
 
-t_bool	extract_data_status(t_parse *data, char **full_map)
+int	extract_data_line(t_parse *data, char *line)
 {
-	int		index;
 	int		status;
+
+	if (*line == '\n')
+		return (NEW_LINE);
+	status = open_texture(coordinates(line), data_in_line(line), data);
+	if (status != NOT_COMPATIBLE)
+		return (status);
+	status = fill_collor(collor_rgb(line), data_in_line(line), data);
+	if (status != NOT_COMPATIBLE)
+		return (END_READ);
+	return (status);
+}
+
+t_bool	extract_data_map(t_data *data, char **full_map)
+{
+	int	index;
+	int	status;
 
 	index = -1;
 	while (full_map[++index])
 	{
-		if (full_map[index][0] == '\n')
+		status = extract_data_line(&data->data_map, full_map[index]);
+		if (status == NEW_LINE)
 			continue;
-		status = open_texture(coordinates(full_map[index]), data_in_line(full_map[index]), data);
-		if (status == -1)
+		if (status == INVALID_DATA)
 			return (FALSE);
-		if (status == 1)
-			continue;
-		status = fill_collor(collor_rgb(full_map[index]), data_in_line(full_map[index]), data);
-		if (status == -1)
-			return (FALSE);
-		if (status == 1)
-			continue;
-		break ;
+		if (status == END_READ)
+			break;
+		return (FALSE);
 	}
+	return (TRUE);
 }
 
-t_bool	extract_data(t_parse *data, char **full_map)
+t_bool	extract_data_status(t_data *data, char **full_map)
 {
 	int		status;
-	int		index;
 
 	if (full_map == NULL || *full_map == NULL)
 		return (FALSE);
 	if (data == NULL)
 		return (FALSE);
-	return (extract_data_status(data, full_map));
+	return (extract_data_map(data, full_map));
 }
