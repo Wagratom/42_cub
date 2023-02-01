@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 10:43:52 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ t_bool	init_img(t_data *data)
 		return (FALSE);
 	if (get_addr_img(&data->img) == FALSE)
 		return (FALSE);
-	debug_print(has_flag(), "Img: ", "Ok");
+	debug_printC(has_flag(), "Img: ", "Ok");
 	return (TRUE);
 }

@@ -64,6 +64,7 @@ MU_TEST(collors_few_numbers)
 	t_parse parse;
 
 	ft_bzero(&parse, sizeof(t_parse));
+	mu_assert_int_eq(extract_colors(parse.f,  NULL), FALSE);
 	mu_assert_int_eq(extract_colors(parse.f,  "250\n"), FALSE);
 	mu_assert_int_eq(extract_colors(parse.f,  "250,140\n"), FALSE);
 }

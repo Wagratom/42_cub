@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 10:31:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:34:55 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,37 +154,46 @@ int			cleanup_program(t_data *data);
 void		map_look_right(t_map *map);
 void		map_look_left(t_map *map);
 
+/******************************************************************************/
+/*								CONTROL/DEBUG								  */
+/******************************************************************************/
 t_bool		*flag(void);
 void		set_flag(t_bool _flag);
 t_bool		has_flag(void);
 
-void		debug_print(t_bool mod_debug, char *prefix, char *msg);
-
-void		exit_msg(char *msg);
-void		clean_conections(t_data *data);
-
+void		debug_printC(t_bool mod_debug, char *prefix, char *msg);
+void		debug_printI(t_bool mod_debug, char *prefix, int number);
 void		wrong_write_line(int position, char *line);
+
 void		write_info_save(int position_x, int position_y, char _char);
 void		exit_msg(char *msg);
 void		delete_map(char **map);
 
+
+/******************************************************************************/
+/*								PARSER										  */
+/******************************************************************************/
+t_bool		extract_data(t_parse *data, char **full_map);
+
 t_bool		compare_strings(char *first_word, char *coordinate);
-char		*firts_number(char *str);
-char		*first_word(char *str);
-
-t_bool		cpy_int_valid(char **dst, char *data);
-
 char		*data_in_line(char *str);
-
-t_bool		extract_colors(int dst[], char *numbers);
-int			coordinates(char *line);
-
-int			open_texture(int coordinates, char *path_file, t_parse *data);
 int			open_file_parser(int *dst, char *path_file);
+
+char		*first_word(char *str);
+char		*firts_number(char *str);
+
+int			coordinates(char *line);
+int			open_texture(int coordinates, char *path_file, t_parse *data);
 
 int			fill_collor(int collor, char *numbers, t_parse *data);
 int			collor_rgb(char *line);
+t_bool		extract_colors(int dst[], char *numbers);
+t_bool		cpy_int_valid(char **dst, char *data);
 
-t_bool		extract_data(t_parse *data, char **full_map);
 
+
+
+
+void		exit_msg(char *msg);
+void		clean_conections(t_data *data);
 #endif

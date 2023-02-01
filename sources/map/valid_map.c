@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 10:28:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 10:49:40 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_bool	valid_map_chars(t_map *data)
 	if (valid_chars_or_die(data) == FALSE)
 		return (FALSE);
 	close(data->fd);
-	debug_print(has_flag(), "Validacion: ", "Chars: Ok\n");
+	debug_printC(has_flag(), "Validacion: ", "Chars: Ok\n");
 	return (TRUE);
 }
 
@@ -37,12 +37,12 @@ static t_bool	valid_map_exit(t_map *data)
 
 t_bool	valid_map(t_data *data)
 {
-	debug_print(has_flag(), NULL, "\tValiding map...");
+	debug_printC(has_flag(), NULL, "\tValiding map...");
 	if (valid_map_chars(&data->map) == FALSE)
 		cleanup_program(data);
 	if (valid_map_exit(&data->map) == FALSE)
 		cleanup_program(data);
-	debug_print(has_flag(), "Validacion: ", "Map ok\n");
+	debug_printC(has_flag(), "Validacion: ", "Map ok\n");
 	return (TRUE);
 
 }

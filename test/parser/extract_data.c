@@ -26,6 +26,7 @@ MU_TEST(extract_data_tst)
 	char **map;
 
 	map = retorne_fake_map(24, "map/pdffull.cub");
+	set_flag(TRUE);
 	mu_assert_int_eq(extract_data(&data.data_map, map), FALSE);
 	delete_map(map);
 }

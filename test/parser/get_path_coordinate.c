@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:04:05 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/31 15:40:59 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 13:30:27 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ MU_TEST(north)
 	mu_assert_string_eq(data_in_line(NULL), NULL);
 	mu_assert_string_eq(data_in_line(""), NULL);
 
-	result = "./path_to_the_north_texture\n";
+	result = "./path_to_the_north_texture";
 	mu_assert_string_eq(data_in_line("NO ./path_to_the_north_texture\n"), result);
 
-	result = "./e dois real a palma da banana\n";
+	result = "./e dois real a palma da banana";
 	mu_assert_string_eq(data_in_line("NO ./e dois real a palma da banana\n"), result);
 }
 

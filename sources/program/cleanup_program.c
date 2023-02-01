@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/30 15:14:58 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 11:47:14 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	delete_map(char **map)
 {
 	int	index;
 
+	if (map == NULL || *map == NULL)
+		return ;
 	index = -1;
 	while (map[++index])
 		free(map[index]);
@@ -42,6 +44,7 @@ void	delete_map(char **map)
 int	cleanup_program(t_data *data)
 {
 	clean_conections(data);
+	delete_map(data->map.map);
 	exit(0);
 	return (0);
 }
