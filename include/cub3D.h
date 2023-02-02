@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:25:35 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:37:02 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_bool		verify_extension(char *file_name);
 
 t_bool		open_file_status(int *dst, char *path_file);
 
-t_bool		valid_map(t_data *data);
+t_bool		manipulating_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 t_bool		interactor_chars_or_die(t_map *data, char _char);

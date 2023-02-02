@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_map.c                                        :+:      :+:    :+:   */
+/*   manipulating_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 10:28:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:26:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:36:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static t_bool	valid_map_chars(t_map *data)
 {
-	if (open_file_status(&data->fd, data->file_name) == FALSE)
+	if (!open_file_status(&data->fd, data->file_name))
 		return (FALSE);
-	if (valid_chars_or_die(data) == FALSE)
+	if (!valid_chars_or_die(data))
 		return (FALSE);
 	close(data->fd);
 	debug_printC(has_flag(), "Validacion: ", "Chars: Ok\n");
@@ -25,22 +25,22 @@ static t_bool	valid_map_chars(t_map *data)
 
 static t_bool	valid_map_exit(t_map *data)
 {
-	if (open_file_status(&data->fd, data->file_name) == FALSE)
+	if (!open_file_status(&data->fd, data->file_name))
 		return (FALSE);
-	if (alloc_map_status(data) == FALSE)
+	if (!alloc_map_status(data))
 		return (FALSE);
-	if (verify_exit_status(data) == FALSE)
+	if (!verify_exit_status(data))
 		return (FALSE);
 	close(data->fd);
 	return (TRUE);
 }
 
-t_bool	valid_map(t_data *data)
+t_bool	manipulating_map(t_data *data)
 {
-	debug_printC(has_flag(), NULL, "\tValiding map...");
-	if (valid_map_chars(&data->map) == FALSE)
+	debug_printC(has_flag(), NULL, "\tManipulating map...");
+	if (!valid_map_chars(&data->map))
 		cleanup_program(data);
-	if (valid_map_exit(&data->map) == FALSE)
+	if (!valid_map_exit(&data->map))
 		cleanup_program(data);
 	debug_printC(has_flag(), "Validacion: ", "Map ok\n");
 	return (TRUE);
