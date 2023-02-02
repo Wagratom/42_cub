@@ -23,59 +23,58 @@ void	test_teardown(void)
 
 MU_TEST(NULL_tst)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	mu_assert_int_eq(extract_data_map(&data, NULL), FALSE);
+	mu_assert_int_eq(extract_data_status(&data, -1), FALSE);
 }
 
 MU_TEST(extract_data_pdf)
 {
-	t_data	data;
-	char	**map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/pdf.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
-	delete_map(map);
+	ft_bzero(&data, sizeof(t_map));
+
+	open_file_status(&data.fd, "map/parser/pdf.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
 }
 
 MU_TEST(extract_data_north)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/north.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
-	delete_map(map);
+	ft_bzero(&data, sizeof(t_map));
+	open_file_status(&data.fd, "map/parser/north.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
 }
 
 MU_TEST(extract_data_south)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/south.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
-	delete_map(map);
+	ft_bzero(&data, sizeof(t_map));
+
+	open_file_status(&data.fd, "map/parser/south.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
 }
 
 MU_TEST(extract_data_west)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/west.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
-	delete_map(map);
+	ft_bzero(&data, sizeof(t_map));
+
+	open_file_status(&data.fd, "map/parser/west.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
 }
 
 MU_TEST(extract_data_valid_texture)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/valid_texture.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), TRUE);
+	ft_bzero(&data, sizeof(t_map));
+
+	open_file_status(&data.fd, "map/parser/valid_texture.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);
 
 	mu_assert_int_eq(data.d_map.f[0], 220);
 	mu_assert_int_eq(data.d_map.f[1], 100);
@@ -84,16 +83,16 @@ MU_TEST(extract_data_valid_texture)
 	mu_assert_int_eq(data.d_map.c[0], 225);
 	mu_assert_int_eq(data.d_map.c[1], 30);
 	mu_assert_int_eq(data.d_map.c[2], 0);
-	delete_map(map);
 }
 
 MU_TEST(extract_data_valid_texture2)
 {
-	t_data data;
-	char **map;
+	t_map	data;
 
-	map = retorne_fake_map(24, "map/parser/valid_texture2.cub");
-	mu_assert_int_eq(extract_data_map(&data, map), TRUE);
+	ft_bzero(&data, sizeof(t_map));
+
+	open_file_status(&data.fd, "map/parser/valid_texture2.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);
 
 	mu_assert_int_eq(data.d_map.f[0], 220);
 	mu_assert_int_eq(data.d_map.f[1], 100);
@@ -102,7 +101,6 @@ MU_TEST(extract_data_valid_texture2)
 	mu_assert_int_eq(data.d_map.c[0], 225);
 	mu_assert_int_eq(data.d_map.c[1], 30);
 	mu_assert_int_eq(data.d_map.c[2], 0);
-	delete_map(map);
 }
 
 MU_TEST_SUITE(suite_extract_data)
