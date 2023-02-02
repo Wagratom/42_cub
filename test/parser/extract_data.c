@@ -26,7 +26,7 @@ MU_TEST(NULL_tst)
 	t_data data;
 	char **map;
 
-	mu_assert_int_eq(extract_data_status(&data, NULL), FALSE);
+	mu_assert_int_eq(extract_data_map(&data, NULL), FALSE);
 }
 
 MU_TEST(extract_data_pdf)
@@ -35,7 +35,7 @@ MU_TEST(extract_data_pdf)
 	char	**map;
 
 	map = retorne_fake_map(24, "map/parser/pdf.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), FALSE);
+	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
 	delete_map(map);
 }
 
@@ -45,7 +45,7 @@ MU_TEST(extract_data_north)
 	char **map;
 
 	map = retorne_fake_map(24, "map/parser/north.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), FALSE);
+	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
 	delete_map(map);
 }
 
@@ -55,7 +55,7 @@ MU_TEST(extract_data_south)
 	char **map;
 
 	map = retorne_fake_map(24, "map/parser/south.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), FALSE);
+	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
 	delete_map(map);
 }
 
@@ -65,7 +65,7 @@ MU_TEST(extract_data_west)
 	char **map;
 
 	map = retorne_fake_map(24, "map/parser/west.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), FALSE);
+	mu_assert_int_eq(extract_data_map(&data, map), FALSE);
 	delete_map(map);
 }
 
@@ -75,7 +75,7 @@ MU_TEST(extract_data_valid_texture)
 	char **map;
 
 	map = retorne_fake_map(24, "map/parser/valid_texture.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), TRUE);
+	mu_assert_int_eq(extract_data_map(&data, map), TRUE);
 
 	mu_assert_int_eq(data.d_map.f[0], 220);
 	mu_assert_int_eq(data.d_map.f[1], 100);
@@ -93,7 +93,7 @@ MU_TEST(extract_data_valid_texture2)
 	char **map;
 
 	map = retorne_fake_map(24, "map/parser/valid_texture2.cub");
-	mu_assert_int_eq(extract_data_status(&data, map), TRUE);
+	mu_assert_int_eq(extract_data_map(&data, map), TRUE);
 
 	mu_assert_int_eq(data.d_map.f[0], 220);
 	mu_assert_int_eq(data.d_map.f[1], 100);

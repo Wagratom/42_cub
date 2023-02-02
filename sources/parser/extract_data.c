@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 23:31:24 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 00:01:49 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	extract_data_line(t_parse *data, char *line)
 	return (status);
 }
 
-int	extract_data_map(t_data *data, char **full_map)
+int	extract_data_status(t_data *data, char **full_map)
 {
 	int	index;
 	int	status;
@@ -76,7 +76,7 @@ void	save_size_end_data(t_data *data, int end)
 	data->end_d_map = end;
 }
 
-t_bool	extract_data_status(t_data *data, char **full_map)
+t_bool	extract_data_map(t_data *data, char **full_map)
 {
 	int		status;
 	int		size_end;
@@ -85,7 +85,7 @@ t_bool	extract_data_status(t_data *data, char **full_map)
 		return (FALSE);
 	if (data == NULL)
 		return (FALSE);
-	size_end = extract_data_map(data, full_map);
+	size_end = extract_data_status(data, full_map);
 	if (size_end == -1)
 		return (FALSE);
 	save_size_end_data(data, size_end);

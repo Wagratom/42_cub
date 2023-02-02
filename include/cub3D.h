@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:44:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 00:02:41 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void		delete_map(char **map);
 /******************************************************************************/
 /*								PARSER										  */
 /******************************************************************************/
-t_bool		extract_data_status(t_data *data, char **full_map);
+t_bool		extract_data_map(t_data *data, char **full_map);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
