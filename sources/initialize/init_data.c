@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:43:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:39:48 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	init_data(t_data *data, char *file_name)
 {
 	debug_printC(has_flag(), NULL, "\tinitializing struct and connections");
 	init_struct(data);
-	if (init_mlx_status(data) == FALSE)
+	if (!init_mlx_status(data))
 		exit_msg(MLX_NULL);
-	if (init_img(data) == FALSE)
+	if (!init_img(data))
 		clean_conections(data);
 	debug_printC(has_flag(), NULL, "Sucess createconnections\n");
 	data->map.file_name = file_name;

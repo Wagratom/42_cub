@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:04:05 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:40:18 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_bool	init_windows_or_die(t_data *data)
 		printf("Not creat windows, mlx pointer null");
 		return (FALSE);
 	}
-	if (init_windows(data) == FALSE)
+	if (!init_windows(data))
 		return (FALSE);
 	debug_printC(has_flag(), "Windowns: ", "Ok");
 	return (TRUE);
