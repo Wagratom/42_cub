@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 22:06:30 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:47:16 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int	fill_collor(int collor, char *numbers, t_parse *data)
 	debug_printI(has_flag(), "Collor: ", collor);
 	if (collor == 1)
 		status = extract_colors_status(data->f, numbers);
-	if (collor == 2)
+	else if (collor == 2)
 		status = extract_colors_status(data->c, numbers);
+	else
+		status = NOT_COMPATIBLE;
 	free(numbers);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 22:05:43 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:46:11 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,18 @@ int	open_texture(int coordinates, char *path_file, t_parse *data)
 {
 	int	status;
 
-	status = 0;
+	status = NOT_COMPATIBLE;
 	debug_printI(has_flag(), "Coordinates: ", coordinates);
 	if (coordinates == 1)
 		status = open_file_is_clear_path(&data->north, path_file);
-	if (coordinates == 2)
+	else if (coordinates == 2)
 		status = open_file_is_clear_path(&data->south, path_file);
-	if (coordinates == 3)
+	else if (coordinates == 3)
 		status = open_file_is_clear_path(&data->west, path_file);
-	if (coordinates == 4)
+	else if (coordinates == 4)
 		status = open_file_is_clear_path(&data->east, path_file);
+	else
+		status = NOT_COMPATIBLE;
 	free(path_file);
 	return (status);
 }

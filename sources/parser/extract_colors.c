@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 16:29:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:47:41 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,22 +89,22 @@ int	extract_rgb(int dst[], char *data_line)
 	while (++counter <= 2)
 	{
 		if (!get_int_valid(&number, data_line))
-			return (-1);
+			return (INVALID_DATA);
 		save_in_dst(dst, counter, number);
 		avance_is_check_end(&data_line, number);
 	}
 	if (*data_line == '\0')
-		return (TRUE);
+		return (NEW_LINE);
 	debug_printC(has_flag(), NULL, "Error: Past numbers in very large date");
 	debug_printC(has_flag(), " left over: ", data_line);
-	return (-1);
+	return (INVALID_DATA);
 }
 
 int	extract_colors_status(int dst[], char *data_line)
 {
 	if (dst == NULL)
-		return (-1);
+		return (INVALID_DATA);
 	if (data_line == NULL)
-		return (-1);
+		return (INVALID_DATA);
 	return (extract_rgb(dst, data_line));
 }
