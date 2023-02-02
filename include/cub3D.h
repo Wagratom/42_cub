@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 15:39:05 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 23:44:33 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <mlx.h>
 # include <structs.h>
 # include <math.h>
-
 
 # include <stdio.h>
 
@@ -97,6 +96,7 @@ t_bool		valid_char_or_die(char _char);
 /******************************************************************************/
 
 void		init_data(t_data *data, char *file_name);
+t_bool		init_mlx_status(t_data *data);
 t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
 

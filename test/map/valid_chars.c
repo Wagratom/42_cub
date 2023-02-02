@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/02/01 16:35:32 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:33:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_map	data;
 
 void	test_setup(void)
 {
-	set_flag(TRUE);
+	set_flag(FALSE);
 }
 void	test_teardown(void)
 {
@@ -72,8 +72,8 @@ MU_TEST_SUITE(valid_chars_line_suite)
 
 	//esse tem que rodar um de cada vez porque a função e estatica
 
-	// MU_RUN_TEST(invalid_chars);
 	// MU_RUN_TEST(valid_chars);
+	// MU_RUN_TEST(invalid_chars);
 	// MU_RUN_TEST(map_valid_tst);
 	MU_RUN_TEST(map_invalid_tst);
 }

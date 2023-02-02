@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 23:43:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	init_struct(t_data *data)
 	debug_printC(has_flag(), "Struct: ", "Ok");
 }
 
-t_bool	init_mlx_or_die(t_data *data)
+t_bool	init_mlx_status(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
@@ -31,7 +31,7 @@ void	init_data(t_data *data, char *file_name)
 {
 	debug_printC(has_flag(), NULL, "\tinitializing struct and connections");
 	init_struct(data);
-	if (init_mlx_or_die(data) == FALSE)
+	if (init_mlx_status(data) == FALSE)
 		exit_msg(MLX_NULL);
 	if (init_img(data) == FALSE)
 		clean_conections(data);

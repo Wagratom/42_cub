@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 16:24:04 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 22:34:20 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	proportions_map(t_map *data, int size_x)
 
 char	*get_line(t_map *data, char **line)
 {
+	// printf("dei free na linha %s\n\n", *line);
 	free(*line);
 	*line = get_next_line(data->fd);
+	// printf("peguei a linha = %s", *line);
 	data->size_y += 1;
 	proportions_map(data, ft_strlen(*line));
 	return (*line);

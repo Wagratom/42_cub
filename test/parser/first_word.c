@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:39:34 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/01 16:34:58 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 23:39:47 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,65 @@
 
 void	test_setup(void)
 {
-	set_flag(TRUE);
+	set_flag(FALSE);
 }
 void	test_teardown(void)
 {
 }
 
-MU_TEST(get_first_word_tst)
+MU_TEST(invalid_tst)
 {
-		mu_assert_string_eq(first_word(NULL), NULL);
-		mu_assert_string_eq(first_word(""), NULL);
+	mu_assert_string_eq(first_word(NULL), NULL);
+	mu_assert_string_eq(first_word(""), NULL);
+}
 
-		mu_assert_string_eq(first_word("NO ./path_to_the_north_texture\n"), "NO");
-		mu_assert_string_eq(first_word("N ./path_to_the_north_texture\n"), "N");
-		mu_assert_string_eq(first_word("NOO ./path_to_the_north_texture\n"), "NOO");
+MU_TEST(valid_tst)
+{
+	char	*data;
 
-		mu_assert_string_eq(first_word("SO ./path_to_the_north_texture\n"), "SO");
-		mu_assert_string_eq(first_word("S ./path_to_the_north_texture\n"), "S");
-		mu_assert_string_eq(first_word("SOO ./path_to_the_north_texture\n"), "SOO");
+	data = first_word("NO ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "NO");
+	ft_free_ptr(&data, NULL);
 
-		mu_assert_string_eq(first_word("WE ./path_to_the_north_texture\n"), "WE");
-		mu_assert_string_eq(first_word("WEE ./path_to_the_north_texture\n"), "WEE");
-		mu_assert_string_eq(first_word("W ./path_to_the_north_texture\n"), "W");
+	data = first_word("N ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "N");
+	ft_free_ptr(&data, NULL);
 
+	data = first_word("NOO ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "NOO");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("SO ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "SO");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("S ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "S");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("SOO ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "SOO");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("WE ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "WE");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("WEE ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "WEE");
+	ft_free_ptr(&data, NULL);
+
+	data = first_word("W ./path_to_the_north_texture\n");
+	mu_assert_string_eq(data, "W");
+	ft_free_ptr(&data, NULL);
 }
 
 MU_TEST_SUITE(suite_get_first_word)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(get_first_word_tst);
+	MU_RUN_TEST(invalid_tst);
+	MU_RUN_TEST(valid_tst);
 }
 
 MU_MAIN

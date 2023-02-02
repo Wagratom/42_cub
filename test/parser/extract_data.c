@@ -87,16 +87,35 @@ MU_TEST(extract_data_valid_texture)
 	delete_map(map);
 }
 
+MU_TEST(extract_data_valid_texture2)
+{
+	t_data data;
+	char **map;
+
+	map = retorne_fake_map(24, "map/parser/valid_texture2.cub");
+	mu_assert_int_eq(extract_data_status(&data, map), TRUE);
+
+	mu_assert_int_eq(data.d_map.f[0], 220);
+	mu_assert_int_eq(data.d_map.f[1], 100);
+	mu_assert_int_eq(data.d_map.f[2], 0);
+
+	mu_assert_int_eq(data.d_map.c[0], 225);
+	mu_assert_int_eq(data.d_map.c[1], 30);
+	mu_assert_int_eq(data.d_map.c[2], 0);
+	delete_map(map);
+}
+
 MU_TEST_SUITE(suite_extract_data)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	// MU_RUN_TEST(NULL_tst);
-	// MU_RUN_TEST(extract_data_pdf);
-	// MU_RUN_TEST(extract_data_north);
-	// MU_RUN_TEST(extract_data_south);
-	// MU_RUN_TEST(extract_data_west);
+	MU_RUN_TEST(NULL_tst);
+	MU_RUN_TEST(extract_data_pdf);
+	MU_RUN_TEST(extract_data_north);
+	MU_RUN_TEST(extract_data_south);
+	MU_RUN_TEST(extract_data_west);
 	MU_RUN_TEST(extract_data_valid_texture);
+	MU_RUN_TEST(extract_data_valid_texture2);
 }
 
 MU_MAIN

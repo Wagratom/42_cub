@@ -24,6 +24,7 @@
 		"deque": "c",
 		"unordered_map": "c",
 		"vector": "c",
-		"random": "c"
+		"random": "c",
+		"unistd.h": "c"
 	}
 }

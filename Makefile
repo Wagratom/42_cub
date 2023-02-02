@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/01/31 18:12:30 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/02/01 23:03:37 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	cc -g3
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror  -fsanitize=leak
 FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
 
 RM			=	rm -rf
@@ -122,7 +122,7 @@ VG_OJBS_TSTS		=	$(patsubst %.c, %.vg.out, $(VG_FILE_TSTS))
 
 %.vg.out:	%.c
 		@$(CC) $< $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
-		@valgrind --leak-check=full ./$@
+		@valgrind --leak-check=full --show-leak-kinds=all ./$@
 		@$(RM) $@
 
 vgtest: re_mandatory $(VG_OJBS_TST)

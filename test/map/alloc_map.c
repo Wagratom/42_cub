@@ -6,20 +6,18 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/02/01 16:35:19 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 23:15:42 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minunit.h"
+#include "../ults.h"
 
 t_data	data;
 
 void	test_setup(void)
 {
-	ft_bzero(&data, sizeof(t_data));
-	set_flag(TRUE);
-	data.map.size_y = 7;
-	data.map.file_name = "map/map.cub";
+	set_flag(FALSE);
 }
 void	test_teardown(void)
 {
@@ -27,8 +25,10 @@ void	test_teardown(void)
 
 MU_TEST(alloc_map_tst)
 {
-	alloc_map_status(&data.map);
+	ft_bzero(&data, sizeof(t_data));
+	fake_alloc_map(&data.map, 5, 5, 18, "map/map.cub");
 	mu_check(data.map.map != NULL);
+	delete_map(data.map.map);
 }
 
 MU_TEST_SUITE(map)
