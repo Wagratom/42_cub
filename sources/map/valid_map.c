@@ -12,10 +12,17 @@
 
 #include <cub3D.h>
 
-static t_bool	valid_map_chars(t_map *data)
+static t_bool	extracting_date(t_map *data)
 {
 	if (!open_file_status(&data->fd, data->file_name))
 		return (FALSE);
+	if (!extract_data_status(data, data->fd))
+		return (FALSE);
+	return (TRUE);
+}
+
+static t_bool	valid_map_chars(t_map *data)
+{
 	if (!valid_chars_or_die(data))
 		return (FALSE);
 	close(data->fd);
@@ -27,17 +34,19 @@ static t_bool	valid_map_exit(t_map *data)
 {
 	if (!open_file_status(&data->fd, data->file_name))
 		return (FALSE);
-	if (!alloc_map_status(data))
+	if (!alloc_map_status(data, data->fd))
 		return (FALSE);
 	if (!verify_exit_status(data))
 		return (FALSE);
+	printf("chegue aqui\n");
 	close(data->fd);
 	return (TRUE);
 }
 
 t_bool	manipulating_map(t_data *data)
 {
-	debug_printC(has_flag(), NULL, "\tManipulating map...");
+	if (!extracting_date(&data->map))
+		cleanup_program (FALSE);
 	if (!valid_map_chars(&data->map))
 		cleanup_program(data);
 	if (!valid_map_exit(&data->map))

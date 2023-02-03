@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:27:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 12:31:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	draw_line(t_data *data, int y)
 	int		block;
 
 	block = -1;
-	line = data->map.map[y];
+	line = data->map.mini_map[y];
 	while (line[++block])
 		print_block(data, block, y, line[block]);
 }
@@ -65,7 +65,7 @@ int	draw_map(t_data *data)
 
 	line = -1;
 	render_background(data);
-	while (data->map.map[++line])
+	while (data->map.mini_map[++line])
 		draw_line(data, line);
 	raycast(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
@@ -74,7 +74,7 @@ int	draw_map(t_data *data)
 
 int	draw_map_or_die(t_data *data)
 {
-	if (data->map.map == NULL)
+	if (data->map.mini_map == NULL)
 	{
 		printf("can't draw the map, map doesn't exist");
 		return (FALSE);

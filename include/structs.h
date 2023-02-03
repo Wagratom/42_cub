@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:17:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 12:03:10 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ typedef struct s_parser
 {
 	int	f[3];
 	int	c[3];
-	int	north;
-	int	south;
-	int	west;
-	int	east;
+	int	coordinites[4];
 }	t_parse;
 
 /******************************************************************************/
@@ -34,7 +31,8 @@ typedef struct s_parser
 typedef struct s_map
 {
 	char	*file_name;
-	char	**map;
+	char	**full_map;
+	char	**mini_map;
 	int		chars[4];
 	int		size_y;
 	int		size_x;
@@ -47,7 +45,7 @@ typedef struct s_map
 	double	plane[2];
 
 	t_parse	d_map;
-	int		end_d_map;
+	int		size_d_map;
 
 }	t_map;
 

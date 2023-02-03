@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 14:04:31 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,16 @@ t_bool	verify_exit_status(t_map *data)
 	t_bool	status;
 	char	**copy_map;
 
-	debug_printC(has_flag(), NULL, "\tValidating map exit...");
-	if (data->map == NULL)
-		return (FALSE);
 	status = TRUE;
-	copy_map = ft_array_dup(data->map);
-	verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
-	delete_map(copy_map);
-	debug_printC(has_flag(), "validacion: ", "Exit OK");
-	return (status);
+	debug_printC(has_flag(), NULL, "\tValidating map exit...");
+	if (data->mini_map != NULL)
+	{
+		copy_map = ft_array_dup(data->mini_map);
+		verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
+		delete_map(copy_map);
+		debug_printC(has_flag(), "validacion: ", "Exit OK");
+		return (status);
+	}
+	write(2, "Error: mini map is null\n", 25);
+	return (FALSE);
 }

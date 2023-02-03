@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 13:34:27 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 13:33:57 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	draw_mapingD(char **map)
 {
 	if (map == NULL)
 		return ;
-	debug_printC(has_flag(), NULL, "\tMap allocated\n");
+	printf(B);
+	printf("\tMap\n");
+	printf(BKB);
 	while (*map)
 	{
 		printf("%s", *map);
 		map++;
 	}
+	printf(W);
 	printf("\n");
 }

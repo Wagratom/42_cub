@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:37:02 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/02 17:15:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@
 # define ARROW_DOWN 65364
 # define ARROW_LEFT 65361
 
+#define NORTH 0
+#define SOUTH 1
+#define WEST 2
+#define EAST 3
+
 /******************************************************************************/
 /*							VALIDACION MAP									  */
 /******************************************************************************/
@@ -81,7 +86,7 @@ t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		save_position_player(t_map *data, int position_x, char _char);
 t_bool		verify_exit_status(t_map *data);
 
-t_bool		alloc_map_status(t_map *data);
+t_bool		alloc_map_status(t_map *data, int fd);
 void		delete_map(char **map);
 
 /*							ULTS											  */
@@ -181,6 +186,7 @@ void		delete_map(char **map);
 /******************************************************************************/
 t_bool		extract_data_status(t_map *data, int fd);
 int			extract_data_map(t_map *data, int fd);
+int			extract_data_line(t_parse *data, char *line);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);

@@ -72,6 +72,7 @@ MU_TEST(extract_data_valid_texture)
 	t_map	data;
 
 	ft_bzero(&data, sizeof(t_map));
+	set_flag(TRUE);
 
 	open_file_status(&data.fd, "map/parser/valid_texture.cub");
 	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);
@@ -101,6 +102,14 @@ MU_TEST(extract_data_valid_texture2)
 	mu_assert_int_eq(data.d_map.c[0], 225);
 	mu_assert_int_eq(data.d_map.c[1], 30);
 	mu_assert_int_eq(data.d_map.c[2], 0);
+
+	mu_check(data.d_map.coordinites[NORTH] != 0);
+	mu_check(data.d_map.coordinites[SOUTH] != 0);
+	mu_check(data.d_map.coordinites[WEST] != 0);
+
+	mu_check(data.d_map.coordinites[NORTH] != -1);
+	mu_check(data.d_map.coordinites[SOUTH] != -1);
+	mu_check(data.d_map.coordinites[WEST] != -1);
 }
 
 MU_TEST_SUITE(suite_extract_data)
