@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 22:34:26 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:10:15 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	save_position_player(t_map *data, int position_x, char _char)
 	if (!is_special_char(_char))
 		return ;
 	data->player[P_X] = position_x;
-	data->player[P_Y] = data->size_y - 1;
+	data->player[P_Y] = data->size_y;
 	if (has_flag())
 		write_info_save(data->player[P_X], data->player[P_Y], _char);
 }

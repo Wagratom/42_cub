@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/03 14:07:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/03 15:12:41 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	remove_char_of_player(t_map *data)
 
 	posi_y = (int)data->player[P_Y];
 	posi_x = (int)data->player[P_X];
+
 	data->mini_map[posi_y][posi_x] = '0';
 	debug_printC(has_flag(), "Removing char map: ", "OK\n");
 }
