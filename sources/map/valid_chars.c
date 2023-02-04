@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:21:51 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:53:14 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,8 @@ t_bool	valid_chars_line(t_map *data, char *line)
 			continue ;
 		if (!interactor_chars_or_die(data, line[letter]))
 			return (FALSE);
-		if (is_direction(line[letter]))
-			set_direction_player(data, line[letter]);
-		else
-			save_position_player(data, letter, line[letter]);
+		save_position_player(data, letter, line[letter]);
+		set_direction_player(data, line[letter]);
 	}
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:47:15 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:58:52 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_bool	verify_exit_status(t_map *data)
 
 	status = TRUE;
 
-	debug_printC(has_flag(), NULL, "\tValidating map exit...");
+	debug_printC(has_flag(), C, "\tValidating map exit...");
 	if (data->mini_map != NULL)
 	{
 		copy_map = ft_array_dup(data->mini_map);

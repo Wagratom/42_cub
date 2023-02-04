@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/03 15:12:41 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:57:34 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	alloc_ptr_status(t_map *data)
 	data->full_map = (char **)ft_calloc((full_size + 1), sizeof(char *));
 	if (data->full_map != NULL)
 	{
-		debug_printC(has_flag(), "Allocated: ", "Ptr OK");
+		debug_printC(has_flag(), NULL, "Allocated ptr for full_map");
 		debug_printI(has_flag(), "Size ptr: ", full_size);
 		return (TRUE);
 	}
@@ -60,7 +60,7 @@ t_bool	alloc_map_full_map(t_map *data, int fd)
 		return (FALSE);
 	}
 	data->full_map[tmp] = get_next_line(fd);
-	debug_printC(has_flag(), "Allocated :", " Full_Map OK");
+	debug_printC(has_flag(), NULL, "Allocated Full_Map");
 	if (has_flag())
 		draw_mapingD(data->full_map);
 	return (TRUE);
@@ -85,14 +85,14 @@ t_bool	create_mini_map(t_map *data)
 	if (ft_array_len(data->full_map) <= data->size_d_map)
 		return (FALSE);
 	data->mini_map = &data->full_map[data->size_d_map];
-	debug_printC(has_flag(), "Allocated :", " Mine_Map OK");
+	debug_printC(has_flag(), NULL, "Allocated  Mine_Map");
 	if (has_flag())
 		draw_mapingD(data->mini_map);
 	return (TRUE);
 }
 t_bool	alloc_map_status(t_map *data, int fd)
 {
-	debug_printC(has_flag(), NULL, "\tallocating the map");
+	debug_printC(has_flag(), C, "\tallocating the map");
 	if (!check_parameters(data, fd))
 		return (FALSE);
 	if (!alloc_ptr_status(data))

@@ -40,7 +40,6 @@ static t_bool	valid_map_exit(t_map *data)
 		return (FALSE);
 	if (!verify_exit_status(data))
 		return (FALSE);
-	printf("chegue aqui\n");
 	close(data->fd);
 	return (TRUE);
 }
