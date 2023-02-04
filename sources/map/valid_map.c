@@ -46,7 +46,7 @@ static t_bool	valid_map_exit(t_map *data)
 t_bool	manipulating_map(t_data *data)
 {
 	if (!extracting_date(&data->map))
-		cleanup_program (FALSE);
+		cleanup_program (data);
 	if (!valid_map_chars(&data->map))
 		cleanup_program(data);
 	if (!valid_map_exit(&data->map))

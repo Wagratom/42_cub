@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/03 15:10:15 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 10:42:40 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	{
 		if (valid_chars_line(data, line)) // corrigr vazamento
 			continue ;
-		wrong_write_line(data->size_y + 1, line);
-		// printf("dei free na linha %s\n\n", line);
+		wrong_write_line((data->size_y + data->size_d_map), line);
 		free(line);
 		return (FALSE);
 	}

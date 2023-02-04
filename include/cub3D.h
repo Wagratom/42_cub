@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 17:15:45 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 11:44:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,9 @@ t_bool		*flag(void);
 void		set_flag(t_bool _flag);
 t_bool		has_flag(void);
 
-void		debug_printC(t_bool mod_debug, char *prefix, char *msg);
-void		debug_printI(t_bool mod_debug, char *prefix, int number);
+t_bool		debug_printC(t_bool mod_debug, char *prefix, char *msg);
+t_bool		debug_printI(t_bool mod_debug, char *prefix, int number);
+t_bool		write_msg_error(char *prefix, char *msg);
 void		wrong_write_line(int position, char *line);
 
 void		write_info_save(int position_x, int position_y, char _char);
@@ -187,21 +188,29 @@ void		delete_map(char **map);
 t_bool		extract_data_status(t_map *data, int fd);
 int			extract_data_map(t_map *data, int fd);
 int			extract_data_line(t_parse *data, char *line);
+char		*data_in_line(char *line);
+int			open_file_is_clear_path(int *dst, char *path_file);
+char		*get_line_p(char **line, int fd);
+void		interact_size_d_map(t_map *data);
+
+int			extract_colors_status(int dst[], char *numbers);
+int			extract_rgb(int dst[], char *data_line);
+int			avance_is_check_end(char **data_line, char *number);
+char		*firts_number(char *str);
+t_bool		get_int_valid(char **dst, char *data_line);
+void		save_in_dst(int dst[], int index, char *number);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
 int			open_file_is_clear_path(int *dst, char *path_file);
 
 char		*first_word(char *str);
-char		*firts_number(char *str);
 
 int			coordinates(char *line);
 int			open_texture(int coordinates, char *path_file, t_parse *data);
 
 int			fill_collor(int collor, char *numbers, t_parse *data);
 int			collor_rgb(char *line);
-int			extract_colors_status(int dst[], char *numbers);
-t_bool		get_int_valid(char **dst, char *data);
 
 
 
