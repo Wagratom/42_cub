@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:20:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 11:17:24 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <cub3D.h>
+# include <texture.h>
 
 typedef struct s_map
 {
@@ -35,8 +36,10 @@ typedef struct s_map
 typedef struct s_img
 {
 	void	*img;
-	char	*addr;
+	int		*addr;
 
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -48,7 +51,9 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
+	int		*texture;
 
+	t_tex	t;
 	t_map	map;
 	t_img	img;
 

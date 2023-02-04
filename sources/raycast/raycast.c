@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:40:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:47:33 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	texture(t_data *data, t_raycast *r, int j);
 
 void	init_raycast(t_raycast *itens, t_data *data)
 {
@@ -32,11 +34,35 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 		my_mlx_pixel_put(&data->img, x, y1, color);
 }
 
+void	draw(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < HEIGHT)
+	{
+		y = -1;
+		while (++y < WIDTH)
+			data->img.addr[x * WIDTH + y] = data->t.buf[x][y];
+	}
+}
+
 void	raycast(t_data *data)
 {
-	t_raycast	itens;
 	int			x;
-
+	int			y;
+	t_raycast	itens;
+	if (data->t.flag)
+	{
+		x = -1;
+		while (++x < HEIGHT)
+		{
+			y = -1;
+			while (++y < WIDTH)
+				data->t.buf[x][y] = 0;
+		}
+	}
 	x = -1;
 	init_raycast(&itens, data);
 	while (++x < WIDTH)
@@ -48,6 +74,8 @@ void	raycast(t_data *data)
 		jump_next_square_and_verify_hit_wall(&itens, data);
 		calculate_height_line(&itens, data);
 		calculate_pixel(&itens, data);
-		ver_line(data, &itens, x, RGB_RED);
+		texture(data, &itens, x);
+		// ver_line(data, &itens, x, RGB_RED);
 	}
+	draw(data);
 }

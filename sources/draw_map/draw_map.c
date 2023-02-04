@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:27:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:54:52 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	draw_map(t_data *data)
 	int	line;
 
 	line = -1;
-	render_background(data);
-	while (data->map.map[++line])
-		draw_line(data, line);
+	// render_background(data);
+	// while (data->map.map[++line])
+	// 	draw_line(data, line);
 	raycast(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
