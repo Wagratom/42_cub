@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/02/01 23:25:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:47:31 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,38 @@ void	test_teardown(void)
 
 MU_TEST(map_closed_tst)
 {
-	fake_alloc_map(&data, 8, 3, 8, "map/test1.cub");
+	ft_bzero(&data, sizeof(t_map));
+	set_position_player(&data, 8, 3);
+	data.mini_map = retorne_fake_map(8, "map/test1.cub");
 	mu_assert_int_eq(verify_exit_status(&data), TRUE);
-	delete_map(data.map);
+	delete_map(data.mini_map);
 }
 
 MU_TEST(not_closed_tst)
 {
-
-	fake_alloc_map(&data, 8, 3, 8, "map/not_closed.cub");
+	ft_bzero(&data, sizeof(t_map));
+	set_position_player(&data, 8, 3);
+	data.mini_map = retorne_fake_map(8, "map/not_closed.cub");
 	mu_assert_int_eq(verify_exit_status(&data), FALSE);
-	delete_map(data.map);
+	delete_map(data.mini_map);
 }
 
 MU_TEST(map_closed_1_tst)
 {
-	fake_alloc_map(&data, 8, 3, 8, "map/map_closed_1.cub");
+	ft_bzero(&data, sizeof(t_map));
+	set_position_player(&data, 8, 3);
+	data.mini_map = retorne_fake_map(8, "map/map_closed_1.cub");
 	mu_assert_int_eq(verify_exit_status(&data), TRUE);
-	delete_map(data.map);
+	delete_map(data.mini_map);
 }
 
 MU_TEST(map_closed_2_tst)
 {
-	fake_alloc_map(&data, 8, 3, 8, "map/map_closed_2.cub");
+	ft_bzero(&data, sizeof(t_map));
+	set_position_player(&data, 8, 3);
+	data.mini_map = retorne_fake_map(8, "map/map_closed_2.cub");
 	mu_assert_int_eq(verify_exit_status(&data), TRUE);
-	delete_map(data.map);
+	delete_map(data.mini_map);
 }
 
 MU_TEST_SUITE(verify_close_suite)

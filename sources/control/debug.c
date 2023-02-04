@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:15:45 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 11:32:52 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:11:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_bool	debug_printC(t_bool mod_debug, char *prefix, char *msg)
 	if (msg)
 		write(1, msg, ft_strlen(msg));
 	write(1, "\n", 1);
+	write(1, W, ft_strlen(W));
 	return (FALSE);
 }
 

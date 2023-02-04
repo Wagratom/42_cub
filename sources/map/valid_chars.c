@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 10:42:40 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:21:51 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ t_bool	interactor_chars_or_die(t_map *data, char _char)
 	int static	validator = 0;
 
 	if (!is_special_char(_char))
-		return (-1);
-	if (validator > 0)
-	{
-		printf("Error: many characters of positions\n");
 		return (FALSE);
-	}
+	if (validator > 0)
+		return (write_msg_error("Error: ", "Many characters of positions\n"));
 	interactor_chars(data, _char);
 	validator++;
 	return (TRUE);
@@ -49,7 +46,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	line = ft_strdup("");
 	while (get_line(data, &line))
 	{
-		if (valid_chars_line(data, line)) // corrigr vazamento
+		if (valid_chars_line(data, line))
 			continue ;
 		wrong_write_line((data->size_y + data->size_d_map), line);
 		free(line);
@@ -71,9 +68,10 @@ t_bool	valid_chars_line(t_map *data, char *line)
 			continue ;
 		if (!interactor_chars_or_die(data, line[letter]))
 			return (FALSE);
-		save_position_player(data, letter, line[letter]);
 		if (is_direction(line[letter]))
 			set_direction_player(data, line[letter]);
+		else
+			save_position_player(data, letter, line[letter]);
 	}
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 11:42:47 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:13:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_bool	extract_data_status(t_map *data, int fd)
 	int		status;
 	int		size_end;
 
-	debug_printC(has_flag(), NULL, "\tExtract data of map...");
 	if (data == NULL || fd < 0)
 		return (FALSE);
 	size_end = extract_data_map(data, fd);

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:39:48 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:12:26 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	init_mlx_status(t_data *data)
 
 void	init_data(t_data *data, char *file_name)
 {
-	debug_printC(has_flag(), NULL, "\tinitializing struct and connections");
+	debug_printC(has_flag(), C, "\tinitializing struct and connections");
 	init_struct(data);
 	if (!init_mlx_status(data))
 		exit_msg(MLX_NULL);

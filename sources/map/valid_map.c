@@ -14,6 +14,7 @@
 
 static t_bool	extracting_date(t_map *data)
 {
+	debug_printC(has_flag(), C, "\tExtract data of map...");
 	if (!open_file_status(&data->fd, data->file_name))
 		return (FALSE);
 	if (!extract_data_status(data, data->fd))
@@ -23,6 +24,7 @@ static t_bool	extracting_date(t_map *data)
 
 static t_bool	valid_map_chars(t_map *data)
 {
+	debug_printC(has_flag(), C, "\tValiding chars of map...");
 	if (!valid_chars_or_die(data))
 		return (FALSE);
 	close(data->fd);

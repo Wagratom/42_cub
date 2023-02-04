@@ -72,7 +72,6 @@ MU_TEST(extract_data_valid_texture)
 	t_map	data;
 
 	ft_bzero(&data, sizeof(t_map));
-	set_flag(TRUE);
 
 	open_file_status(&data.fd, "map/parser/valid_texture.cub");
 	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 11:44:36 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:11:40 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define WIDTH 640
 #define HEIGHT 480
 
-# define MOD_DEBUG "\tDEBUG MODE ON\n\n"
+# define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
 # define NULL_ARGV "Invalid flag passed\n"

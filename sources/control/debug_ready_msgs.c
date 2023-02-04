@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 10:42:09 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/04 13:16:00 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	write_info_save(int position_x, int position_y, char _char)
 	aux = ft_robustjoin(&aux, &aux2);
 	aux2 = ft_strdup(") char(");
 	aux = ft_robustjoin(&aux, &aux2);
-	debug_printC(has_flag(), NULL, "Player position: ");
+	write(1, "Player position: ", 17);
 	write(1, aux, ft_strlen(aux));
 	write(1, &_char, 1);
 	write(1, ")", 1);
