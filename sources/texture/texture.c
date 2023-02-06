@@ -3,8 +3,8 @@
 
 void	texture(t_data *data, t_raycast *r, int j)
 {
-	int		i;
-	int		color;
+	int				i;
+	unsigned long	color;
 	t_tex	*t;
 
 	t = &data->t;
@@ -19,15 +19,17 @@ void	texture(t_data *data, t_raycast *r, int j)
 	t->step = 1.0 * TILE_SIZE / r->lineHeight;
 	t->pos = (r->drawStart - HEIGHT / 2 + r->lineHeight / 2) * t->step;
 	i = r->drawStart - 1;
+	printf("ray_dir_x: %f, ray_dir_y: %f perpWall: %f\n", r->dir[P_X], r->dir[P_Y], r->perpWallDist);
 	while (++i < r->drawEnd)
 	{
 		t->y = (int)t->pos & (TILE_SIZE - 1);
 		t->pos += t->step;
-		color = (((int *)data->texture)[TILE_SIZE * t->y + t->x]);
+		color = (data->texture)[TILE_SIZE * t->y + t->x];
 		if (r->side)
 			color = (color >> 1) & 8355711;
-		t->buf[i][j] = color;
+		t->buf[i][j] =(int)color;
 	}
+	printf("t->y: %d t->pos: %f\n", t->y, t->pos);
 	t->flag = 1;
 }
 

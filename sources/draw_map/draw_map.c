@@ -6,11 +6,26 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:54:52 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:07:20 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+
+void	draw(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	while (++x < HEIGHT)
+	{
+		y = -1;
+		while (++y < WIDTH)
+			data->img.addr[x * WIDTH + y] = data->t.buf[x][y];
+	}
+}
 
 void	render_background(t_data *data)
 {
@@ -61,13 +76,14 @@ static void	draw_line(t_data *data, int y)
 
 int	draw_map(t_data *data)
 {
-	int	line;
+	// int	line;
 
-	line = -1;
+	// line = -1;
 	// render_background(data);
 	// while (data->map.map[++line])
 	// 	draw_line(data, line);
 	raycast(data);
+	draw(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (0);
 }
