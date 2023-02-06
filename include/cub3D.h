@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:39:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 12:04:42 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 # define VALID_CHARS "01NSEW\n\t "
 # define ESPECIAL_CHARS "NSEW"
-
 
 # define RGB_RED 0x00FF0000
 # define RGB_MAROON 0x00800000
