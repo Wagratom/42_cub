@@ -6,17 +6,14 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:15:40 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:26:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:53:09 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../minunit.h"
 
-t_data data;
-
 void	test_setup(void)
 {
-	set_flag(FALSE);
 }
 
 void	test_teardown(void)
@@ -25,10 +22,10 @@ void	test_teardown(void)
 
 MU_TEST(init_data_tst)
 {
-	int index;
+	t_data	data;
 
+	ft_bzero(&data, sizeof(data));
 	init_data(&data, "irrelevante");
-	set_flag(FALSE);
 	mu_assert_int_eq(init_img(&data), TRUE);
 	mu_check(data.mlx != NULL);
 	mu_check(data.img.img != NULL);
@@ -37,10 +34,10 @@ MU_TEST(init_data_tst)
 
 MU_TEST(mlx_null)
 {
-	int index;
+	t_data	data;
 
 	init_data(&data, "irrelevante");
-	set_flag(FALSE);
+	ft_bzero(&data, sizeof(data));
 	data.mlx = NULL;
 	mu_assert_int_eq(init_img(&data), FALSE);
 	mu_check(data.mlx == NULL);

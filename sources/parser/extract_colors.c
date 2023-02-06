@@ -6,11 +6,16 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 11:34:28 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:21:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	save_in_dst(int dst[], int index, char *number)
+{
+	dst[index] = atoi(number);
+}
 
 int	extract_colors_status(int dst[], char *data_line)
 {

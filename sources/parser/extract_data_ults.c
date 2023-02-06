@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 11:43:00 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 16:16:08 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ char	*data_in_line(char *line)
 
 int	open_file_is_clear_path(int *dst, char *path_file)
 {
-	debug_printC(has_flag(), "Opening texture path: ", path_file);
-	*dst =  open(path_file, O_RDONLY, 0777);
+	debug_printc(has_flag(), "Opening texture path: ", path_file);
+	*dst = open(path_file, O_RDONLY, 0777);
 	if (*dst >= 0)
 		return (NEW_LINE);
-	debug_printC(has_flag(), NULL, "Error in oping texture");
+	debug_printc(has_flag(), NULL, "Error in oping texture");
 	perror("");
 	return (INVALID_DATA);
 }
@@ -45,4 +45,19 @@ char	*get_line_p(char **line, int fd)
 void	interact_size_d_map(t_map *data)
 {
 	data->size_d_map += 1;
+}
+
+t_bool	all_coordinates_valid(t_parse *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		if (data->coordinates_save[i] > 1)
+			return (write_msg_error("Error: ", "Some coordinate is wrong"));
+		if (data->coordinates_save[i] < 1)
+			return (write_msg_error("Error: ", "Some coordinate did not pass"));
+	}
+	return (TRUE);
 }

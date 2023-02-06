@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:16:00 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 16:12:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	wrong_write_line(int position, char *line)
 {
-	debug_printC(has_flag(), "line: ", line);
-	debug_printI(has_flag(), "Position line: ", position);
+	debug_printc(has_flag(), "line: ", line);
+	debug_printi(has_flag(), "Position line: ", position);
 }
 
 void	write_info_save(int position_x, int position_y, char _char)
@@ -28,7 +28,7 @@ void	write_info_save(int position_x, int position_y, char _char)
 	aux = ft_robustjoin(&aux, &aux2);
 	aux2 = ft_strdup(") Y(");
 	aux = ft_robustjoin(&aux, &aux2);
-	aux2 =  ft_itoa(position_y);
+	aux2 = ft_itoa(position_y);
 	aux = ft_robustjoin(&aux, &aux2);
 	aux2 = ft_strdup(") char(");
 	aux = ft_robustjoin(&aux, &aux2);

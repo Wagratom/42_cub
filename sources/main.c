@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:11:36 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 16:08:53 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ t_bool	check_mod_debug(char *flag)
 	if (!ft_str_eq(flag, "-D"))
 		return (FALSE);
 	set_flag(TRUE);
-	debug_printC(has_flag(), R, MOD_DEBUG);
+	debug_printc(has_flag(), R, MOD_DEBUG);
 	return (TRUE);
 }
 
 void	valid_arguments(int argc, char *argv[])
 {
-	debug_printC(has_flag(), C, "\tValid arguments...");
+	debug_printc(has_flag(), C, "\tValid arguments...");
 	if (argc <= 1 || argc >= 4)
 		exit_msg(INVALID_ARGC);
 	if (argv == NULL || *argv == NULL)
 		exit_msg(INVALID_ARGV);
 	if (argv[1] != NULL && !ft_str_eq(argv[1], "-D"))
 		exit_msg(NULL_ARGV);
-	debug_printC(has_flag(), "Arguments: ", "OK\n");
+	debug_printc(has_flag(), "Arguments: ", "OK\n");
 }
 
 int	main(int argc, char *argv[])

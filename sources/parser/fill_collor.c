@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 10:35:54 by wwalas-          ###   ########.fr       */
+/*   Created: 2023/02/05 16:15:05 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/02/05 16:15:07 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int collor_rgb(char *line)
+int	collor_rgb(char *line)
 {
-	debug_printC(has_flag(), "\tGet line collor: ", line);
+	debug_printc(has_flag(), "\tGet line collor: ", line);
 	if (compare_strings(first_word(line), "F"))
 		return (1);
 	else if (compare_strings(first_word(line), "C"))
@@ -26,7 +26,7 @@ int	fill_collor(int collor, char *numbers, t_parse *data)
 {
 	int	status;
 
-	debug_printI(has_flag(), "Collor: ", collor);
+	debug_printi(has_flag(), "Collor: ", collor);
 	if (collor == 1)
 		status = extract_colors_status(data->f, numbers);
 	else if (collor == 2)

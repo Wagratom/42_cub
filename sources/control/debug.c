@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:15:45 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 13:11:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 16:10:02 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	write_msg_error(char *prefix, char *msg)
 	return (FALSE);
 }
 
-t_bool	debug_printC(t_bool mod_debug, char *prefix, char *msg)
+t_bool	debug_printc(t_bool mod_debug, char *prefix, char *msg)
 {
 	if (!mod_debug)
 		return (FALSE);
@@ -35,7 +35,7 @@ t_bool	debug_printC(t_bool mod_debug, char *prefix, char *msg)
 	return (FALSE);
 }
 
-t_bool	debug_printI(t_bool mod_debug, char *prefix, int number)
+t_bool	debug_printi(t_bool mod_debug, char *prefix, int number)
 {
 	char	*tmp;
 
@@ -48,21 +48,4 @@ t_bool	debug_printI(t_bool mod_debug, char *prefix, int number)
 	write(1, "\n", 1);
 	free(tmp);
 	return (FALSE);
-}
-
-t_bool	*flag(void)
-{
-	static t_bool	store;
-
-	return (&store);
-}
-
-void	set_flag(t_bool _flag)
-{
-	*flag() = _flag;
-}
-
-t_bool	has_flag(void)
-{
-	return (*flag());
 }

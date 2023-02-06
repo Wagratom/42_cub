@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:11:40 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:39:38 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,20 @@ t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
 t_bool		interactor_chars_or_die(t_map *data, char _char);
 void		save_position_player(t_map *data, int position_x, char _char);
-t_bool		verify_exit_status(t_map *data);
 
 t_bool		alloc_map_status(t_map *data, int fd);
+t_bool		get_valid_line(char **dst, int fd);
+void		remove_char_of_player(t_map *data);
+t_bool		check_parameters(t_map *data, int fd);
+
+t_bool		verify_exit_status(t_map *data);
+t_bool		val_move_right(char **map, int *posi_x, int posi_y);
+t_bool		val_move_down(char **map, int posi_x, int *posi_y);
+t_bool		val_move_left(char **map, int *posi_x, int posi_y);
+t_bool		val_move_up(char **map, int posi_x, int *posi_y);
+t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
+
+
 void		delete_map(char **map);
 
 /*							ULTS											  */
@@ -131,17 +142,13 @@ void		map_move_up(t_map *map);
 void		map_move_right(t_map *map);
 void		map_move_left(t_map *map);
 void		map_move_down(t_map *map);
-void		update_p_char(t_map *map, int x, int y);
 void		update_p_player(t_map *map, double position_y, double position_x);
 
-void		draw_mapingD(char **map);
-// void		testes(t_data *data);
+void		draw_mapingd(char **map);
 
-// void		creat_img(t_data *data);
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
 
-int			is_direction(char c);
 void		set_direction_player(t_map *data, char c);
 
 
@@ -172,8 +179,8 @@ t_bool		*flag(void);
 void		set_flag(t_bool _flag);
 t_bool		has_flag(void);
 
-t_bool		debug_printC(t_bool mod_debug, char *prefix, char *msg);
-t_bool		debug_printI(t_bool mod_debug, char *prefix, int number);
+t_bool		debug_printc(t_bool mod_debug, char *prefix, char *msg);
+t_bool		debug_printi(t_bool mod_debug, char *prefix, int number);
 t_bool		write_msg_error(char *prefix, char *msg);
 void		wrong_write_line(int position, char *line);
 
@@ -192,13 +199,13 @@ char		*data_in_line(char *line);
 int			open_file_is_clear_path(int *dst, char *path_file);
 char		*get_line_p(char **line, int fd);
 void		interact_size_d_map(t_map *data);
+t_bool		all_coordinates_valid(t_parse *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);
 int			avance_is_check_end(char **data_line, char *number);
 char		*firts_number(char *str);
 t_bool		get_int_valid(char **dst, char *data_line);
-void		save_in_dst(int dst[], int index, char *number);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
@@ -211,8 +218,6 @@ int			open_texture(int coordinates, char *path_file, t_parse *data);
 
 int			fill_collor(int collor, char *numbers, t_parse *data);
 int			collor_rgb(char *line);
-
-
 
 
 

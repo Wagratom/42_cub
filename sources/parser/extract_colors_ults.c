@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/04 11:34:34 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:20:54 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,14 @@ t_bool	get_int_valid(char **dst, char *data_line)
 {
 	char	*number;
 
-	debug_printC(has_flag(), "Data line: ", data_line);
+	debug_printc(has_flag(), "Data line: ", data_line);
 	if (data_line == NULL || *data_line == '\0')
 		return (write_msg_error("Error: parser: ", "Data_line arrived void"));
 	if (dst == NULL)
 		return (write_msg_error("Error: parser: ", "Dst is pointer NULL"));
-	*dst =  firts_number(data_line);
-	debug_printC(has_flag(), "Write in dst: ", *dst);
+	*dst = firts_number(data_line);
+	debug_printc(has_flag(), "Write in dst: ", *dst);
 	return (is_valid_or_clear(*dst));
-}
-
-void	save_in_dst(int dst[], int index, char *number)
-{
-	dst[index] = atoi(number);
 }
 
 int	avance_is_check_end(char **data_line, char *number)

@@ -22,12 +22,23 @@ void	test_teardown(void)
 
 MU_TEST(get_firts_number_tst)
 {
-		mu_assert_string_eq(firts_number(NULL), NULL);
-		mu_assert_string_eq(firts_number(""), NULL);
-		mu_assert_string_eq(firts_number("220,100,0\n"), "220");
-		mu_assert_string_eq(firts_number("120,100,0\n"), "120");
-		mu_assert_string_eq(firts_number("0,100,0\n"), "0");
+	char	*tmp;
 
+
+	mu_assert_string_eq(firts_number(NULL), NULL);
+	mu_assert_string_eq(firts_number(""), NULL);
+
+	tmp = firts_number("220,100,0\n");
+	mu_assert_string_eq(tmp, "220");
+	free(tmp);
+
+	tmp = firts_number("120,100,0\n");
+	mu_assert_string_eq(tmp, "120");
+	free(tmp);
+
+	tmp = firts_number("0,100,0\n");
+	mu_assert_string_eq(tmp, "0");
+	free(tmp);
 }
 
 MU_TEST_SUITE(suite_get_firts_number)

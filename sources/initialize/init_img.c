@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/02 16:40:09 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:54:25 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_bool	creat_img_status(t_data *data)
 	return (FALSE);
 }
 
-t_bool mlx_is_null(void	*mlx)
+t_bool	mlx_is_null(void	*mlx)
 {
 	if (mlx == NULL)
 	{
@@ -47,12 +47,12 @@ t_bool mlx_is_null(void	*mlx)
 
 t_bool	init_img(t_data *data)
 {
-	if (mlx_is_null(data->mlx) == TRUE)
+	if (mlx_is_null(data->mlx))
 		return (FALSE);
 	if (!creat_img_status(data))
 		return (FALSE);
 	if (!get_addr_img(&data->img))
 		return (FALSE);
-	debug_printC(has_flag(), "Img: ", "Ok");
+	debug_printc(has_flag(), "Img: ", "Ok");
 	return (TRUE);
 }
