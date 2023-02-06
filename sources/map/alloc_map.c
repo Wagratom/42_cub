@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:24:44 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_bool	alloc_ptr_status(t_map *data)
 	full_size = data->size_y + data->size_d_map;
 	data->full_map = (char **)ft_calloc((full_size + 1), sizeof(char *));
 	if (data->full_map == NULL)
-		return (write_msg_error(NULL, "Error: Not allocate ptr"));
+		return (msg_and_error(NULL, "Error: Not allocate ptr"));
 	debug_printc(has_flag(), NULL, "Allocated ptr for full_map");
 	debug_printi(has_flag(), "Size ptr: ", full_size);
 	return (TRUE);
@@ -35,7 +35,7 @@ t_bool	alloc_map_full_map(t_map *data, int fd)
 	while (++tmp < full_size)
 	{
 		if (!get_valid_line(&data->full_map[tmp], fd))
-			return (write_msg_error(NULL, "Error: not get line valid in map\n"));
+			return (msg_and_error(NULL, "Error: not get line valid in map\n"));
 	}
 	data->full_map[tmp] = get_next_line(fd);
 	debug_printc(has_flag(), NULL, "Allocated Full_Map");

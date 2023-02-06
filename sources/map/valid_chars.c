@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:53:14 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_bool	interactor_chars_or_die(t_map *data, char _char)
 	if (!is_special_char(_char))
 		return (FALSE);
 	if (validator > 0)
-		return (write_msg_error("Error: ", "Many characters of positions\n"));
+		return (msg_and_error("Error: ", "Many characters of positions\n"));
 	interactor_chars(data, _char);
 	validator++;
 	return (TRUE);

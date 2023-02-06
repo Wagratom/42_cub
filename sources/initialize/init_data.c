@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 11:22:34 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool	init_mlx_status(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		return (write_msg_error("Error: ", "Pointer mlk initializa"));
+		return (msg_and_error("Error: ", "Pointer mlk initializa"));
 	debug_printc(has_flag(), "Mlx: ", "Ok");
 	return (TRUE);
 }

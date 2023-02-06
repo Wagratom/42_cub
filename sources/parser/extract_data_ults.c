@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 16:16:08 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ t_bool	all_coordinates_valid(t_parse *data)
 	while (++i < 4)
 	{
 		if (data->coordinates_save[i] > 1)
-			return (write_msg_error("Error: ", "Some coordinate is wrong"));
+			return (msg_and_error("Error: ", "Some coordinate is wrong"));
 		if (data->coordinates_save[i] < 1)
-			return (write_msg_error("Error: ", "Some coordinate did not pass"));
+			return (msg_and_error("Error: ", "Some coordinate did not pass"));
 	}
 	return (TRUE);
 }

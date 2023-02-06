@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:35:35 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_bool	verify_exit_status(t_map *data)
 	char	**copy_map;
 
 	if (data->mini_map == NULL)
-		return (write_msg_error(NULL, "Error: mini map is null\n"));
+		return (msg_and_error(NULL, "Error: mini map is null\n"));
 	status = TRUE;
 	copy_map = ft_array_dup(data->mini_map);
 	verify_is_closed(copy_map, data->player[P_Y], data->player[P_X], &status);
