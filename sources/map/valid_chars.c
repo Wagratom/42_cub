@@ -6,31 +6,30 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:16:09 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	save_position_player(t_map *data, int position_x, char _char)
+t_bool	save_position_player(t_map *data, int position_x, char _char)
 {
 	if (!is_special_char(_char))
-		return ;
+		return (msg_and_error("Error: position_p: ", "Non-special character"));
 	data->player[P_X] = position_x;
 	data->player[P_Y] = data->size_y;
-	if (has_flag())
-		write_info_save(data->player[P_X], data->player[P_Y], _char);
+	write_info_save(data->player[P_X], data->player[P_Y], _char);
+	return (TRUE);
 }
 
-t_bool	interactor_chars_or_die(t_map *data, char _char)
+t_bool	interactor_chars_status(t_map *data, char _char)
 {
 	int static	validator = 0;
 
 	if (!is_special_char(_char))
-		return (FALSE);
+		return (msg_and_error("Error: interactor: ", "Non-special character"));
 	if (validator > 0)
-		return (msg_and_error("Error: ", "Many characters of positions\n"));
-	interactor_chars(data, _char);
+		return (msg_and_error("Error: ", "Many characters of positions"));
 	validator++;
 	return (TRUE);
 }
@@ -48,7 +47,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	{
 		if (valid_chars_line(data, line))
 			continue ;
-		wrong_write_line((data->size_y + data->size_d_map), line);
+		wrong_write_line((data->size_y + data->size_d_map + 1), line);
 		free(line);
 		return (FALSE);
 	}
@@ -66,10 +65,12 @@ t_bool	valid_chars_line(t_map *data, char *line)
 			return (FALSE);
 		if (!is_special_char(line[letter]))
 			continue ;
-		if (!interactor_chars_or_die(data, line[letter]))
+		if (!interactor_chars_status(data, line[letter]))
 			return (FALSE);
-		save_position_player(data, letter, line[letter]);
-		set_direction_player(data, line[letter]);
+		if (!save_position_player(data, letter, line[letter]))
+			return (FALSE);
+		if (!set_direction_player(data, line[letter]))
+			return (FALSE);
 	}
 	return (TRUE);
 }

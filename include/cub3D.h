@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:22:28 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:14:03 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ t_bool		open_file_status(int *dst, char *path_file);
 t_bool		manipulating_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
-t_bool		interactor_chars_or_die(t_map *data, char _char);
-void		save_position_player(t_map *data, int position_x, char _char);
+t_bool		interactor_chars_status(t_map *data, char _char);
+t_bool		save_position_player(t_map *data, int position_x, char _char);
+t_bool		set_direction_player(t_map *data, char c);
 
 t_bool		alloc_map_status(t_map *data, int fd);
 t_bool		get_valid_line(char **dst, int fd);
@@ -153,9 +154,6 @@ void		draw_mapingd(char **map);
 
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
-
-void		set_direction_player(t_map *data, char c);
-
 
 /******************************************************************************/
 /*								RAYCAST										  */

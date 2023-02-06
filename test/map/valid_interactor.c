@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2023/02/01 23:25:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:06:02 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,9 @@ void	test_teardown(void)
 MU_TEST(open_invalid_file_tst)
 {
 	ft_bzero(&data, sizeof(t_data));
-	mu_assert_int_eq(interactor_chars_or_die(&data.map, 'S'), TRUE);
-	mu_assert_int_eq(interactor_chars_or_die(&data.map, 'W'), FALSE);
-	mu_assert_int_eq(interactor_chars_or_die(&data.map, 'E'), FALSE);
-}
-
-MU_TEST(open_file_tst)
-{
+	mu_assert_int_eq(interactor_chars_status(&data.map, 'S'), TRUE);
+	mu_assert_int_eq(interactor_chars_status(&data.map, 'W'), FALSE);
+	mu_assert_int_eq(interactor_chars_status(&data.map, 'E'), FALSE);
 }
 
 MU_TEST_SUITE(open_file_suite)
@@ -39,7 +35,6 @@ MU_TEST_SUITE(open_file_suite)
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
 	MU_RUN_TEST(open_invalid_file_tst);
-	MU_RUN_TEST(open_file_tst);
 }
 
 MU_MAIN
