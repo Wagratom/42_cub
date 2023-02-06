@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/26 18:52:13 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:41:08 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	check_avance_x(t_map *map, double position_y, double position_x)
 	double	next_x;
 
 	next_x = position_x + map->dir[P_X] * map->speed;
-	if (is_valid_position(map, next_x, position_y) == FALSE)
+	if (!is_valid_position(map, next_x, position_y))
 		return ;
 	update_p_player(map, position_y, next_x);
 }
@@ -27,7 +27,7 @@ static void	check_avance_y(t_map *map, double position_y, double position_x)
 	double	next_y;
 
 	next_y = position_y + map->dir[P_Y] * map->speed;
-	if (is_valid_position(map, position_x, next_y) == FALSE)
+	if (!is_valid_position(map, position_x, next_y))
 		return ;
 	update_p_player(map, next_y, position_x);
 }

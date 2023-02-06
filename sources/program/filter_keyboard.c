@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 12:17:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/01 11:46:21 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	filter_keyboard(int key, t_data *data)
 {
 	if (key == KEY_ESQ)
-		exit(0);
+		cleanup_program(data);
 	if (key == KEY_W)
 		map_move_up(&data->map);
 	else if (key == KEY_D)

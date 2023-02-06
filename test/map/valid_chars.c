@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_chars.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/04 16:02:07 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:29:16 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_map	data;
 
 void	test_setup(void)
 {
+	set_flag(FALSE);
 }
 void	test_teardown(void)
 {
@@ -52,16 +53,14 @@ MU_TEST(invalid_chars)
 MU_TEST(map_valid_tst)
 {
 	ft_bzero(&data, sizeof(t_map));
-	data.file_name = "map/map.cub";
-	open_file_or_die(&data);
+	open_file_status(&data.fd, "map/map.cub");
 	mu_assert_int_eq(valid_chars_or_die(&data), TRUE);
 }
 
 MU_TEST(map_invalid_tst)
 {
 	ft_bzero(&data, sizeof(t_map));
-	data.file_name = "map/many_character.cub";
-	open_file_or_die(&data);
+	open_file_status(&data.fd, "map/many_character.cub");
 	mu_assert_int_eq(valid_chars_or_die(&data), FALSE);
 }
 
@@ -71,8 +70,8 @@ MU_TEST_SUITE(valid_chars_line_suite)
 
 	//esse tem que rodar um de cada vez porque a função e estatica
 
-	// MU_RUN_TEST(invalid_chars);
 	// MU_RUN_TEST(valid_chars);
+	// MU_RUN_TEST(invalid_chars);
 	// MU_RUN_TEST(map_valid_tst);
 	MU_RUN_TEST(map_invalid_tst);
 }
