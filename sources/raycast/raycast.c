@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:15:00 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:52:13 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	raycast(t_data *data)
 		length_ray(&itens);
 		length_ray_next_x_y(&itens, data);
 		jump_next_square_and_verify_hit_wall(&itens, data);
-		calculate_height_line(&itens, data);
-		calculate_pixel(&itens, data);
+		calculate_height_line(&itens);
+		calculate_pixel(&itens);
 		ver_line(data, &itens, x, RED);
 	}
 }

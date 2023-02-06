@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:14:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_bool		open_file_status(int *dst, char *path_file);
 t_bool		manipulating_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
-t_bool		interactor_chars_status(t_map *data, char _char);
+t_bool		interactor_chars_status(char _char);
 t_bool		save_position_player(t_map *data, int position_x, char _char);
 t_bool		set_direction_player(t_map *data, char c);
 
@@ -165,8 +165,8 @@ void		position_player_map(t_raycast *itens, t_data *data);
 void		length_ray(t_raycast *itens);
 void		length_ray_next_x_y(t_raycast *itens, t_data *data);
 void		jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
-void		calculate_height_line(t_raycast *itens, t_data *data);
-void		calculate_pixel(t_raycast *itens, t_data *data);
+void		calculate_height_line(t_raycast *itens);
+void		calculate_pixel(t_raycast *itens);
 
 int			is_valid_position(t_map *map, double x, double y);
 int			cleanup_program(t_data *data);
@@ -206,7 +206,7 @@ t_bool		all_coordinates_valid(t_parse *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);
-int			avance_is_check_end(char **data_line, char *number);
+void		avance_is_check_end(char **data_line, char *number);
 char		*firts_number(char *str);
 t_bool		get_int_valid(char **dst, char *data_line);
 

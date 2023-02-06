@@ -6,13 +6,13 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:30:28 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:49:52 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static char	*get_addr(t_img *img, int *bits, int *length, int *endian)
+static void	get_addr(t_img *img, int *bits, int *length, int *endian)
 {
 	img->addr = mlx_get_data_addr(img->img, bits, length, endian);
 }

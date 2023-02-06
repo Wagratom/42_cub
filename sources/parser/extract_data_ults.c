@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:52 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*data_in_line(char *line)
 {
-	char	*result;
 	int		init_data;
 	int		end_data;
 

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:16:09 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:48:55 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_bool	save_position_player(t_map *data, int position_x, char _char)
 	return (TRUE);
 }
 
-t_bool	interactor_chars_status(t_map *data, char _char)
+t_bool	interactor_chars_status(char _char)
 {
-	int static	validator = 0;
+	static int	validator = 0;
 
 	if (!is_special_char(_char))
 		return (msg_and_error("Error: interactor: ", "Non-special character"));
@@ -65,7 +65,7 @@ t_bool	valid_chars_line(t_map *data, char *line)
 			return (FALSE);
 		if (!is_special_char(line[letter]))
 			continue ;
-		if (!interactor_chars_status(data, line[letter]))
+		if (!interactor_chars_status(line[letter]))
 			return (FALSE);
 		if (!save_position_player(data, letter, line[letter]))
 			return (FALSE);

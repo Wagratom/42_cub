@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/06 17:12:23 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/02/06 17:47:57 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	cc -g3
-CFLAGS		=	-Wall -Wextra -Werror  -fsanitize=leak
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
 
 RM			=	rm -rf
@@ -50,12 +50,12 @@ VPATH		=	.						\
 				./sources/raycast
 
 $(OBJS_DIR)/%.o:	%.c
-			$(CC) -c $< -o $@ $(INCLUDE)
+			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS_DIR) $(OBJECTS)
-				$(CC) ./sources/main.c $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
+				$(CC) $(CFLAGS) ./sources/main.c $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 
 $(OBJS_DIR):
 			mkdir -p $@

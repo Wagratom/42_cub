@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:24:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:13:04 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:49:40 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ t_bool	set_direction_player(t_map *data, char _char)
 		data->dir[P_X] = -1;
 		data->plane[P_Y] = -0.66;
 	}
+	return (TRUE);
 }

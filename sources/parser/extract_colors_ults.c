@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ t_bool	is_valid_or_clear(char *dst)
 
 t_bool	get_int_valid(char **dst, char *data_line)
 {
-	char	*number;
-
 	debug_printc(has_flag(), "Data line: ", data_line);
 	if (data_line == NULL || *data_line == '\0')
 		return (msg_and_error("Error: parser: ", "Data_line arrived void"));
@@ -67,7 +65,7 @@ t_bool	get_int_valid(char **dst, char *data_line)
 	return (is_valid_or_clear(*dst));
 }
 
-int	avance_is_check_end(char **data_line, char *number)
+void	avance_is_check_end(char **data_line, char *number)
 {
 	*data_line += ft_strlen(number);
 	if (*(*data_line) != '\0')
