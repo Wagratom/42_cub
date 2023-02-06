@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 16:08:53 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 11:22:34 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,16 @@ t_bool	init_mlx_status(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		return (FALSE);
+		return (write_msg_error("Error: ", "Pointer mlk initializa"));
 	debug_printc(has_flag(), "Mlx: ", "Ok");
 	return (TRUE);
+}
+
+void	set_basic_infos(t_data *data, char *file_name)
+{
+	data->map.file_name = file_name;
+	data->map.speed = 0.15;
+	data->map.rot_speed = 0.08;
 }
 
 void	init_data(t_data *data, char *file_name)
@@ -35,12 +42,6 @@ void	init_data(t_data *data, char *file_name)
 		exit_msg(MLX_NULL);
 	if (!init_img(data))
 		clean_conections(data);
+	set_basic_infos(data, file_name);
 	debug_printc(has_flag(), NULL, "Sucess createconnections\n");
-	data->map.file_name = file_name;
-	data->map.dir[P_X] = 0;
-	data->map.dir[P_Y] = 0;
-	data->map.plane[P_X] = 0;
-	data->map.plane[P_Y] = 0;
-	data->map.speed = 0.15;
-	data->map.rot_speed = 0.08;
 }

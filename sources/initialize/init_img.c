@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:54:25 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 11:48:07 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,21 @@ t_bool	creat_img_status(t_data *data)
 	return (FALSE);
 }
 
-t_bool	mlx_is_null(void	*mlx)
+t_bool	mlx_is_null(t_data *data)
 {
-	if (mlx == NULL)
-	{
-		write(2, "Error: Not creat image, Pointer mlx null\n", 34);
-		return (TRUE);
-	}
-	return (FALSE);
+	if (data->mlx != NULL)
+		return (FALSE);
+	write(2, "Error: Not creat image, Pointer mlx null\n", 34);
+	return (TRUE);
 }
 
 t_bool	init_img(t_data *data)
 {
-	if (mlx_is_null(data->mlx))
+	if (mlx_is_null(data))
+	{
+		printf("entrei linha 54\n");
 		return (FALSE);
+	}
 	if (!creat_img_status(data))
 		return (FALSE);
 	if (!get_addr_img(&data->img))
