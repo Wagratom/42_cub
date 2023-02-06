@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 13:53:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 13:39:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:31:49 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**retorne_fake_map(int size, char *file_name)
 	size += 1;
 	map = (char **)malloc(sizeof(char *) * size);
 	if (map == NULL)
-		write_msg_error("Error in creat pointer of map in tst", NULL);
+		msg_and_error("Error in creat pointer of map in tst", NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		printf("Error: not open file in ults.h\n");

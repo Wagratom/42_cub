@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:06:06 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:22:28 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_bool		init_img(t_data *data);
 /******************************************************************************/
 
 t_bool		draw_map_status(t_data *data);
-t_bool		draw_map(t_data *data);
+void		draw_map(t_data *data);
 
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);

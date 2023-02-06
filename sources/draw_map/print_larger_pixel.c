@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:38:49 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:14:17 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:19:14 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	my_mlx_pixel_put(t_img *img, int y, int x, int color)
 
 void	print_larger_pixel(t_data *data, int y, int x, int color)
 {
-	int			len_x;
-	int			size_y;
+	int	len_x;
+	int	size_y;
 
 	save_value_x(x);
 	len_x = get_save_x() + 5;

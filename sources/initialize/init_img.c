@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 11:51:59 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:30:28 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ t_bool	mlx_is_null(t_data *data)
 t_bool	init_img(t_data *data)
 {
 	if (mlx_is_null(data))
-	{
-		printf("entrei linha 54\n");
 		return (FALSE);
-	}
 	if (!creat_img_status(data))
 		return (FALSE);
 	if (!get_addr_img(&data->img))
