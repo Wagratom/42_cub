@@ -6,13 +6,13 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 14:15:45 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 16:10:02 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	write_msg_error(char *prefix, char *msg)
+t_bool	msg_and_error(char *prefix, char *msg)
 {
 	if (prefix)
 		write(2, prefix, ft_strlen(prefix));

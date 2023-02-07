@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/25 17:40:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:52:13 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 	y1 = itens->drawStart - 1;
 	y2 = itens->drawEnd;
 	while (++y1 <= y2)
-		my_mlx_pixel_put(&data->img, x, y1, color);
+		my_mlx_pixel_put(&data->img, y1, x, color);
 }
 
 void	raycast(t_data *data)
@@ -46,8 +46,8 @@ void	raycast(t_data *data)
 		length_ray(&itens);
 		length_ray_next_x_y(&itens, data);
 		jump_next_square_and_verify_hit_wall(&itens, data);
-		calculate_height_line(&itens, data);
-		calculate_pixel(&itens, data);
-		ver_line(data, &itens, x, RGB_RED);
+		calculate_height_line(&itens);
+		calculate_pixel(&itens);
+		ver_line(data, &itens, x, RED);
 	}
 }

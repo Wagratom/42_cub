@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:13:43 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:26:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:18:31 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ static t_bool	locating_map(t_map *data)
 static t_bool	valid_map_exit(t_map *data)
 {
 	debug_printc(has_flag(), C, "\tValidating map exit...");
-	if (!verify_exit_status(data))
-		return (FALSE);
-	return (TRUE);
+	return (verify_exit_status(data));
 }
 
 t_bool	manipulating_map(t_data *data)

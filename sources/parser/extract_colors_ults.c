@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:20:54 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_bool	is_valid_or_clear(char *dst)
 		return (FALSE);
 	if (!ft_is_int_nbr(dst))
 	{
-		write_msg_error("Error: parser: ", "number not integer ");
-		write_msg_error(NULL, dst);
+		msg_and_error("Error: parser: ", "number not integer ");
+		msg_and_error(NULL, dst);
 		free(dst);
 		return (FALSE);
 	}
@@ -55,19 +55,17 @@ t_bool	is_valid_or_clear(char *dst)
 
 t_bool	get_int_valid(char **dst, char *data_line)
 {
-	char	*number;
-
 	debug_printc(has_flag(), "Data line: ", data_line);
 	if (data_line == NULL || *data_line == '\0')
-		return (write_msg_error("Error: parser: ", "Data_line arrived void"));
+		return (msg_and_error("Error: parser: ", "Data_line arrived void"));
 	if (dst == NULL)
-		return (write_msg_error("Error: parser: ", "Dst is pointer NULL"));
+		return (msg_and_error("Error: parser: ", "Dst is pointer NULL"));
 	*dst = firts_number(data_line);
 	debug_printc(has_flag(), "Write in dst: ", *dst);
 	return (is_valid_or_clear(*dst));
 }
 
-int	avance_is_check_end(char **data_line, char *number)
+void	avance_is_check_end(char **data_line, char *number)
 {
 	*data_line += ft_strlen(number);
 	if (*(*data_line) != '\0')

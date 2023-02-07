@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 23:21:04 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	extract_rgb(int dst[], char *data_line)
 	}
 	if (*data_line == '\0')
 		return (NEW_LINE);
-	write_msg_error("Error: parser: ", "Past numbers in very large date");
-	write_msg_error("Left over: ", data_line);
+	msg_and_error("Error: parser: ", "Past numbers in very large date");
+	msg_and_error("Left over: ", data_line);
 	return (INVALID_DATA);
 }

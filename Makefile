@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/05 23:42:57 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/02/06 17:47:57 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,16 @@ SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_
 				print_larger_pixel.c save_x.c filter_keyboard.c updates.c  control.c control_debug.c		\
 				start_program.c raycast.c calculetePixel.c positionMap.c radiusCalculation.c screen.c		\
 				is_valid_position.c move_up.c move_down.c move_right.c move_left.c cleanup_program.c \
-				jump_next_square.c look_left.c look_right.c debug.c debug_ready_msgs.c set_direction.c \
+				jump_next_square.c look_left.c look_right.c debug.c debug_ready_msgs.c \
 				get_first_word.c compare_strings.c extract_colors.c extract_data.c open_texture.c \
-				fill_collor.c extract_colors_ults.c extract_data_ults.c alloc_map_ults.c verify_exit_ults.c
+				fill_collor.c extract_colors_ults.c extract_data_ults.c alloc_map_ults.c verify_exit_ults.c \
+				render_brackground.c mini_map.c
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	cc -g3
-CFLAGS		=	-Wall -Wextra -Werror  -fsanitize=leak
+CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
 FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
 
 RM			=	rm -rf
@@ -49,12 +50,12 @@ VPATH		=	.						\
 				./sources/raycast
 
 $(OBJS_DIR)/%.o:	%.c
-			$(CC) -c $< -o $@ $(INCLUDE)
+			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)
 
 all:		$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS_DIR) $(OBJECTS)
-				$(CC) ./sources/main.c $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
+				$(CC) $(CFLAGS) ./sources/main.c $(OBJECTS) $(LIBS) $(FLAGS_MLX) $@ $(INCLUDE)
 
 $(OBJS_DIR):
 			mkdir -p $@

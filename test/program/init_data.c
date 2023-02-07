@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:15:40 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:53:09 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 12:01:03 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,22 @@ MU_TEST(init_data_tst)
 
 	ft_bzero(&data, sizeof(data));
 	init_data(&data, "irrelevante");
-	mu_assert_int_eq(init_img(&data), TRUE);
 	mu_check(data.mlx != NULL);
 	mu_check(data.img.img != NULL);
 	mu_check(data.img.addr != NULL);
+	clean_conections(&data);
 }
 
 MU_TEST(mlx_null)
 {
 	t_data	data;
 
-	init_data(&data, "irrelevante");
 	ft_bzero(&data, sizeof(data));
 	data.mlx = NULL;
 	mu_assert_int_eq(init_img(&data), FALSE);
 	mu_check(data.mlx == NULL);
-	mu_check(data.img.img != NULL);
-	mu_check(data.img.addr != NULL);
+	mu_check(data.img.img == NULL);
+	mu_check(data.img.addr == NULL);
 }
 
 

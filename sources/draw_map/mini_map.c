@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:22:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 16:18:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	draw_map_status(t_data *data)
+static void	print_block(t_data *data, int y, int x, char block)
 {
-	if (data->map.mini_map == NULL)
-		return (msg_and_error(NULL, "can't draw the map, map doesn't exist"));
-	draw_map(data);
-	return (TRUE);
+	if (block == '0')
+		print_larger_pixel(data, (y * 5), (x * 5), RGB_WHITE);
+	else if (block == '1')
+		print_larger_pixel(data, (y * 5), (x * 5), RGB_MAROON);
 }
 
-void	draw_map(t_data *data)
+static void	draw_line(t_data *data, char *line, int y)
 {
-	render_background(data);
-	draw_mini_map(data);
-	raycast(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	int	x;
+
+	x = -1;
+	while (line[++x])
+		print_block(data, y, x, line[x]);
+}
+
+void	draw_mini_map(t_data *data)
+{
+	int	line;
+
+	line = -1;
+	while (data->map.mini_map[++line])
+		draw_line(data, data->map.mini_map[line], line);
 }

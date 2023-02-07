@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/05 23:39:38 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # define VALID_CHARS "01NSEW\n\t "
 # define ESPECIAL_CHARS "NSEW"
 
-
-# define RGB_RED 0x00FF0000
+# define RED 0x00FF0000
 # define RGB_MAROON 0x00800000
 # define RGB_WHITE 0x00FFFFFF
+# define FLOOT_COLOR 0x8B4513
+# define SKY_COLOR 0x87CEEB
+
 
 # define P_Y 0
 # define P_X 1
@@ -82,8 +84,9 @@ t_bool		open_file_status(int *dst, char *path_file);
 t_bool		manipulating_map(t_data *data);
 t_bool		valid_chars_or_die(t_map *data);
 t_bool		valid_chars_line(t_map *data, char *line);
-t_bool		interactor_chars_or_die(t_map *data, char _char);
-void		save_position_player(t_map *data, int position_x, char _char);
+t_bool		interactor_chars_status(char _char);
+t_bool		save_position_player(t_map *data, int position_x, char _char);
+t_bool		set_direction_player(t_map *data, char c);
 
 t_bool		alloc_map_status(t_map *data, int fd);
 t_bool		get_valid_line(char **dst, int fd);
@@ -120,11 +123,14 @@ t_bool		init_img(t_data *data);
 /*							DRAW_MAP										  */
 /******************************************************************************/
 
-int			draw_map_or_die(t_data *data);
-int			draw_map(t_data *data);
+t_bool		draw_map_status(t_data *data);
+void		draw_map(t_data *data);
 
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+void		render_background(t_data *data);
+void		draw_mini_map(t_data *data);
 
 void		save_value_x(int nbr);
 int			get_save_x(void);
@@ -149,9 +155,6 @@ void		draw_mapingd(char **map);
 double		player_p_x(t_data *data);
 double		player_p_y(t_data *data);
 
-void		set_direction_player(t_map *data, char c);
-
-
 /******************************************************************************/
 /*								RAYCAST										  */
 /******************************************************************************/
@@ -162,8 +165,8 @@ void		position_player_map(t_raycast *itens, t_data *data);
 void		length_ray(t_raycast *itens);
 void		length_ray_next_x_y(t_raycast *itens, t_data *data);
 void		jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
-void		calculate_height_line(t_raycast *itens, t_data *data);
-void		calculate_pixel(t_raycast *itens, t_data *data);
+void		calculate_height_line(t_raycast *itens);
+void		calculate_pixel(t_raycast *itens);
 
 int			is_valid_position(t_map *map, double x, double y);
 int			cleanup_program(t_data *data);
@@ -181,7 +184,7 @@ t_bool		has_flag(void);
 
 t_bool		debug_printc(t_bool mod_debug, char *prefix, char *msg);
 t_bool		debug_printi(t_bool mod_debug, char *prefix, int number);
-t_bool		write_msg_error(char *prefix, char *msg);
+t_bool		msg_and_error(char *prefix, char *msg);
 void		wrong_write_line(int position, char *line);
 
 void		write_info_save(int position_x, int position_y, char _char);
@@ -203,7 +206,7 @@ t_bool		all_coordinates_valid(t_parse *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);
-int			avance_is_check_end(char **data_line, char *number);
+void		avance_is_check_end(char **data_line, char *number);
 char		*firts_number(char *str);
 t_bool		get_int_valid(char **dst, char *data_line);
 

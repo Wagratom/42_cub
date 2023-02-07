@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 16:16:44 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 17:51:01 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_bool	extract_data_status(t_map *data, int fd)
 {
-	int		status;
-
 	if (data == NULL || fd < 0)
 		return (FALSE);
 	if (extract_data_map(data, fd) == -1)
