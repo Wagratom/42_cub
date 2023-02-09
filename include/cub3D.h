@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:51:45 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:43:50 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 #define WIDTH 640
 #define HEIGHT 480
 
+
+#define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
+#define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the size of the full map"
 # define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
@@ -67,11 +70,6 @@
 # define ARROW_RIGHT 65363
 # define ARROW_DOWN 65364
 # define ARROW_LEFT 65361
-
-#define NORTH 0
-#define SOUTH 1
-#define WEST 2
-#define EAST 3
 
 /******************************************************************************/
 /*							VALIDACION MAP									  */

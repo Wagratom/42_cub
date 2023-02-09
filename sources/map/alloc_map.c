@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:43:17 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/09 17:44:29 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_bool	alloc_ptr_status(t_map *data, int size)
 {
-
 	debug_printc(has_flag(), NULL, "Allocated ptr for full_map");
 	data->full_map = (char **)ft_calloc((size + 1), sizeof(char *));
 	if (data->full_map == NULL)
@@ -38,9 +37,6 @@ t_bool	alloc_map_full_map(t_map *data, int size, int fd)
 	draw_mapingd(data->full_map);
 	return (TRUE);
 }
-
-#define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
-#define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the size of the full map"
 
 t_bool	create_mini_map(t_map *data)
 {
