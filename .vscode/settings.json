@@ -25,6 +25,7 @@
 		"unordered_map": "c",
 		"vector": "c",
 		"random": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"*.tcc": "c"
 	}
 }

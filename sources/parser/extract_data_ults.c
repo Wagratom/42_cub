@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:51:52 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 16:32:43 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 char	*data_in_line(char *line)
 {
-	int		init_data;
+	int		init_data_or_die;
 	int		end_data;
 
 	if (line == NULL || *line == '\0')
 		return (NULL);
-	init_data = (ft_strchr(line, ' ') + 1) - line;
-	end_data = (ft_strchr(line, '\n') - line) - init_data;
-	return (ft_substr(line, init_data, end_data));
+	init_data_or_die = (ft_strchr(line, ' ') + 1) - line;
+	end_data = (ft_strchr(line, '\n') - line) - init_data_or_die;
+	return (ft_substr(line, init_data_or_die, end_data));
 }
 
-int	open_file_is_clear_path(int *dst, char *path_file)
+int	open_texture_is_clear_path(int *dst, char *path_file)
 {
 	debug_printc(has_flag(), "Opening texture path: ", path_file);
 	*dst = open(path_file, O_RDONLY, 0777);

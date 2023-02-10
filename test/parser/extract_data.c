@@ -102,13 +102,13 @@ MU_TEST(extract_data_valid_texture2)
 	mu_assert_int_eq(data.d_map.c[1], 30);
 	mu_assert_int_eq(data.d_map.c[2], 0);
 
-	mu_check(data.d_map.coordinites[NORTH] != 0);
-	mu_check(data.d_map.coordinites[SOUTH] != 0);
-	mu_check(data.d_map.coordinites[WEST] != 0);
+	mu_check(data.d_map.coordinites[NO] != 0);
+	mu_check(data.d_map.coordinites[SO] != 0);
+	mu_check(data.d_map.coordinites[WE] != 0);
 
-	mu_check(data.d_map.coordinites[NORTH] != -1);
-	mu_check(data.d_map.coordinites[SOUTH] != -1);
-	mu_check(data.d_map.coordinites[WEST] != -1);
+	mu_check(data.d_map.coordinites[NO] != -1);
+	mu_check(data.d_map.coordinites[SO] != -1);
+	mu_check(data.d_map.coordinites[WE] != -1);
 }
 
 MU_TEST_SUITE(suite_extract_data)

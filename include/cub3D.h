@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 13:57:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 16:23:33 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,13 @@ t_bool		valid_char_or_die(char _char);
 /*							INITIALIZE										  */
 /******************************************************************************/
 
-void		init_data(t_data *data, char *file_name);
+void		init_data_or_die(t_data *data, char *file_name);
 t_bool		init_mlx_status(t_data *data);
 t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
+
+
+t_bool		init_texture(t_data *data);
 
 /******************************************************************************/
 /*							DRAW_MAP										  */
@@ -198,7 +201,7 @@ t_bool		extract_data_status(t_map *data, int fd);
 int			extract_data_map(t_map *data, int fd);
 int			extract_data_line(t_parse *data, char *line);
 char		*data_in_line(char *line);
-int			open_file_is_clear_path(int *dst, char *path_file);
+int			open_texture_is_clear_path(int *dst, char *path_file);
 char		*get_line_p(char **line, int fd);
 void		interact_size_d_map(t_map *data);
 t_bool		all_coordinates_valid(t_parse *data);
@@ -211,7 +214,7 @@ t_bool		get_int_valid(char **dst, char *data_line);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
-int			open_file_is_clear_path(int *dst, char *path_file);
+int			open_texture_is_clear_path(int *dst, char *path_file);
 
 char		*first_word(char *str);
 

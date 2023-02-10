@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 13:58:26 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 16:33:12 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_parser
 	int	c[3];
 	int	coordinites[4];
 	int	coordinates_save[4];
+	int	**texture;
 
 }	t_parse;
 
@@ -95,13 +96,6 @@ typedef enum s_positions
 	WE,
 }	t_directions;
 
-// typedef enum s_positions
-// {
-// 	NORTH,
-// 	SOUTH,
-// 	WEST,
-// 	EAST,
-// }	t_positions;
 
 /******************************************************************************/
 /*									RAYCAST									  */

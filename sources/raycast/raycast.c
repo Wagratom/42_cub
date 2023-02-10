@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 14:00:14 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 14:06:12 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	render_background(t_data *data)
 void	raycast(t_data *data)
 {
 	int			x;
-	int			y;
 	t_raycast	itens;
 
 	x = -1;
@@ -67,8 +66,8 @@ void	raycast(t_data *data)
 		length_ray(&itens);
 		length_ray_next_x_y(&itens, data);
 		jump_next_square_and_verify_hit_wall(&itens, data);
-		calculate_height_line(&itens, data);
-		calculate_pixel(&itens, data);
+		calculate_height_line(&itens);
+		calculate_pixel(&itens);
 		texture(data, &itens, x);
 		// ver_line(data, &itens, x, RGB_RED);
 	}
