@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 13:47:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:58:26 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,22 @@ typedef struct s_data
 /******************************************************************************/
 /*									AUX_POSITINOS							  */
 /******************************************************************************/
-typedef enum e_directions
+
+typedef enum s_positions
 {
 	NO,
 	SO,
 	EA,
-	WE
+	WE,
 }	t_directions;
 
-typedef enum s_positions
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-}	t_positions;
+// typedef enum s_positions
+// {
+// 	NORTH,
+// 	SOUTH,
+// 	WEST,
+// 	EAST,
+// }	t_positions;
 
 /******************************************************************************/
 /*									RAYCAST									  */
