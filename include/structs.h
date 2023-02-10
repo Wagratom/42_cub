@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/04 11:17:24 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/09 12:30:51 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,21 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
-	int		*texture;
+	int		**texture;
 
 	t_tex	t;
 	t_map	map;
 	t_img	img;
 
 }	t_data;
+
+typedef enum e_directions
+{
+	NO,
+	SO,
+	EA,
+	WE
+}	t_directions;
 
 typedef enum s_positions
 {

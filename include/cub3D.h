@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:16:36 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/09 22:35:17 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ t_bool		init_img(t_data *data);
 
 int			draw_map_or_die(t_data *data);
 int			draw_map(t_data *data);
-
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 

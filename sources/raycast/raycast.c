@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 12:06:05 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/09 22:28:50 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,31 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 		my_mlx_pixel_put(&data->img, x, y1, color);
 }
 
-// void	draw(t_data *data)
-// {
-// 	int	x;
-// 	int	y;
+void	render_background(t_data *data)
+{
+	int	x;
+	int	y;
 
-// 	x = -1;
-// 	while (++x < HEIGHT)
-// 	{
-// 		y = -1;
-// 		while (++y < WIDTH)
-// 			data->img.addr[x * WIDTH + y] = data->t.buf[x][y];
-// 	}
-// }
+	x = -1;
+	while (++x < WIDTH)
+	{
+		y = -1;
+		while (++y < HEIGHT / 2)
+			data->t.buf[y][x] = 0x87CEEB;
+		y = HEIGHT / 2 - 1;
+		while (++y < HEIGHT)
+			data->t.buf[y][x] = 0x8B4513;
+	}
+}
 
 void	raycast(t_data *data)
 {
 	int			x;
 	int			y;
 	t_raycast	itens;
-	if (data->t.flag)
-	{
-		x = -1;
-		while (++x < HEIGHT)
-		{
-			y = -1;
-			while (++y < WIDTH)
-				data->t.buf[x][y] = 0;
-		}
-	}
+
 	x = -1;
+	render_background(data);
 	init_raycast(&itens, data);
 	while (++x < WIDTH)
 	{
