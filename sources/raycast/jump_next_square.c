@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:11:26 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:47:08 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	lance_ray_in_wall(t_raycast *itens, t_data *data)
 			itens->map[P_Y] += itens->step[P_Y];
 			itens->side = 1;
 		}
-		print_larger_pixel(data, itens->map[P_Y] * 5, \
-		itens->map[P_X] * 5, RED);
-		if (data->map.mini_map[itens->map[P_Y]][itens->map[P_X]] == '1')
+		print_larger_pixel(data, itens->map[P_X] * 5, \
+		itens->map[P_Y] * 5, RGB_RED);
+		if (data->map.map[itens->map[P_Y]][itens->map[P_X]] == '1')
 			return ;
 	}
 }

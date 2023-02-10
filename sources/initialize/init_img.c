@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:49:52 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:50:13 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	get_addr(t_img *img, int *bits, int *length, int *endian)
 {
-	img->addr = mlx_get_data_addr(img->img, bits, length, endian);
+	img->addr = (int *)mlx_get_data_addr(img->img, bits, length, endian);
 }
 
 t_bool	get_addr_img(t_img *img)
@@ -28,7 +28,7 @@ t_bool	get_addr_img(t_img *img)
 
 t_bool	creat_img_status(t_data *data)
 {
-	data->img.img = mlx_new_image(data->mlx, 640, 480);
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (data->img.img != NULL)
 		return (TRUE);
 	write(2, "Error: Image not created\n", 18);

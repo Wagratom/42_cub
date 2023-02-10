@@ -6,11 +6,13 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:52:13 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 13:52:55 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	texture(t_data *data, t_raycast *r, int j);
 
 void	init_raycast(t_raycast *itens, t_data *data)
 {
@@ -32,12 +34,31 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 		my_mlx_pixel_put(&data->img, y1, x, color);
 }
 
-void	raycast(t_data *data)
+void	render_background(t_data *data)
 {
-	t_raycast	itens;
-	int			x;
+	int	x;
+	int	y;
 
 	x = -1;
+	while (++x < WIDTH)
+	{
+		y = -1;
+		while (++y < HEIGHT / 2)
+			data->t.buf[y][x] = 0x87CEEB;
+		y = HEIGHT / 2 - 1;
+		while (++y < HEIGHT)
+			data->t.buf[y][x] = 0x8B4513;
+	}
+}
+
+void	raycast(t_data *data)
+{
+	int			x;
+	int			y;
+	t_raycast	itens;
+
+	x = -1;
+	render_background(data);
 	init_raycast(&itens, data);
 	while (++x < WIDTH)
 	{
@@ -46,8 +67,10 @@ void	raycast(t_data *data)
 		length_ray(&itens);
 		length_ray_next_x_y(&itens, data);
 		jump_next_square_and_verify_hit_wall(&itens, data);
-		calculate_height_line(&itens);
-		calculate_pixel(&itens);
-		ver_line(data, &itens, x, RED);
+		calculate_height_line(&itens, data);
+		calculate_pixel(&itens, data);
+		texture(data, &itens, x);
+		// ver_line(data, &itens, x, RGB_RED);
 	}
+	// draw(data);
 }
