@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 22:28:50 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:14:04 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 	y1 = itens->drawStart - 1;
 	y2 = itens->drawEnd;
 	while (++y1 <= y2)
-		my_mlx_pixel_put(&data->img, x, y1, color);
+		my_mlx_pixel_put(&data->img, y1, x, color);
 }
 
 void	render_background(t_data *data)

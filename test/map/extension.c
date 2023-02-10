@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extension.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 16:59:18 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/12/03 22:58:25 by wwallas-         ###   ########.fr       */
+/*   Updated: 2023/02/01 23:05:55 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	foo;
 
 void	test_setup(void)
 {
+	set_flag(FALSE);
 }
 void	test_teardown(void)
 {

@@ -11,6 +11,20 @@
 		"cub3d.h": "c",
 		"cmath": "c",
 		"mlx.h": "c",
-		"functional": "c"
+		"functional": "c",
+		"initializer_list": "cpp",
+		"utility": "cpp",
+		"memory": "c",
+		"tuple": "c",
+		"math.h": "c",
+		"structs.h": "c",
+		"fcntl.h": "c",
+		"numbers": "c",
+		"ults.h": "c",
+		"deque": "c",
+		"unordered_map": "c",
+		"vector": "c",
+		"random": "c",
+		"unistd.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 12:30:51 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:04:58 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,45 @@
 # include <cub3D.h>
 # include <texture.h>
 
+/******************************************************************************/
+/*									PARSER									  */
+/******************************************************************************/
+typedef struct s_parser
+{
+	int	f[3];
+	int	c[3];
+	int	coordinites[4];
+	int	coordinates_save[4];
+
+}	t_parse;
+
+/******************************************************************************/
+/*									MAP									  */
+/******************************************************************************/
 typedef struct s_map
 {
 	char	*file_name;
-	char	**map;
+	char	**full_map;
+	char	**mini_map;
 	int		chars[4];
 	int		size_y;
 	int		size_x;
 	int		fd;
 
-	double		player[2];
-	double		speed;
-	double		rot_speed;
-	double		dir[2];
-	double		plane[2];
+	double	player[2];
+	double	speed;
+	double	rot_speed;
+	double	dir[2];
+	double	plane[2];
+
+	t_parse	d_map;
+	int		size_d_map;
 
 }	t_map;
 
+/******************************************************************************/
+/*									IMG										  */
+/******************************************************************************/
 typedef struct s_img
 {
 	void	*img;
@@ -46,7 +68,9 @@ typedef struct s_img
 
 }	t_img;
 
-
+/******************************************************************************/
+/*									control									  */
+/******************************************************************************/
 typedef struct s_data
 {
 	void	*mlx;
@@ -59,22 +83,21 @@ typedef struct s_data
 
 }	t_data;
 
-typedef enum e_directions
+/******************************************************************************/
+/*									AUX_POSITINOS							  */
+/******************************************************************************/
+
+typedef enum s_positions
 {
 	NO,
 	SO,
 	EA,
-	WE
-}	t_directions;
+	WE,
+}	t_positions;
 
-typedef enum s_positions
-{
-	P_N,
-	P_S,
-	P_E,
-	P_W,
-}			t_positions;
-
+/******************************************************************************/
+/*									RAYCAST									  */
+/******************************************************************************/
 typedef struct s_raycast
 {
 	int		map[2];
@@ -90,6 +113,6 @@ typedef struct s_raycast
 	int		drawStart;
 	int		drawEnd;
 	int		side;
-}t_raycast;
+}	t_raycast;
 
 #endif

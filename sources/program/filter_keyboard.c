@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filter_keyboard.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 22:50:03 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:09:21 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	filter_keyboard(int key, t_data *data)
 {
 	if (key == KEY_ESQ)
-		exit(0);
+		cleanup_program(data);
 	if (key == KEY_W)
 		map_move_up(&data->map);
 	else if (key == KEY_D)

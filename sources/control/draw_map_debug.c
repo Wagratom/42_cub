@@ -6,19 +6,26 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:14:06 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/05 23:18:41 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	draw_mapingD(char **map)
+void	draw_mapingd(char **map)
 {
-	debug_print(has_flag(), "\tMap allocated\n\n");
+	if (!has_flag())
+		return ;
+	if (map == NULL)
+		return ;
+	write(1, B, ft_strlen(B));
+	write(1, "\tMap\n", 5);
+	write(1, BKB, ft_strlen(BKB));
 	while (*map)
 	{
-		printf("%s", *map);
+		write(1, *map, ft_strlen(*map));
 		map++;
 	}
-	printf("\n");
+	write(1, W, ft_strlen(W));
+	write(1, "\n", 1);
 }

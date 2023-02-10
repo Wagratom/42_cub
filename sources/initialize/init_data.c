@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 22:44:16 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:08:51 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 static void	init_struct(t_data *data)
 {
 	ft_bzero(data, sizeof(t_data));
-	debug_print(has_flag(), "Struct: Ok\n");
+	debug_printc(has_flag(), "Struct: ", "Ok");
 }
 
-t_bool	init_mlx_or_die(t_data *data)
+t_bool	init_mlx_status(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		return (FALSE);
-	debug_print(has_flag(), "Mlx: Ok\n");
+		return (msg_and_error("Error: ", "Pointer mlk initializa"));
+	debug_printc(has_flag(), "Mlx: ", "Ok");
 	return (TRUE);
 }
 
@@ -32,7 +32,7 @@ t_bool	load_texture(t_data *data, int *texture, char *path)
 	int		i;
 	int		j;
 	t_img	img;
-	
+
 	img.img = mlx_xpm_file_to_image(data->mlx, path, &img.width, &img.height);
 	if (!img.img)
 		return (FALSE);
@@ -90,19 +90,24 @@ t_bool	init_texture(t_data *data)
 		return (FALSE);
 	debug_print(has_flag(), "Texture: Ok\n");
 	return (TRUE);
+void	set_basic_infos(t_data *data, char *file_name)
+{
+	data->map.file_name = file_name;
+	data->map.speed = 0.15;
+	data->map.rot_speed = 0.08;
 }
 
 void	init_data(t_data *data, char *file_name)
 {
-	debug_print(has_flag(), "\tinitializing struct and connections\n");
+	debug_printc(has_flag(), C, "\tinitializing struct and connections");
 	init_struct(data);
-	if (init_mlx_or_die(data) == FALSE)
+	set_basic_infos(data, file_name);
+	if (!init_mlx_status(data))
 		exit_msg(MLX_NULL);
-	if (init_img(data) == FALSE)
+	if (!init_img(data))
 		clean_conections(data);
 	if (init_texture(data) == FALSE)
 		exit_msg("deu ruim na textura\n");
-	debug_print(has_flag(), "Sucess: Create Connections\n\n");
 	data->map.file_name = file_name;
 	data->map.dir[P_X] = 0;
 	data->map.dir[P_Y] = 0;
@@ -111,4 +116,5 @@ void	init_data(t_data *data, char *file_name)
 	data->map.speed = 0.09;
 	data->map.rot_speed = 0.08;
 	data->t.flag = 0;
+	debug_printc(has_flag(), NULL, "Sucess createconnections\n");
 }

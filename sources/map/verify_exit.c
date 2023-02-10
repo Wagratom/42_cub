@@ -6,98 +6,41 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/01/27 17:57:48 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static t_bool	val_move_right(char **map, int *posi_x, int posi_y)
+void	verify_is_closed(char **map, int y, int x, t_bool *status)
 {
-	if (map[posi_y][*posi_x + 1] == '1' || map[posi_y][*posi_x + 1] == '4')
-		return (FALSE);
-	*posi_x += 1;
-	return (TRUE);
-}
-
-static t_bool	val_move_down(char **map, int posi_x, int *posi_y)
-{
-	if (map[*posi_y + 1] == NULL)
-		return (FALSE);
-	if (map[*posi_y + 1][posi_x] == '1' || map[*posi_y + 1][posi_x] == '4')
-		return (FALSE);
-	*posi_y += 1;
-	return (TRUE);
-}
-
-static t_bool	val_move_left(char **map, int *posi_x, int posi_y)
-{
-	if (*posi_x - 1 < 0)
-		return (FALSE);
-	if (map[posi_y][*posi_x - 1] == '1' || map[posi_y][*posi_x - 1] == '4')
-		return (FALSE);
-	*posi_x -= 1;
-	return (TRUE);
-}
-
-static t_bool	val_move_up(char **map, int posi_x, int *posi_y)
-{
-	if (*posi_y - 1 < 0)
-		return (FALSE);
-	if (map[*posi_y - 1][posi_x] == '1' || map[*posi_y - 1][posi_x] == '4')
-		return (FALSE);
-	*posi_y -= 1;
-	return (TRUE);
-}
-
-static t_bool	verify_not_close(char **map, int posi_x, int posi_y, t_bool *status)
-{
-	if (map[posi_y][posi_x] == ' ')
-		*status = FALSE;
-	if (map[posi_y][posi_x] == '\n')
-		*status = FALSE;
-	return (*status);
-}
-
-void	verify_is_closed(char **map, int posi_x, int posi_y, t_bool *status)
-{
-	if (!verify_not_close(map, posi_x, posi_y, status))
+	if (!verify_not_close(map, x, y, status))
 		return ;
-	map[posi_y][posi_x] = '4';
-	//draw_map_debug(map->map);
-	if (val_move_right(map, &posi_x, posi_y))
-	{
-		verify_is_closed(map, posi_x, posi_y, status);
-	}
-	else if (val_move_down(map, posi_x, &posi_y))
-	{
-		verify_is_closed(map, posi_x, posi_y, status);
-	}
-	else if (val_move_left(map, &posi_x, posi_y))
-	{
-		verify_is_closed(map, posi_x, posi_y, status);
-	}
-	else if (val_move_up(map, posi_x, &posi_y))
-	{
-		verify_is_closed(map, posi_x, posi_y, status);
-	}
+	map[y][x] = '4';
+	if (val_move_right(map, &x, y))
+		verify_is_closed(map, y, x, status);
+	else if (val_move_down(map, x, &y))
+		verify_is_closed(map, y, x, status);
+	else if (val_move_left(map, &x, y))
+		verify_is_closed(map, y, x, status);
+	else if (val_move_up(map, x, &y))
+		verify_is_closed(map, y, x, status);
 	else
 		return ;
-	verify_is_closed(map, posi_x, posi_y, status);
+	verify_is_closed(map, y, x, status);
 }
 
-t_bool	verify_exit_or_die(t_map *data)
+t_bool	verify_exit_status(t_map *data)
 {
 	t_bool	status;
 	char	**copy_map;
 
-	debug_print(has_flag(), "validando exit mapa...\n");
-	if (data->map == NULL)
-		return (FALSE);
+	if (data->mini_map == NULL)
+		return (msg_and_error(NULL, "Error: mini map is null\n"));
 	status = TRUE;
-	copy_map = ft_array_dup(data->map);
-	verify_is_closed(copy_map, data->player[P_X], data->player[P_Y], &status);
+	copy_map = ft_array_dup(data->mini_map);
+	verify_is_closed(copy_map, data->player[P_Y], data->player[P_X], &status);
 	delete_map(copy_map);
-	debug_print(has_flag(), "Exit OK...\n");
+	debug_printc(has_flag(), "validacion: ", "Exit OK");
 	return (status);
 }

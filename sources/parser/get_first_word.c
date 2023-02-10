@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delet_map.c                                        :+:      :+:    :+:   */
+/*   get_first_word.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 15:37:22 by wwallas-          #+#    #+#             */
-/*   Updated: 2022/12/06 15:45:40 by wwallas-         ###   ########.fr       */
+/*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
+/*   Updated: 2023/02/01 23:29:47 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	delete_map(char **map)
+char	*first_word(char *str)
 {
-	int	index;
+	char	*end_word;
+	int		len_word;
 
-	index = -1;
-	while (map[++index])
-		free(map[index]);
-	free(map);
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	end_word = ft_strchr(str, ' ');
+	if (end_word == NULL)
+		return (NULL);
+	len_word = end_word - str;
+	return (ft_substr(str, 0, len_word));
 }

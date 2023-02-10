@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_larger_pixel.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:38:49 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 22:06:26 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/10 13:07:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int y, int x, int color)
 {
 	char	*dst;
 
@@ -20,10 +20,10 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	print_larger_pixel(t_data *data, int x, int y, int color)
+void	print_larger_pixel(t_data *data, int y, int x, int color)
 {
-	int			len_x;
-	int			size_y;
+	int	len_x;
+	int	size_y;
 
 	save_value_x(x);
 	len_x = get_save_x() + 5;
@@ -32,7 +32,7 @@ void	print_larger_pixel(t_data *data, int x, int y, int color)
 	{
 		x = get_save_x();
 		while (x++ < len_x - 1)
-			my_mlx_pixel_put(&data->img, x, y, color);
+			my_mlx_pixel_put(&data->img, y, x, color);
 	}
 	save_value_x(0);
 }
