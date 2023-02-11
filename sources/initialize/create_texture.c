@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 10:32:31 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 12:19:19 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,6 @@ t_bool	load_texture(t_data *data, int *texture, char *path)
 	return (TRUE);
 }
 
-void	texture_zero(t_data *data)
-{
-	int	i;
-
-	i = -1;
-	while (++i < TILE_SIZE * TILE_SIZE)
-	{
-		data->texture[NO][i] = 0;
-		data->texture[SO][i] = 0;
-		data->texture[EA][i] = 0;
-		data->texture[WE][i] = 0;
-	}
-}
-
 t_bool	alloc_texture(t_data *data)
 {
 	int	index;
@@ -85,7 +71,6 @@ t_bool	alloc_texture(t_data *data)
 			return (msg_and_error(NULL, "Error: Error in malloc pointer to texture"));
 		ft_bzero(data->texture[index], size); // nao sei c da o msm efeito // pode usar o ft_calloc tb da na mesma
 	}
-	// texture_zero(data);
 	return (TRUE);
 }
 

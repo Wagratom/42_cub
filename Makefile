@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/10 14:16:48 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/02/11 12:24:55 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
 
 CC			=	cc -g3
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=leak
+CFLAGS		=	-Wall -Wextra -Werror #-fsanitize=leak
 FLAGS_MLX	=	-fPIE -Imlx_linux -lXext -lX11 -lm -lz -o
 
 RM			=	rm -rf
