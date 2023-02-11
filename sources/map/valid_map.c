@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:13:43 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 13:29:03 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:19:28 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@ static t_bool	extracting_date(t_data *data)
 	return (TRUE);
 }
 
-static t_bool	valid_map_chars(t_data *data)
-{
-	debug_printc(has_flag(), C, "\tValiding chars of map...");
-	if (!valid_chars_or_die(&data->map))
-		return (FALSE);
-	close(data->map.fd);
-	debug_printc(has_flag(), "Validacion: ", "Chars: Ok\n");
-	return (TRUE);
-}
-
 static t_bool	locating_map(t_data *data)
 {
 	debug_printc(has_flag(), C, "\tallocating the map");
@@ -50,12 +40,6 @@ static t_bool	locating_map(t_data *data)
 		return (FALSE);
 	close(data->map.fd);
 	return (TRUE);
-}
-
-static t_bool	valid_map_exit(t_data *data)
-{
-	debug_printc(has_flag(), C, "\tValidating map exit...");
-	return (verify_exit_status(&data->map));
 }
 
 t_bool	manipulating_map(t_data *data)
