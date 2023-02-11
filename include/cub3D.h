@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:23:33 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 10:36:21 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,13 @@ void		delete_map(char **map);
 /******************************************************************************/
 /*								PARSER										  */
 /******************************************************************************/
-t_bool		extract_data_status(t_map *data, int fd);
-int			extract_data_map(t_map *data, int fd);
+t_bool		extract_data_status(t_data *data, int fd);
+int			extract_data_map(t_parse *data, int fd);
 int			extract_data_line(t_parse *data, char *line);
 char		*data_in_line(char *line);
 int			open_texture_is_clear_path(int *dst, char *path_file);
 char		*get_line_p(char **line, int fd);
-void		interact_size_d_map(t_map *data);
+void		interact_size_d_map(t_parse *data);
 t_bool		all_coordinates_valid(t_parse *data);
 
 int			extract_colors_status(int dst[], char *numbers);
@@ -214,18 +214,17 @@ t_bool		get_int_valid(char **dst, char *data_line);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
-int			open_texture_is_clear_path(int *dst, char *path_file);
 
 char		*first_word(char *str);
 
 int			coordinates(char *line);
-int			open_texture(int coordinates, char *path_file, t_parse *data);
+int			open_texture(t_parse *data, int coordinates, char *path_file);
 
-int			fill_collor(int collor, char *numbers, t_parse *data);
+int			fill_collor(t_parse *data, int collor, char *numbers);
 int			collor_rgb(char *line);
 
 
 
 void		exit_msg(char *msg);
-void		clean_conections(t_data *data);
+void		clean_connections(t_data *data);
 #endif

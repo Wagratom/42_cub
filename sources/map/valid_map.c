@@ -6,18 +6,21 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:13:43 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:18:31 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/10 16:56:12 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static t_bool	extracting_date(t_map *data)
+static t_bool	extracting_date(t_data *data)
 {
+	t_map	*aux;
+
+	aux = &data->map;
 	debug_printc(has_flag(), C, "\tExtract data of map...");
-	if (!open_file_status(&data->fd, data->file_name))
+	if (!open_file_status(&aux->fd, aux->file_name))
 		return (FALSE);
-	if (!extract_data_status(data, data->fd))
+	if (!extract_data_status(data, aux->fd))
 		return (FALSE);
 	return (TRUE);
 }
@@ -51,7 +54,7 @@ static t_bool	valid_map_exit(t_map *data)
 
 t_bool	manipulating_map(t_data *data)
 {
-	if (!extracting_date(&data->map))
+	if (!extracting_date(data))
 		cleanup_program(data);
 	if (!valid_map_chars(&data->map))
 		cleanup_program(data);

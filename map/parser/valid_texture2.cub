@@ -2,10 +2,10 @@
 F 220,100,0
 C 225,30,0
 
-NO ./texture/north
-SO ./texture/south
-WE ./texture/west
-EA ./texture/east
+NO ./wood.xpm
+SO ./redbrick.xpm
+WE ./greystone.xpm
+EA ./colorstone.xpm
 
 		1111111111111111111111111
 		1000000000110000000000001

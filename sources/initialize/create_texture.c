@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:22:34 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 10:32:31 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 t_bool	open_img_texture(t_data *data, t_img *img, char *path)
 {
+	if (data->mlx == NULL)
+		return (msg_and_error("Error in opening texture: ", "Pointer mlx NULL"));
 	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->width, &img->height);
-	if (!img->img)
-		return (msg_and_error("Error: ", "Not open Texture"));
+	if (img->img == NULL)
+		return (msg_and_error("Error: can't open the texture: ", path));
 	return (TRUE);
 }
 
 t_bool	open_addr_texture(t_img *img)
 {
+	if (img->img == NULL)
+		return (msg_and_error("Error in getting img addr: ", "Pointer img NULL"));
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, \
 		&img->line_length, &img->endian);
 	if (!img->addr)
@@ -85,19 +89,32 @@ t_bool	alloc_texture(t_data *data)
 	return (TRUE);
 }
 
+static t_bool	clear_texture(t_data *data)
+{
+	int	index;
+
+	index = -1;
+	while(++index < 4)
+		free(data->texture[index]);
+	free(data->texture);
+	return (FALSE);
+}
+
 t_bool	init_texture(t_data *data)
 {
+	int	index;
+
 	debug_printc(has_flag(), NULL, "allocando a pointers to texture: OK");
 	if (!alloc_texture(data))
 		return (FALSE);
-	if (!load_texture(data, data->texture[NO], "wood.xpm"))
-		return (FALSE);
-	if (!load_texture(data, data->texture[SO], "redbrick.xpm"))
-		return (FALSE);
-	if (!load_texture(data, data->texture[EA], "greystone.xpm"))
-		return (FALSE);
-	if (!load_texture(data, data->texture[WE], "colorstone.xpm"))
-		return (FALSE);
+	index = -1;
+	while (++index < 4)
+	{
+		if (load_texture(data, data->texture[index], data->parser.coordinates[index]))
+			continue;
+		clear_texture(data);
+		return (msg_and_error("Error: ", "Not load texture"));
+	}
 	debug_printc(has_flag(), NULL, "Texture: Ok\n");
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:33:12 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 11:32:57 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct s_parser
 {
 	int	f[3];
 	int	c[3];
-	int	coordinites[4];
-	int	coordinates_save[4];
+	char	*coordinates[4];
+	int		coordinates_save[4];
 	int	**texture;
+	int	size_parser;
 
 }	t_parse;
 
@@ -48,7 +49,6 @@ typedef struct s_map
 	double	dir[2];
 	double	plane[2];
 
-	t_parse	d_map;
 	int		size_d_map;
 
 }	t_map;
@@ -81,6 +81,7 @@ typedef struct s_data
 	t_tex	t;
 	t_map	map;
 	t_img	img;
+	t_parse	parser;
 
 }	t_data;
 
@@ -92,8 +93,8 @@ typedef enum s_positions
 {
 	NO,
 	SO,
-	EA,
 	WE,
+	EA,
 }	t_directions;
 
 

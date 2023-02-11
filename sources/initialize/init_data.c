@@ -42,6 +42,6 @@ void	init_data_or_die(t_data *data, char *file_name)
 	if (!init_mlx_status(data))
 		exit_msg(MLX_NULL);
 	if (!init_img(data))
-		clean_conections(data);
+		clean_connections(data);
 	debug_printc(has_flag(), NULL, "Sucess createconnections\n");
 }

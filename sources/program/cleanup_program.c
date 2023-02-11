@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:50:50 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 10:15:50 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exit_msg(char *msg)
 	exit(0);
 }
 
-void	clean_conections(t_data *data)
+void	clean_connections(t_data *data)
 {
 	if (data->img.img)
 		mlx_destroy_image(data->mlx, data->img.img);
@@ -43,7 +43,7 @@ void	delete_map(char **map)
 
 int	cleanup_program(t_data *data)
 {
-	clean_conections(data);
+	clean_connections(data);
 	delete_map(data->map.full_map);
 	exit(0);
 	return (0);

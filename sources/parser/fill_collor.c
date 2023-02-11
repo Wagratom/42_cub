@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:15:05 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/05 16:15:07 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 10:35:15 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	collor_rgb(char *line)
 	return (0);
 }
 
-int	fill_collor(int collor, char *numbers, t_parse *data)
+int	fill_collor(t_parse *data, int collor, char *numbers)
 {
 	int	status;
 
