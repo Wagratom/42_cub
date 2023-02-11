@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 13:41:25 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:12:50 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_bool	open_addr_texture(t_img *img)
 	if (img->img == NULL)
 		return (msg_and_error("Error in getting img addr: ", "Pointer img NULL"));
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, \
-		&img->line_length, &img->endian);
+		&img->length, &img->endian);
 	if (!img->addr)
 		return (msg_and_error("Error: ", "Not get texture addr"));
 	return (TRUE);
@@ -85,7 +85,7 @@ static t_bool	clear_texture(t_map *data)
 	return (FALSE);
 }
 
-t_bool	init_texture(t_data *data)
+t_bool	create_texture(t_data *data)
 {
 	int	index;
 	t_map	*map;

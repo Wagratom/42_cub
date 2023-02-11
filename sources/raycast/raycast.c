@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 13:50:53 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:07:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ver_line(t_data *data, t_raycast *itens, int x, int color)
 		my_mlx_pixel_put(&data->img, y1, x, color);
 }
 
-void	render_background(t_data *data)
+void	render_background(t_data *data, int c, int f)
 {
 	int	x;
 	int	y;
@@ -44,10 +44,10 @@ void	render_background(t_data *data)
 	{
 		y = -1;
 		while (++y < HEIGHT / 2)
-			data->t.buf[y][x] = 0x87CEEB;
+			data->t.buf[y][x] = c;
 		y = HEIGHT / 2 - 1;
 		while (++y < HEIGHT)
-			data->t.buf[y][x] = 0x8B4513;
+			data->t.buf[y][x] = f;
 	}
 }
 
@@ -57,7 +57,7 @@ void	raycast(t_data *data)
 	t_raycast	itens;
 
 	x = -1;
-	render_background(data);
+	render_background(data, data->map.c, data->map.f);
 	init_raycast(&itens, data);
 	while (++x < WIDTH)
 	{

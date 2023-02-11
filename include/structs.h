@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 13:44:12 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:04:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_img
 	int		width;
 	int		height;
 	int		bits_per_pixel;
-	int		line_length;
+	int		length;
 	int		endian;
 
 }	t_img;

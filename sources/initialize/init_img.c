@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:34:25 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 13:59:23 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:04:56 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_addr(t_img *img, int *bits, int *length, int *endian)
 
 t_bool	get_addr_img(t_img *img)
 {
-	get_addr(img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	get_addr(img, &img->bits_per_pixel, &img->length, &img->endian);
 	if (img->addr != NULL)
 		return (TRUE);
 	write(1, "Error: Address not create\n", 23);

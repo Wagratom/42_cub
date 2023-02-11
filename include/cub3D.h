@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 13:31:23 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 14:12:50 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
 
 
-t_bool		init_texture(t_data *data);
+t_bool		create_texture(t_data *data);
 
 /******************************************************************************/
 /*							DRAW_MAP										  */
@@ -131,7 +131,6 @@ void		draw_map(t_data *data);
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
-void		render_background(t_data *data);
 void		draw_mini_map(t_data *data);
 
 void		save_value_x(int nbr);
@@ -198,12 +197,11 @@ void		delete_map(char **map);
 /*								PARSER										  */
 /******************************************************************************/
 t_bool		extract_data_status(t_data *data, int fd);
-int			extract_data_map(t_parse *data, int fd);
-int			extract_data_line(t_parse *data, char *line);
 char		*data_in_line(char *line);
 char		*get_line_p(char **line, int fd);
 void		interact_size_d_map(t_parse *data);
 t_bool		all_coordinates_valid(t_parse *data);
+void		create_rgbs(t_data *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);

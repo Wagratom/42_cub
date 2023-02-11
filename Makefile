@@ -6,7 +6,7 @@
 #    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/11 12:24:55 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/02/11 13:58:51 by wwalas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_
 				jump_next_square.c look_left.c look_right.c debug.c debug_ready_msgs.c texture.c \
 				get_first_word.c compare_strings.c extract_colors.c extract_data.c open_texture.c \
 				fill_collor.c extract_colors_ults.c extract_data_ults.c alloc_map_ults.c verify_exit_ults.c \
-				render_brackground.c mini_map.c create_texture.c
+				render_brackground.c mini_map.c create_texture.c create_rgbs.c
 
 OBJS_DIR	=	object
 OBJECTS		=	$(patsubst %.c, $(OBJS_DIR)/%.o, $(SOURCES))
