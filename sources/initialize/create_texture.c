@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 12:19:19 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:41:25 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_bool	load_texture(t_data *data, int *texture, char *path)
 	return (TRUE);
 }
 
-t_bool	alloc_texture(t_data *data)
+t_bool	alloc_texture(t_map *data)
 {
 	int	index;
 	int	size;
@@ -74,7 +74,7 @@ t_bool	alloc_texture(t_data *data)
 	return (TRUE);
 }
 
-static t_bool	clear_texture(t_data *data)
+static t_bool	clear_texture(t_map *data)
 {
 	int	index;
 
@@ -88,16 +88,18 @@ static t_bool	clear_texture(t_data *data)
 t_bool	init_texture(t_data *data)
 {
 	int	index;
+	t_map	*map;
 
 	debug_printc(has_flag(), NULL, "allocando a pointers to texture: OK");
-	if (!alloc_texture(data))
+	map = &data->map;
+	if (!alloc_texture(map))
 		return (FALSE);
 	index = -1;
 	while (++index < 4)
 	{
-		if (load_texture(data, data->texture[index], data->parser.coordinates[index]))
+		if (load_texture(data, map->texture[index], data->parser.coordinates[index]))
 			continue;
-		clear_texture(data);
+		clear_texture(map);
 		return (msg_and_error("Error: ", "Not load texture"));
 	}
 	debug_printc(has_flag(), NULL, "Texture: Ok\n");

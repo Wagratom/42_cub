@@ -5,13 +5,13 @@
 static int	get_color(t_data *data, t_raycast *r, int x, int y)
 {
 	if (r->side == 0 && r->rayDir[P_X] > 0)
-		return(data->texture[NO][TILE_SIZE * y + x]);
+		return(data->map.texture[NO][TILE_SIZE * y + x]);
 	else if (r->side == 0 && r->rayDir[P_X] < 0)
-		return(data->texture[SO][TILE_SIZE * y + x]);
+		return(data->map.texture[SO][TILE_SIZE * y + x]);
 	else if (r->side == 1 && r->rayDir[P_Y] > 0)
-		return(data->texture[WE][TILE_SIZE * y + x]);
+		return(data->map.texture[WE][TILE_SIZE * y + x]);
 	else
-		return(data->texture[EA][TILE_SIZE * y + x]);
+		return(data->map.texture[EA][TILE_SIZE * y + x]);
 }
 
 void	texture(t_data *data, t_raycast *r, int j)

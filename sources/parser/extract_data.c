@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 13:25:17 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:35:03 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ static t_bool	clear_texture(t_parse *data, t_bool	status)
 	return (status);
 }
 
+// int	create_trgb(int t, int r, int g, int b)
+// {
+// 	return (t << 24 | r << 16 | g << 8 | b);
+// }
+
+// void	create_collors_rgb(t_parse *data)
+// {
+// 	data
+// }
+
 t_bool	extract_data_status(t_data *data, int fd)
 {
 	if (data == NULL || fd < 0)
@@ -35,6 +45,7 @@ t_bool	extract_data_status(t_data *data, int fd)
 		return (clear_texture(&data->parser, FALSE));
 	if (!init_texture(data))
 		return (clear_texture(&data->parser, FALSE));
+	// create_collors_rgb(&data->parser);
 	return clear_texture(&data->parser, TRUE);
 }
 

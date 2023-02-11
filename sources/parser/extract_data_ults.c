@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 13:25:20 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:31:28 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,4 @@ t_bool	all_coordinates_valid(t_parse *data)
 			return (msg_and_error("Error: ", "Some coordinate did not pass"));
 	}
 	return (TRUE);
-}
-
-int	open_texture_is_clear_path(int *dst, char *path_file)
-{
-	debug_printc(has_flag(), "Opening texture path: ", path_file);
-	*dst = open(path_file, O_RDONLY, 0777);
-	if (*dst >= 0)
-		return (NEW_LINE);
-	debug_printc(has_flag(), NULL, "Error in oping texture");
-	perror("");
-	return (INVALID_DATA);
 }

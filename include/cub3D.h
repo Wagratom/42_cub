@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 13:26:35 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:31:23 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,6 @@ t_bool		extract_data_status(t_data *data, int fd);
 int			extract_data_map(t_parse *data, int fd);
 int			extract_data_line(t_parse *data, char *line);
 char		*data_in_line(char *line);
-int			open_texture_is_clear_path(int *dst, char *path_file);
 char		*get_line_p(char **line, int fd);
 void		interact_size_d_map(t_parse *data);
 t_bool		all_coordinates_valid(t_parse *data);
