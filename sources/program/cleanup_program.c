@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 10:15:50 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 12:11:48 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,19 @@ void	delete_map(char **map)
 	map = NULL;
 }
 
+void	clear_texture(t_data *data)
+{
+	int	index;
+
+	index = -1;
+	while(++index < 4)
+		free(data->texture[index]);
+	free(data->texture);
+}
 int	cleanup_program(t_data *data)
 {
 	clean_connections(data);
+	clear_texture(data);
 	delete_map(data->map.full_map);
 	exit(0);
 	return (0);

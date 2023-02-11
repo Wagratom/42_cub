@@ -6,13 +6,13 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 10:35:21 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 12:10:34 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-static t_bool	clear_texture(t_parse *data)
+static t_bool	clear_texture(t_parse *data, t_bool	status)
 {
 	int	index;
 
@@ -22,7 +22,7 @@ static t_bool	clear_texture(t_parse *data)
 		if (data->coordinates[index])
 			free(data->coordinates[index]);
 	}
-	return (FALSE);
+	return (status);
 }
 
 t_bool	extract_data_status(t_data *data, int fd)
@@ -30,12 +30,12 @@ t_bool	extract_data_status(t_data *data, int fd)
 	if (data == NULL || fd < 0)
 		return (FALSE);
 	if (extract_data_map(&data->parser, fd) == -1)
-		return (FALSE);
+		return (clear_texture(&data->parser, FALSE));
 	if (!all_coordinates_valid(&data->parser))
-		return (clear_texture(&data->parser));
+		return (clear_texture(&data->parser, FALSE));
 	if (!init_texture(data))
-		return (clear_texture(&data->parser));
-	return (TRUE);
+		return (clear_texture(&data->parser, FALSE));
+	return clear_texture(&data->parser, TRUE);
 }
 
 int	extract_data_map(t_parse *parser, int fd)

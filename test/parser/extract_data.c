@@ -83,7 +83,6 @@ MU_TEST(valid_texture)
 
 	ft_bzero(&data, sizeof(t_data));
 	init_data_or_die(&data, "map/parser/valid_texture.cub");
-	set_flag(TRUE);
 
 	open_file_status(&data.map.fd, "map/parser/valid_texture.cub");
 	mu_assert_int_eq(extract_data_status(&data, data.map.fd), TRUE);
@@ -97,11 +96,7 @@ MU_TEST(valid_texture)
 	mu_assert_int_eq(data.parser.c[1], 30);
 	mu_assert_int_eq(data.parser.c[2], 0);
 
-	mu_assert_string_eq(data.parser.coordinates[NO], "./wood.xpm");
-	mu_assert_string_eq(data.parser.coordinates[SO], "./redbrick.xpm");
-	mu_assert_string_eq(data.parser.coordinates[WE], "./greystone.xpm");
-	mu_assert_string_eq(data.parser.coordinates[EA], "./colorstone.xpm");
-	clean_connections(&data);
+	cleanup_program(&data);
 }
 
 MU_TEST(valid_texture2)
@@ -122,6 +117,7 @@ MU_TEST(valid_texture2)
 	mu_assert_int_eq(data.parser.c[1], 30);
 	mu_assert_int_eq(data.parser.c[2], 0);
 	clean_connections(&data);
+	cleanup_program(&data);
 }
 
 MU_TEST(very_texture)
@@ -133,19 +129,20 @@ MU_TEST(very_texture)
 
 	open_file_status(&data.map.fd, "map/parser/very_texture.cub");
 	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+	clean_connections(&data);
 }
 
 MU_TEST_SUITE(suite_extract_data)
 {
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	// MU_RUN_TEST(NULL_tst);
-	// MU_RUN_TEST(pdf);
-	// MU_RUN_TEST(north);
-	// MU_RUN_TEST(south);
-	// MU_RUN_TEST(west);
-	// MU_RUN_TEST(valid_texture);
-	// MU_RUN_TEST(valid_texture2);
+	MU_RUN_TEST(NULL_tst);
+	MU_RUN_TEST(pdf);
+	MU_RUN_TEST(north);
+	MU_RUN_TEST(south);
+	MU_RUN_TEST(west);
+	MU_RUN_TEST(valid_texture);
+	MU_RUN_TEST(valid_texture2);
 	MU_RUN_TEST(very_texture);
 }
 
