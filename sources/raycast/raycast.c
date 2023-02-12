@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 14:07:45 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:26:18 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
-void	texture(t_data *data, t_raycast *r, int j);
 
 void	init_raycast(t_raycast *itens, t_data *data)
 {
@@ -21,17 +19,6 @@ void	init_raycast(t_raycast *itens, t_data *data)
 	itens->dir[P_Y] = data->map.dir[P_Y];
 	itens->plane[P_X] = data->map.plane[P_X];
 	itens->plane[P_Y] = data->map.plane[P_Y];
-}
-
-void	ver_line(t_data *data, t_raycast *itens, int x, int color)
-{
-	int	y1;
-	int	y2;
-
-	y1 = itens->drawStart - 1;
-	y2 = itens->drawEnd;
-	while (++y1 <= y2)
-		my_mlx_pixel_put(&data->img, y1, x, color);
 }
 
 void	render_background(t_data *data, int c, int f)
@@ -69,7 +56,5 @@ void	raycast(t_data *data)
 		calculate_height_line(&itens);
 		calculate_pixel(&itens);
 		texture(data, &itens, x);
-		// ver_line(data, &itens, x, RGB_RED);
 	}
-	// draw(data);
 }
