@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 18:12:42 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:57:38 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	delete_map(char **map)
 void	clear_texture(int **texture)
 {
 	int	index;
-	if(texture == NULL || *texture == NULL)
+
+	if (texture == NULL || *texture == NULL)
 		return ;
 	index = -1;
 	while (++index < 4)
@@ -57,6 +58,7 @@ void	clear_texture(int **texture)
 		free(texture);
 	texture = NULL;
 }
+
 int	cleanup_program(t_data *data)
 {
 	clean_connections(data);

@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 14:04:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:50:13 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# define WIDTH 640
+# define HEIGHT 480
+
 # include <cub3D.h>
-# include <texture.h>
 
 /******************************************************************************/
 /*									PARSER									  */
 /******************************************************************************/
+
 typedef struct s_parser
 {
 	int		f[3];
@@ -33,6 +36,7 @@ typedef struct s_parser
 /******************************************************************************/
 /*									MAP									  */
 /******************************************************************************/
+
 typedef struct s_map
 {
 	char	*file_name;
@@ -58,6 +62,7 @@ typedef struct s_map
 /******************************************************************************/
 /*									IMG										  */
 /******************************************************************************/
+
 typedef struct s_img
 {
 	void	*img;
@@ -72,8 +77,26 @@ typedef struct s_img
 }	t_img;
 
 /******************************************************************************/
+/*									TEXTURE									  */
+/******************************************************************************/
+
+typedef struct s_tex
+{
+	int		x;
+	int		y;
+	int		num;
+	int		flag;
+	int		**texture;
+	int		buf[HEIGHT][WIDTH];
+	double	pos;
+	double	wall;
+	double	step;
+}	t_tex;
+
+/******************************************************************************/
 /*									control									  */
 /******************************************************************************/
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -98,24 +121,24 @@ typedef enum s_positions
 	EA,
 }	t_directions;
 
-
 /******************************************************************************/
 /*									RAYCAST									  */
 /******************************************************************************/
+
 typedef struct s_raycast
 {
 	int		map[2];
-	int		step[2];	//what direction to step in x or y-direction (either +1 or -1)
+	int		step[2];
 	double	dir[2];
 	double	plane[2];
-	double	rayDir[2];
-	double	sideDist[2];
-	double	deltaDist[2];
-	double	perpWallDist;
-	double	cameraX;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	double	ray_dir[2];
+	double	side_dist[2];
+	double	delta_dist[2];
+	double	perp_wall;
+	double	cam_x;
+	int		l_height;
+	int		d_start;
+	int		d_end;
 	int		side;
 }	t_raycast;
 

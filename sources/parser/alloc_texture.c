@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 18:32:39 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/11 23:15:32 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,18 @@ t_bool	alloc_texture(t_map *data)
 
 t_bool	create_texture(t_data *data)
 {
-	int	index;
+	int		i;
 	t_map	*map;
 
 	debug_printc(has_flag(), NULL, "pointers to texture: OK");
 	map = &data->map;
 	if (!alloc_texture(map))
 		return (FALSE);
-	index = -1;
-	while (++index < 4)
+	i = -1;
+	while (++i < 4)
 	{
-		if (load_texture(data, map->texture[index], \
-			data->parser.coordinates[index]))
-			continue;
+		if (load_texture(data, map->texture[i], data->parser.coordinates[i]))
+			continue ;
 		return (msg_and_error("Error: ", "Not load texture"));
 	}
 	debug_printc(has_flag(), NULL, "Texture: Ok\n");

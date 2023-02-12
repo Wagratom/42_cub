@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jump_next_square.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 14:00:05 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:47:38 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	nao_sei_oq_ta_acontecendo(t_raycast *itens, t_data *data)
 
 	aux = itens->map[P_X] - player_p_x(data) + (1 - itens->step[P_X]) / 2;
 	if (itens->side == 0)
-		itens->perpWallDist = aux / itens->rayDir[P_X];
+		itens->perp_wall = aux / itens->ray_dir[P_X];
 	else
 	{
 		aux = itens->map[P_Y] - player_p_y(data) + (1 - itens->step[P_Y]) / 2;
-		itens->perpWallDist = aux / itens->rayDir[P_Y];
+		itens->perp_wall = aux / itens->ray_dir[P_Y];
 	}
 }
 
@@ -30,15 +30,15 @@ void	lance_ray_in_wall(t_raycast *itens, t_data *data)
 {
 	while (TRUE)
 	{
-		if (itens->sideDist[P_X] < itens->sideDist[P_Y])
+		if (itens->side_dist[P_X] < itens->side_dist[P_Y])
 		{
-			itens->sideDist[P_X] += itens->deltaDist[P_X];
+			itens->side_dist[P_X] += itens->delta_dist[P_X];
 			itens->map[P_X] += itens->step[P_X];
 			itens->side = 0;
 		}
 		else
 		{
-			itens->sideDist[P_Y] += itens->deltaDist[P_Y];
+			itens->side_dist[P_Y] += itens->delta_dist[P_Y];
 			itens->map[P_Y] += itens->step[P_Y];
 			itens->side = 1;
 		}

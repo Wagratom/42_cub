@@ -6,7 +6,7 @@
 #    By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/11 20:19:05 by hectfern         ###   ########.fr        #
+#    Updated: 2023/02/11 23:30:40 by hectfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ LIBS		=	$(LIBFT) $(MLX)
 
 INCLUDE		=	-I./libft	\
 				-I./mlx		\
-				-I./include	\
-				-I./sources/texture
+				-I./include
 
 SOURCES		=	verify_extension.c open_file.c valid_map.c valid_chars.c valid_chars_ults.c verify_exit.c	\
 				alloc_map.c draw_map.c init_data.c init_img.c init_windows.c draw_map_debug.c \
@@ -49,7 +48,7 @@ VPATH		=	.						\
 				./sources/draw_map		\
 				./sources/program		\
 				./sources/raycast		\
-				./sources/texture
+
 
 $(OBJS_DIR)/%.o:	%.c
 			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE)

@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 17:10:24 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:47:20 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 t_bool	open_img_texture(t_data *data, t_img *img, char *path)
 {
 	if (data->mlx == NULL)
-		return (msg_and_error("Error in opening texture: ", "Pointer mlx NULL"));
-	img->img = mlx_xpm_file_to_image(data->mlx, path, &img->width, &img->height);
+		return (msg_and_error("Error in texture: ", "Pointer mlx NULL"));
+	img->img = \
+		mlx_xpm_file_to_image(data->mlx, path, &img->width, &img->height);
 	if (img->img == NULL)
 		return (msg_and_error("Error: can't open the texture: ", path));
 	return (TRUE);
@@ -25,7 +26,7 @@ t_bool	open_img_texture(t_data *data, t_img *img, char *path)
 t_bool	open_addr_texture(t_img *img)
 {
 	if (img->img == NULL)
-		return (msg_and_error("Error in getting img addr: ", "Pointer img NULL"));
+		return (msg_and_error("Error img addr: ", "Pointer img NULL"));
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bits_per_pixel, \
 		&img->length, &img->endian);
 	if (!img->addr)

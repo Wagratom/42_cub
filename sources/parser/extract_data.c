@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 20:12:21 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/11 22:42:49 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_bool	clear_texture(t_parse *data, t_bool	status)
 	int	index;
 
 	index = -1;
-	while(++index < 4)
+	while (++index < 4)
 	{
 		if (data->coordinates[index])
 			free(data->coordinates[index]);
