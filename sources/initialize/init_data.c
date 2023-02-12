@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 22:41:50 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:15:43 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	set_basic_infos(t_data *data, char *file_name)
 	data->map.file_name = file_name;
 	data->map.speed = 0.09;
 	data->map.rot_speed = 0.08;
+	data->map.f = -1;
+	data->map.c = -1;
 }
 
 void	init_data_or_die(t_data *data, char *file_name)

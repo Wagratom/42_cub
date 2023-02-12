@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 22:42:49 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:20:01 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_bool	extract_data_status(t_data *data, int fd)
 		return (clear_texture(&data->parser, FALSE));
 	if (!create_texture(data))
 		return (clear_texture(&data->parser, FALSE));
-	create_rgbs(data);
+	if (!create_rgbs(data))
+		return (clear_texture(&data->parser, FALSE));
 	return (clear_texture(&data->parser, TRUE));
 }

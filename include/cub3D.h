@@ -6,7 +6,7 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 23:34:54 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:17:49 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ char		*data_in_line(char *line);
 char		*get_line_p(char **line, int fd);
 void		interact_size_d_map(t_parse *data);
 t_bool		all_coordinates_valid(t_parse *data);
-void		create_rgbs(t_data *data);
+t_bool		create_rgbs(t_data *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);
