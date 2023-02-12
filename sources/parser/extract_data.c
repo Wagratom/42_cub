@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 14:12:50 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:12:21 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static t_bool	clear_texture(t_parse *data, t_bool	status)
 		if (data->coordinates[index])
 			free(data->coordinates[index]);
 	}
+	if (data->texture)
+		free(data->texture);
 	return (status);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_program.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 13:35:39 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 18:12:42 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	clean_connections(t_data *data)
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
-	free(data->mlx);
+	if (data->mlx)
+		free(data->mlx);
 }
 
 void	delete_map(char **map)
@@ -44,13 +45,17 @@ void	delete_map(char **map)
 void	clear_texture(int **texture)
 {
 	int	index;
-
-	if (texture == NULL || *texture == NULL)
+	if(texture == NULL || *texture == NULL)
 		return ;
 	index = -1;
-	while(++index < 4)
-		free(texture[index]);
-	free(texture);
+	while (++index < 4)
+	{
+		if (texture[index])
+			free(texture[index]);
+	}
+	if (texture)
+		free(texture);
+	texture = NULL;
 }
 int	cleanup_program(t_data *data)
 {
