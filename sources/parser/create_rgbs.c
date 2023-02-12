@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_rgbs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 13:58:36 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/12 15:19:00 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 18:26:05 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	create_rgbc(t_data *data)
 
 t_bool	create_rgbs(t_data *data)
 {
-	if(data->map.f == -1 || data->map.c == -1)
+	if(data->parser.f[0] == -1 || data->parser.c[0] == -1)
 	{
 		msg_and_error("Error: parser: ", "Missing collor");
 		return (FALSE);

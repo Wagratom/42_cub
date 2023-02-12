@@ -2,11 +2,13 @@
 F 220,100,0
 C 225,30,0
 
-NO ./wood.xpm
-SO ./redbrick.xpm
-WE ./greystone.xpm
-EA ./colorstone.xpm
-EA ./colorstone.xpm
+NO ./textures/colorstone.xpm
+SO ./textures/greystone.xpm
+WE ./textures/redbrick.xpm
+EA ./textures/wood.xpm
+EA ./textures/wood.xpm
+
+
 
 		1111111111111111111111111
 		1000000000110000000000001
