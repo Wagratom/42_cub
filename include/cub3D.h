@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 14:12:50 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 21:15:34 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@
 # define RED 0x00FF0000
 # define RGB_MAROON 0x00800000
 # define RGB_WHITE 0x00FFFFFF
-# define FLOOT_COLOR 0x8B4513
-# define SKY_COLOR 0x87CEEB
+# define P_COLOR 0x00A200FF
 
 
 # define P_Y 0
@@ -42,7 +41,8 @@
 
 
 #define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
-#define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the size of the full map"
+#define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the \
+	size of the full map"
 # define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
@@ -99,6 +99,8 @@ t_bool		val_move_left(char **map, int *posi_x, int posi_y);
 t_bool		val_move_up(char **map, int posi_x, int *posi_y);
 t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
 
+t_bool		valid_map_exit(t_data *data);
+t_bool		valid_map_chars(t_data *data);
 
 void		delete_map(char **map);
 
@@ -119,7 +121,9 @@ t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
 
 
+void		texture(t_data *data, t_raycast *r, int j);
 t_bool		create_texture(t_data *data);
+t_bool		load_texture(t_data *data, int *texture, char *path);
 
 /******************************************************************************/
 /*							DRAW_MAP										  */
