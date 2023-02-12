@@ -1,6 +1,6 @@
-NO ./textures/colorstone.xpm
-SO ./textures/greystone.xpm
-WE ./textures/redbrick.xpm
+NO ./texture/
+SO ./texture/greystone.xpm
+WE ./textures/redbrick
 EA ./textures/wood.xpm
 
 F 220,100,0
