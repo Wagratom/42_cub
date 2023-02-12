@@ -6,13 +6,13 @@
 /*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:34:17 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/11 23:47:38 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 17:29:47 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	nao_sei_oq_ta_acontecendo(t_raycast *itens, t_data *data)
+void	wall_perp_calculate(t_raycast *itens, t_data *data)
 {
 	double	aux;
 
@@ -52,5 +52,5 @@ void	lance_ray_in_wall(t_raycast *itens, t_data *data)
 void	jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data)
 {
 	lance_ray_in_wall(itens, data);
-	nao_sei_oq_ta_acontecendo(itens, data);
+	wall_perp_calculate(itens, data);
 }
