@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/12 19:52:17 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:30:45 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 
 # define PRESS_KEY 2
 # define EXIT 17
+# define FOCUS 9
+
 # define TILE_SIZE 64
 
 # define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
@@ -87,7 +89,7 @@ t_bool		check_parameters(t_map *data, int fd);
 t_bool		verify_exit_status(t_map *data);
 t_bool		val_move_right(char **map, int *posi_x, int posi_y);
 t_bool		val_move_down(char **map, int posi_x, int *posi_y, t_bool *status);
-t_bool		val_move_left(char **map, int *posi_x, int posi_y);
+t_bool		val_move_left(char **map, int *posi_x, int posi_y, t_bool *status);
 t_bool		val_move_up(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
 
@@ -119,7 +121,7 @@ t_bool		load_texture(t_data *data, int *texture, char *path);
 /******************************************************************************/
 
 t_bool		draw_map_status(t_data *data);
-void		draw_map(t_data *data);
+int			draw_map(t_data *data);
 
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);

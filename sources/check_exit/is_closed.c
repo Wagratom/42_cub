@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_program.c                                    :+:      :+:    :+:   */
+/*   verify_exit_ults.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/13 10:10:59 by wwalas-          ###   ########.fr       */
+/*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
+/*   Updated: 2023/02/13 11:46:36 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	start_game(t_data *data)
+t_bool	verify_not_close(char **map, int x, int y, t_bool *status)
 {
-	debug_printc(has_flag(), G, "\tstaring game");
-	draw_map_status(data);
-	mlx_hook(data->win, EXIT, 0, &cleanup_program, data);
-	mlx_hook(data->win, PRESS_KEY, (1L << 0), &filter_keyboard, data);
-	mlx_hook(data->win, FOCUS, 1L << 21, &draw_map, data);
-	mlx_expose_hook(data->win, &draw_map, data);
-	mlx_loop(data->mlx);
+	if (map == NULL)
+		return (FALSE);
+	if (ft_strlen(map[y]) < (size_t)x)
+		return (FALSE);
+	if (map[y][x] == 0)
+		return (FALSE);
+	if (map[y][x] == ' ')
+		*status = (FALSE);
+	if (map[y][x] == '\n')
+		*status = (FALSE);
+	return (*status);
 }
