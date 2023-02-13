@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 21:52:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/13 14:07:02 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:43:25 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool	verify_is_closed(char **map, int y, int x)
 	static t_bool status = TRUE;
 
 	// map_debug(map, status);
-	if (!verify_not_close(map, x, y, &status))
+	if (!is_closed(map, x, y, &status))
 		return (status);
 	map[y][x] = '4';
 	if (val_move_right(map, &x, y))
