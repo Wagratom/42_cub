@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/12 15:17:49 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/12 19:52:17 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ t_bool		check_parameters(t_map *data, int fd);
 
 t_bool		verify_exit_status(t_map *data);
 t_bool		val_move_right(char **map, int *posi_x, int posi_y);
-t_bool		val_move_down(char **map, int posi_x, int *posi_y);
+t_bool		val_move_down(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		val_move_left(char **map, int *posi_x, int posi_y);
-t_bool		val_move_up(char **map, int posi_x, int *posi_y);
+t_bool		val_move_up(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
 
 t_bool		valid_map_exit(t_data *data);
