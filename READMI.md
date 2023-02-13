@@ -12,8 +12,7 @@
 git clone git@github.com:Wagratom/42_cub.git  --recurse-submodules
 ```
 
-apos clonar o repo você pode checar se o buffer size no head da libft e igual a 1 para evitar leaks de memoria
-
+apos instalar o repositorio você pode conferir se o "BUFFER SIZE" do head da libft e igual a 1 para evitar leaks de memoria
 
 # Makefile
 
@@ -23,30 +22,43 @@ Make
 para gerar o executavel use make
 
 
+## tests
+
+- Para rodar alguns testes de validação do mapa, você pode usar o comando "make tests". Ele executará todos os testes automaticamente. Alguns testes podem estar comentados, então você pode verificá-los na pasta "tests". Caso altere o código, você pode rodar o comando "make tests" novamente para verificar se nada está fora dos padrões.
+
 ```
 Make tests
 ```
-Para rodar alguns test de validação do mapa vc pode use to make tests, ele executara todos os tests automaticamente, alguns test poderam estar comentado então você pode verificar cada um na pasta test. Caso altere o codigo vc pode rodar o make tests para verificar se nada esta rodando fora dos padroes.
+- Caso algum teste de erro seja executado e o arquivo executável não seja deletado, você pode deletá-lo automaticamente para que o código possa ser reexecutado novamente. <br> ![error teste](.github/error_tst.png)
 
-Caso algum test de error e o executavel nao seja deletado, você pode deletar automaticamente para que o mesmo possa pegar novamente, temos que corrigir isso ainda
+
+
+## test valgrind
+
+- O arquivo Makefile também possui a funcionalidade de rodar os testes com o Valgrind para verificar possíveis erros e vazamentos de memória. Basta usar a opção "vg" antes da palavra "teste".
 
 ```
 Make vgtests
 ```
-O makefile também possui a funcionalidade de rodar os test com o valgrind para verificar possiveis erros e leaks of memory, basta usar
 
-Caso queria você também pode rodar um test individual
+## unic test
+
+- Caso queria você também pode rodar um test individual.
 
 ```
 Make test t=<caminho dentro da past test>
 exemplo
 Make test t=parser/extract_data nota que nao colocamos a extenção do arquivo
 ```
-para rodar um arquivo individual com o valgrind vc pode usar o vg novamente antes do nome test
+
+## unic test vg
+
+- Para rodar um arquivo de teste individualmente com o Valgrind, basta usar a opção "vg" antes do nome do teste.
 
 ```
 Make vgtest t=parser/extract_data
 ```
+
 Lembrando que alguns test podem estar comentando para um melhor funcionamento.
 
 # MOD DEGUB 🌈
