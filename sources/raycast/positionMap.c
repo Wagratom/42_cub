@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   positionMap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:33:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/25 10:23:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 20:30:51 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
-// which box of the map we're in
 
 void	position_player_map(t_raycast *itens, t_data *data)
 {

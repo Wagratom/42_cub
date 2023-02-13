@@ -6,19 +6,18 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 17:43:50 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/12 19:52:17 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <libft.h>
 # include <mlx.h>
-# include <structs.h>
 # include <math.h>
-
+# include <libft.h>
 # include <stdio.h>
+# include <structs.h>
 
 # define VALID_CHARS "01NSEW\n\t "
 # define ESPECIAL_CHARS "NSEW"
@@ -26,29 +25,23 @@
 # define RED 0x00FF0000
 # define RGB_MAROON 0x00800000
 # define RGB_WHITE 0x00FFFFFF
-# define FLOOT_COLOR 0x8B4513
-# define SKY_COLOR 0x87CEEB
-
-
+# define P_COLOR 0x00A200FF
 # define P_Y 0
 # define P_X 1
 
 # define PRESS_KEY 2
 # define EXIT 17
+# define TILE_SIZE 64
 
-#define WIDTH 640
-#define HEIGHT 480
-
-
-#define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
-#define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the size of the full map"
+# define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
+# define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the \
+	size of the full map"
 # define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
 # define NULL_ARGV "Invalid flag passed\n"
 
 # define MLX_NULL "Error: Not init mlx\n"
-
 
 # define NOT_COMPATIBLE 0
 # define NEW_LINE 1
@@ -93,15 +86,15 @@ t_bool		check_parameters(t_map *data, int fd);
 
 t_bool		verify_exit_status(t_map *data);
 t_bool		val_move_right(char **map, int *posi_x, int posi_y);
-t_bool		val_move_down(char **map, int posi_x, int *posi_y);
+t_bool		val_move_down(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		val_move_left(char **map, int *posi_x, int posi_y);
-t_bool		val_move_up(char **map, int posi_x, int *posi_y);
+t_bool		val_move_up(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
 
+t_bool		valid_map_exit(t_data *data);
+t_bool		valid_map_chars(t_data *data);
 
 void		delete_map(char **map);
-
-/*							ULTS											  */
 
 char		*get_line(t_map *data, char **line);
 t_bool		interactor_chars(t_map *data, char _char);
@@ -112,10 +105,14 @@ t_bool		valid_char_or_die(char _char);
 /*							INITIALIZE										  */
 /******************************************************************************/
 
-void		init_data(t_data *data, char *file_name);
+void		init_data_or_die(t_data *data, char *file_name);
 t_bool		init_mlx_status(t_data *data);
 t_bool		init_windows_or_die(t_data *data);
 t_bool		init_img(t_data *data);
+
+void		texture(t_data *data, t_raycast *r, int j);
+t_bool		create_texture(t_data *data);
+t_bool		load_texture(t_data *data, int *texture, char *path);
 
 /******************************************************************************/
 /*							DRAW_MAP										  */
@@ -127,7 +124,6 @@ void		draw_map(t_data *data);
 void		print_larger_pixel(t_data *data, int x, int y, int color);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
-void		render_background(t_data *data);
 void		draw_mini_map(t_data *data);
 
 void		save_value_x(int nbr);
@@ -162,13 +158,13 @@ void		calculate_ray_position_direction(t_raycast *itens, int x);
 void		position_player_map(t_raycast *itens, t_data *data);
 void		length_ray(t_raycast *itens);
 void		length_ray_next_x_y(t_raycast *itens, t_data *data);
-void		jump_next_square_and_verify_hit_wall(t_raycast *itens, t_data *data);
+void		jump_next_square_and_verify_hit_wall(t_raycast *itens, \
+				t_data *data);
 void		calculate_height_line(t_raycast *itens);
 void		calculate_pixel(t_raycast *itens);
 
 int			is_valid_position(t_map *map, double x, double y);
 int			cleanup_program(t_data *data);
-
 
 void		map_look_right(t_map *map);
 void		map_look_left(t_map *map);
@@ -189,18 +185,15 @@ void		write_info_save(int position_x, int position_y, char _char);
 void		exit_msg(char *msg);
 void		delete_map(char **map);
 
-
 /******************************************************************************/
 /*								PARSER										  */
 /******************************************************************************/
-t_bool		extract_data_status(t_map *data, int fd);
-int			extract_data_map(t_map *data, int fd);
-int			extract_data_line(t_parse *data, char *line);
+t_bool		extract_data_status(t_data *data, int fd);
 char		*data_in_line(char *line);
-int			open_file_is_clear_path(int *dst, char *path_file);
 char		*get_line_p(char **line, int fd);
-void		interact_size_d_map(t_map *data);
+void		interact_size_d_map(t_parse *data);
 t_bool		all_coordinates_valid(t_parse *data);
+t_bool		create_rgbs(t_data *data);
 
 int			extract_colors_status(int dst[], char *numbers);
 int			extract_rgb(int dst[], char *data_line);
@@ -210,18 +203,16 @@ t_bool		get_int_valid(char **dst, char *data_line);
 
 t_bool		compare_strings(char *first_word, char *coordinate);
 char		*data_in_line(char *str);
-int			open_file_is_clear_path(int *dst, char *path_file);
 
 char		*first_word(char *str);
 
 int			coordinates(char *line);
-int			open_texture(int coordinates, char *path_file, t_parse *data);
+int			open_texture(t_parse *data, int coordinates, char *path_file);
 
-int			fill_collor(int collor, char *numbers, t_parse *data);
+int			fill_collor(t_parse *data, int collor, char *numbers);
 int			collor_rgb(char *line);
 
-
-
 void		exit_msg(char *msg);
-void		clean_conections(t_data *data);
+void		clean_connections(t_data *data);
+
 #endif

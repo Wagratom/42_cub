@@ -1,7 +1,7 @@
-NO ./texture/north
-SO ./texture/south
-WE ./texture/west
-EA ./texture/east
+NO ./textures/colorstone.xpm
+SO ./textures/greystone.xpm
+WE ./textures/redbrick.xpm
+EA ./textures/wood.xpm
 
 F 220,100,0
 C 225,30,0

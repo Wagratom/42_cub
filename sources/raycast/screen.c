@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:32:09 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:50:23 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:48:57 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	calculate_ray_position_direction(t_raycast *itens, int x)
 {
-	itens->cameraX = 2 * x / (double)WIDTH - 1;
-	itens->rayDir[P_X] = itens->dir[P_X] + itens->plane[P_X] * itens->cameraX;
-	itens->rayDir[P_Y] = itens->dir[P_Y] + itens->plane[P_Y] * itens->cameraX;
+	itens->cam_x = 2 * x / (double)WIDTH - 1;
+	itens->ray_dir[P_X] = itens->dir[P_X] + itens->plane[P_X] * itens->cam_x;
+	itens->ray_dir[P_Y] = itens->dir[P_Y] + itens->plane[P_Y] * itens->cam_x;
 }
 
 //Calculate height of line to draw on screen
 
 void	calculate_height_line(t_raycast *itens)
 {
-	itens->lineHeight = (int)(HEIGHT / itens->perpWallDist);
-	itens->drawStart = -itens->lineHeight / 2 + HEIGHT / 2;
+	itens->l_height = (int)(HEIGHT / itens->perp_wall);
+	itens->d_start = -itens->l_height / 2 + HEIGHT / 2;
 }

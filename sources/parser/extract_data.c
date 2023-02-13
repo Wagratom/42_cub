@@ -3,43 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:37:33 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:51:01 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/12 15:20:01 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	extract_data_status(t_map *data, int fd)
+static t_bool	clear_texture(t_parse *data, t_bool	status)
 {
-	if (data == NULL || fd < 0)
-		return (FALSE);
-	if (extract_data_map(data, fd) == -1)
-		return (FALSE);
-	if (!all_coordinates_valid(&data->d_map))
-		return (FALSE);
-	return (TRUE);
-}
+	int	index;
 
-int	extract_data_map(t_map *data, int fd)
-{
-	char	*line;
-	int		status;
-
-	while (get_line_p(&line, fd))
+	index = -1;
+	while (++index < 4)
 	{
-		status = extract_data_line(&data->d_map, line);
-		debug_printi(has_flag(), "status = ", status);
-		free(line);
-		if (status == INVALID_DATA)
-			return (-1);
-		if (status == END_READ)
-			break ;
-		interact_size_d_map(data);
+		if (data->coordinates[index])
+			free(data->coordinates[index]);
 	}
-	return (0);
+	if (data->texture)
+		free(data->texture);
+	return (status);
 }
 
 int	extract_data_line(t_parse *data, char *line)
@@ -48,11 +33,45 @@ int	extract_data_line(t_parse *data, char *line)
 
 	if (*line == '\n')
 		return (NEW_LINE);
-	status = open_texture(coordinates(line), data_in_line(line), data);
+	status = open_texture(data, coordinates(line), data_in_line(line));
 	if (status != NOT_COMPATIBLE)
 		return (status);
-	status = fill_collor(collor_rgb(line), data_in_line(line), data);
+	status = fill_collor(data, collor_rgb(line), data_in_line(line));
 	if (status == NOT_COMPATIBLE)
 		return (END_READ);
 	return (status);
+}
+
+int	extract_data_map(t_parse *parser, int fd)
+{
+	char	*line;
+	int		status;
+
+	while (get_line_p(&line, fd))
+	{
+		status = extract_data_line(parser, line);
+		debug_printi(has_flag(), "status = ", status);
+		free(line);
+		if (status == INVALID_DATA)
+			return (-1);
+		if (status == END_READ)
+			break ;
+		interact_size_d_map(parser);
+	}
+	return (0);
+}
+
+t_bool	extract_data_status(t_data *data, int fd)
+{
+	if (data == NULL || fd < 0)
+		return (FALSE);
+	if (extract_data_map(&data->parser, fd) == -1)
+		return (clear_texture(&data->parser, FALSE));
+	if (!all_coordinates_valid(&data->parser))
+		return (clear_texture(&data->parser, FALSE));
+	if (!create_texture(data))
+		return (clear_texture(&data->parser, FALSE));
+	if (!create_rgbs(data))
+		return (clear_texture(&data->parser, FALSE));
+	return (clear_texture(&data->parser, TRUE));
 }

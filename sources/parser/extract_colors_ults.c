@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colors_ults.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:42:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:51:35 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/12 12:44:26 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ t_bool	is_valid_or_clear(char *dst)
 	if (!ft_is_int_nbr(dst))
 	{
 		msg_and_error("Error: parser: ", "number not integer ");
+		msg_and_error(NULL, dst);
+		free(dst);
+		return (FALSE);
+	}
+	if (ft_atoi(dst) < 0 || ft_atoi(dst) > 255)
+	{
+		msg_and_error("Error: parser: ", "number not in range 0 to 255 ");
 		msg_and_error(NULL, dst);
 		free(dst);
 		return (FALSE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:30:11 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/12 21:31:11 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ t_bool	init_mlx_status(t_data *data)
 void	set_basic_infos(t_data *data, char *file_name)
 {
 	data->map.file_name = file_name;
-	data->map.speed = 0.15;
+	data->map.speed = 0.09;
 	data->map.rot_speed = 0.08;
+	data->parser.f[0] = -1;
+	data->parser.c[0] = -1;
 }
 
-void	init_data(t_data *data, char *file_name)
+void	init_data_or_die(t_data *data, char *file_name)
 {
 	debug_printc(has_flag(), C, "\tinitializing struct and connections");
 	init_struct(data);
@@ -42,6 +44,6 @@ void	init_data(t_data *data, char *file_name)
 	if (!init_mlx_status(data))
 		exit_msg(MLX_NULL);
 	if (!init_img(data))
-		clean_conections(data);
+		clean_connections(data);
 	debug_printc(has_flag(), NULL, "Sucess createconnections\n");
 }

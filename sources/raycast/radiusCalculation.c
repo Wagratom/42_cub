@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radiusCalculation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:34:14 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/01/30 17:55:08 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:40:26 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@
 
 void	length_ray(t_raycast *itens)
 {
-	itens->deltaDist[P_X] = fabs(1 / itens->rayDir[P_X]);
-	itens->deltaDist[P_Y] = fabs(1 / itens->rayDir[P_Y]);
+	itens->delta_dist[P_X] = fabs(1 / itens->ray_dir[P_X]);
+	itens->delta_dist[P_Y] = fabs(1 / itens->ray_dir[P_Y]);
 }
 
 void	side_x(t_raycast *itens, t_data *data)
 {
 	double	aux;
 
-	if (itens->rayDir[P_X] < 0)
+	if (itens->ray_dir[P_X] < 0)
 	{
 		itens->step[P_X] = -1;
 		aux = player_p_x(data) - itens->map[P_X];
-		itens->sideDist[P_X] = aux * itens->deltaDist[P_X];
+		itens->side_dist[P_X] = aux * itens->delta_dist[P_X];
 	}
 	else
 	{
 		itens->step[P_X] = 1;
 		aux = itens->map[P_X] + 1.0 - player_p_x(data);
-		itens->sideDist[P_X] = aux * itens->deltaDist[P_X];
+		itens->side_dist[P_X] = aux * itens->delta_dist[P_X];
 	}
 }
 
@@ -42,17 +42,17 @@ void	side_y(t_raycast *itens, t_data *data)
 {
 	double	aux;
 
-	if (itens->rayDir[P_Y] < 0)
+	if (itens->ray_dir[P_Y] < 0)
 	{
 		itens->step[P_Y] = -1;
 		aux = player_p_y(data) - itens->map[P_Y];
-		itens->sideDist[P_Y] = aux * itens->deltaDist[P_Y];
+		itens->side_dist[P_Y] = aux * itens->delta_dist[P_Y];
 	}
 	else
 	{
 		itens->step[P_Y] = 1;
 		aux = itens->map[P_Y] + 1.0 - player_p_y(data);
-		itens->sideDist[P_Y] = aux * itens->deltaDist[P_Y];
+		itens->side_dist[P_Y] = aux * itens->delta_dist[P_Y];
 	}
 }
 

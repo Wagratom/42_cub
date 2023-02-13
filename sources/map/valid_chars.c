@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:10:00 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 17:48:55 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:27:18 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_bool	valid_chars_or_die(t_map *data)
 	{
 		if (valid_chars_line(data, line))
 			continue ;
-		wrong_write_line((data->size_y + data->size_d_map + 1), line);
+		wrong_write_line((data->size_y + data->size_parser + 1), line);
 		free(line);
 		return (FALSE);
 	}

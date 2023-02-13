@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculetePixel.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:47:41 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/06 17:50:02 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:49:16 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 void	calculate_pixel(t_raycast *itens)
 {
-	if (itens->drawStart < 0)
-		itens->drawStart = 0;
-	itens->drawEnd = itens->lineHeight / 2 + HEIGHT / 2;
-	if (itens->drawEnd >= HEIGHT)
-		itens->drawEnd = HEIGHT - 1;
+	if (itens->d_start < 0)
+		itens->d_start = 0;
+	itens->d_end = itens->l_height / 2 + HEIGHT / 2;
+	if (itens->d_end >= HEIGHT)
+		itens->d_end = HEIGHT - 1;
 }

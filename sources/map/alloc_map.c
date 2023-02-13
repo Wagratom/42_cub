@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:41:15 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 17:44:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 13:27:18 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_bool	alloc_map_full_map(t_map *data, int size, int fd)
 		if (!get_valid_line(&data->full_map[tmp], fd))
 			return (msg_and_error(NULL, "Error: not get valid line in map\n"));
 	}
-	data->full_map[tmp] = get_next_line(fd);
+	data->full_map[tmp] = NULL;
 	draw_mapingd(data->full_map);
 	return (TRUE);
 }
@@ -43,9 +43,9 @@ t_bool	create_mini_map(t_map *data)
 	debug_printc(has_flag(), NULL, "Allocating Mine_Map");
 	if (data->full_map == NULL)
 		return (msg_and_error("Error: ", MINI_MAP_ERR));
-	if (ft_array_len(data->full_map) <= data->size_d_map)
+	if (ft_array_len(data->full_map) <= data->size_parser)
 		return (msg_and_error("Error: ", INIT_MINI_MAP_ERR));
-	data->mini_map = &data->full_map[data->size_d_map];
+	data->mini_map = &data->full_map[data->size_parser];
 	draw_mapingd(data->mini_map);
 	return (TRUE);
 }
@@ -54,7 +54,7 @@ t_bool	alloc_map_status(t_map *data, int fd)
 {
 	int	full_size;
 
-	full_size = data->size_y + data->size_d_map;
+	full_size = data->size_y + data->size_parser;
 	if (!check_parameters(data, fd))
 		return (FALSE);
 	if (!alloc_ptr_status(data, full_size))

@@ -3,33 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/09 17:42:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:50:13 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# define WIDTH 640
+# define HEIGHT 480
+
 # include <cub3D.h>
 
 /******************************************************************************/
 /*									PARSER									  */
 /******************************************************************************/
+
 typedef struct s_parser
 {
-	int	f[3];
-	int	c[3];
-	int	coordinites[4];
-	int	coordinates_save[4];
+	int		f[3];
+	int		c[3];
+	char	*coordinates[4];
+	int		coordinates_save[4];
+	int		**texture;
+	int		size_parser;
 
 }	t_parse;
 
 /******************************************************************************/
 /*									MAP									  */
 /******************************************************************************/
+
 typedef struct s_map
 {
 	char	*file_name;
@@ -45,36 +52,60 @@ typedef struct s_map
 	double	rot_speed;
 	double	dir[2];
 	double	plane[2];
-
-	t_parse	d_map;
-	int		size_d_map;
+	int		size_parser;
+	int		**texture;
+	int		f;
+	int		c;
 
 }	t_map;
 
 /******************************************************************************/
 /*									IMG										  */
 /******************************************************************************/
+
 typedef struct s_img
 {
 	void	*img;
-	char	*addr;
+	int		*addr;
 
+	int		width;
+	int		height;
 	int		bits_per_pixel;
-	int		line_length;
+	int		length;
 	int		endian;
 
 }	t_img;
 
 /******************************************************************************/
+/*									TEXTURE									  */
+/******************************************************************************/
+
+typedef struct s_tex
+{
+	int		x;
+	int		y;
+	int		num;
+	int		flag;
+	int		**texture;
+	int		buf[HEIGHT][WIDTH];
+	double	pos;
+	double	wall;
+	double	step;
+}	t_tex;
+
+/******************************************************************************/
 /*									control									  */
 /******************************************************************************/
+
 typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
 
+	t_tex	t;
 	t_map	map;
 	t_img	img;
+	t_parse	parser;
 
 }	t_data;
 
@@ -84,29 +115,30 @@ typedef struct s_data
 
 typedef enum s_positions
 {
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-}	t_positions;
+	NO,
+	SO,
+	WE,
+	EA,
+}	t_directions;
 
 /******************************************************************************/
 /*									RAYCAST									  */
 /******************************************************************************/
+
 typedef struct s_raycast
 {
 	int		map[2];
-	int		step[2];	//what direction to step in x or y-direction (either +1 or -1)
+	int		step[2];
 	double	dir[2];
 	double	plane[2];
-	double	rayDir[2];
-	double	sideDist[2];
-	double	deltaDist[2];
-	double	perpWallDist;
-	double	cameraX;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	double	ray_dir[2];
+	double	side_dist[2];
+	double	delta_dist[2];
+	double	perp_wall;
+	double	cam_x;
+	int		l_height;
+	int		d_start;
+	int		d_end;
 	int		side;
 }	t_raycast;
 

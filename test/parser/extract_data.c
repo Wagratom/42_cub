@@ -23,92 +23,113 @@ void	test_teardown(void)
 
 MU_TEST(NULL_tst)
 {
-	t_map	data;
+	t_data	data;
 
 	mu_assert_int_eq(extract_data_status(&data, -1), FALSE);
 }
 
-MU_TEST(extract_data_pdf)
+MU_TEST(pdf)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/pdf.cub");
 
-	open_file_status(&data.fd, "map/parser/pdf.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
+	open_file_status(&data.map.fd, "map/parser/pdf.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+
+	clean_connections(&data);
 }
 
-MU_TEST(extract_data_north)
+MU_TEST(north)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
-	open_file_status(&data.fd, "map/parser/north.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/north.cub");
+
+	open_file_status(&data.map.fd, "map/parser/north.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+	clean_connections(&data);
 }
 
-MU_TEST(extract_data_south)
+MU_TEST(south)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/south.cub");
 
-	open_file_status(&data.fd, "map/parser/south.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
+	open_file_status(&data.map.fd, "map/parser/south.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+	clean_connections(&data);
 }
 
-MU_TEST(extract_data_west)
+MU_TEST(west)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/west.cub");
 
-	open_file_status(&data.fd, "map/parser/west.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), FALSE);
+	open_file_status(&data.map.fd, "map/parser/west.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+	clean_connections(&data);
 }
 
-MU_TEST(extract_data_valid_texture)
+MU_TEST(valid_texture)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/valid_texture.cub");
 
-	open_file_status(&data.fd, "map/parser/valid_texture.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);
+	open_file_status(&data.map.fd, "map/parser/valid_texture.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), TRUE);
 
-	mu_assert_int_eq(data.d_map.f[0], 220);
-	mu_assert_int_eq(data.d_map.f[1], 100);
-	mu_assert_int_eq(data.d_map.f[2], 0);
+	mu_assert_int_eq(data.parser.f[0], 220);
 
-	mu_assert_int_eq(data.d_map.c[0], 225);
-	mu_assert_int_eq(data.d_map.c[1], 30);
-	mu_assert_int_eq(data.d_map.c[2], 0);
+	mu_assert_int_eq(data.parser.f[1], 100);
+	mu_assert_int_eq(data.parser.f[2], 0);
+
+	mu_assert_int_eq(data.parser.c[0], 225);
+	mu_assert_int_eq(data.parser.c[1], 30);
+	mu_assert_int_eq(data.parser.c[2], 0);
+
+	cleanup_program(&data);
 }
 
-MU_TEST(extract_data_valid_texture2)
+MU_TEST(valid_texture2)
 {
-	t_map	data;
+	t_data	data;
 
-	ft_bzero(&data, sizeof(t_map));
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/valid_texture2.cub");
 
-	open_file_status(&data.fd, "map/parser/valid_texture2.cub");
-	mu_assert_int_eq(extract_data_status(&data, data.fd), TRUE);
+	open_file_status(&data.map.fd, "map/parser/valid_texture2.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), TRUE);
 
-	mu_assert_int_eq(data.d_map.f[0], 220);
-	mu_assert_int_eq(data.d_map.f[1], 100);
-	mu_assert_int_eq(data.d_map.f[2], 0);
+	mu_assert_int_eq(data.parser.f[0], 220);
+	mu_assert_int_eq(data.parser.f[1], 100);
+	mu_assert_int_eq(data.parser.f[2], 0);
 
-	mu_assert_int_eq(data.d_map.c[0], 225);
-	mu_assert_int_eq(data.d_map.c[1], 30);
-	mu_assert_int_eq(data.d_map.c[2], 0);
+	mu_assert_int_eq(data.parser.c[0], 225);
+	mu_assert_int_eq(data.parser.c[1], 30);
+	mu_assert_int_eq(data.parser.c[2], 0);
+	clean_connections(&data);
+	cleanup_program(&data);
+}
 
-	mu_check(data.d_map.coordinites[NORTH] != 0);
-	mu_check(data.d_map.coordinites[SOUTH] != 0);
-	mu_check(data.d_map.coordinites[WEST] != 0);
+MU_TEST(very_texture)
+{
+	t_data	data;
 
-	mu_check(data.d_map.coordinites[NORTH] != -1);
-	mu_check(data.d_map.coordinites[SOUTH] != -1);
-	mu_check(data.d_map.coordinites[WEST] != -1);
+	ft_bzero(&data, sizeof(t_data));
+	init_data_or_die(&data, "map/parser/very_texture.cub");
+
+	open_file_status(&data.map.fd, "map/parser/very_texture.cub");
+	mu_assert_int_eq(extract_data_status(&data, data.map.fd), FALSE);
+	clean_connections(&data);
 }
 
 MU_TEST_SUITE(suite_extract_data)
@@ -116,12 +137,13 @@ MU_TEST_SUITE(suite_extract_data)
 	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
 	MU_RUN_TEST(NULL_tst);
-	MU_RUN_TEST(extract_data_pdf);
-	MU_RUN_TEST(extract_data_north);
-	MU_RUN_TEST(extract_data_south);
-	MU_RUN_TEST(extract_data_west);
-	MU_RUN_TEST(extract_data_valid_texture);
-	MU_RUN_TEST(extract_data_valid_texture2);
+	MU_RUN_TEST(pdf);
+	MU_RUN_TEST(north);
+	MU_RUN_TEST(south);
+	MU_RUN_TEST(west);
+	MU_RUN_TEST(valid_texture);
+	MU_RUN_TEST(valid_texture2);
+	MU_RUN_TEST(very_texture);
 }
 
 MU_MAIN

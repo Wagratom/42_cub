@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
+/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 22:38:48 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/06 16:18:29 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/11 23:20:08 by hectfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	print_block(t_data *data, int y, int x, char block)
 		print_larger_pixel(data, (y * 5), (x * 5), RGB_WHITE);
 	else if (block == '1')
 		print_larger_pixel(data, (y * 5), (x * 5), RGB_MAROON);
+	print_larger_pixel(data, player_p_y(data) * 5, \
+			player_p_x(data) * 5, P_COLOR);
 }
 
 static void	draw_line(t_data *data, char *line, int y)
