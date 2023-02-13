@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/13 11:30:45 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:04:59 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_bool		val_move_right(char **map, int *posi_x, int posi_y);
 t_bool		val_move_down(char **map, int posi_x, int *posi_y, t_bool *status);
 t_bool		val_move_left(char **map, int *posi_x, int posi_y, t_bool *status);
 t_bool		val_move_up(char **map, int posi_x, int *posi_y, t_bool *status);
-t_bool		verify_not_close(char **map, int x, int y, t_bool *status);
+t_bool		is_closed(char **map, int x, int y, t_bool *status);
 
 t_bool		valid_map_exit(t_data *data);
 t_bool		valid_map_chars(t_data *data);
@@ -99,7 +99,6 @@ t_bool		valid_map_chars(t_data *data);
 void		delete_map(char **map);
 
 char		*get_line(t_map *data, char **line);
-t_bool		interactor_chars(t_map *data, char _char);
 t_bool		is_special_char(char _char);
 t_bool		valid_char_or_die(char _char);
 

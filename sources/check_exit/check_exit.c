@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verify_exit.c                                      :+:      :+:    :+:   */
+/*   check_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 21:52:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/13 11:37:39 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:07:02 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,12 @@ t_bool	verify_is_closed(char **map, int y, int x)
 
 t_bool	verify_exit_status(t_map *data)
 {
-	int		i;
 	t_bool	status;
 	char	**copy_map;
 
 	if (data->mini_map == NULL)
 		return (msg_and_error(NULL, "Error: mini map is null\n"));
 	status = TRUE;
-	i = -1;
-	while (data->mini_map[++i] != NULL)
-	{
-		if (ft_strchr(data->mini_map[i], '1') == NULL)
-			return (msg_and_error(NULL, "Error: map is not closed\n"));
-	}
 	copy_map = ft_array_dup(data->mini_map);
 	status = verify_is_closed(copy_map, data->player[P_Y], data->player[P_X]);
 	delete_map(copy_map);

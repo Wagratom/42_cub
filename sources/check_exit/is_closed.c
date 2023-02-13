@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verify_exit_ults.c                                 :+:      :+:    :+:   */
+/*   is_closed.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 15:14:13 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/13 11:46:36 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:04:40 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-t_bool	verify_not_close(char **map, int x, int y, t_bool *status)
+t_bool	is_closed(char **map, int x, int y, t_bool *status)
 {
 	if (map == NULL)
 		return (FALSE);
