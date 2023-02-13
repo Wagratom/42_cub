@@ -1,10 +1,10 @@
 NO ./textures/NO.xpm
 SO ./textures/SO.xpm
 WE ./textures/WE.xpm
-EA ./textures/redbrick.xpm
+EA ./textures/EA.xpm
 
-C 200,185,255
-F 204,255,153
+C 300,185,255
+F 25,180,20
 
         1111111111111111111111111
         1000000000000000000000001
