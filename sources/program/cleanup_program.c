@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup_program.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:59:13 by wwalas-           #+#    #+#             */
-/*   Updated: 2023/02/11 22:57:38 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:02:51 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	clean_connections(t_data *data)
 		mlx_destroy_image(data->mlx, data->img.img);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
 	if (data->mlx)
+	{
+		mlx_destroy_display(data->mlx);
 		free(data->mlx);
+	}
 }
 
 void	delete_map(char **map)

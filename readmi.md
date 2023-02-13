@@ -52,5 +52,10 @@ Lembrando que alguns test podem estar comentando para um melhor funcionamento.
 # MOD DEGUB 🌈
 
 Caso queria ativar o modo debug do nosso projeto você pode passar a flag -D apos os parametros do executavel
-![teste](/.g)
+
+![teste](.github/modo_debug.png)
+
+Você também pode ativar o modo debug em qualquer uma parte do codigo usando a função `set_flag(TRUE)`, as informaçoes começarão a ser imprimidas a partir dali. A função `set_flag(TRUE)` também funciona dentro do escopo dos test. Caso queria receber mais informação sobre o que esta ocorrendo no test você pode ativar a função. <br>Obs: e muito mais ultio ultilizala nas pastas test.
+
+![teste](.github/set_flag_true.png)
 

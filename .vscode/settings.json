@@ -26,6 +26,7 @@
 		"vector": "c",
 		"random": "c",
 		"unistd.h": "c",
-		"*.tcc": "c"
+		"*.tcc": "c",
+		"mlx_int.h": "c"
 	}
 }

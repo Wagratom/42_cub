@@ -6,13 +6,11 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:15:40 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/01 23:43:56 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 16:01:35 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../minunit.h"
-
-t_data data;
 
 void	test_setup(void)
 {
@@ -25,14 +23,14 @@ void	test_teardown(void)
 
 MU_TEST(init_wondows_tst)
 {
-	int index;
+	t_data data;
 
 	bzero(&data, sizeof(t_data));
 	mu_assert_int_eq(init_windows_or_die(&data), FALSE);
-
-	init_mlx_status(&data);
+	if (init_mlx_status(&data))
+		return ;
 	mu_assert_int_eq(init_windows_or_die(&data), TRUE);
-	clean_conections(&data);
+	clean_connections(&data);
 }
 
 
