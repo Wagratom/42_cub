@@ -1,5 +1,6 @@
 # 🎮 Cub3D
 
+📏
 *	This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
 
 *	As a graphic design project, cub3D will enable you to improve your skills in these areas: windows, colors, events, fill shapes, etc. To conclude cub3D is a remarkable playground
@@ -22,7 +23,7 @@ Make
 ```
 
 
-## tests
+## tests ✅
 
 - To run some validation tests on the map, you can use the command "make tests". This will run all the tests automatically. Some tests may be commented out, so you can check them in the "tests" folder. If you make changes to the code, you can run the "make tests" command again to verify that everything is still working correctly.
 ```
@@ -63,7 +64,7 @@ Note that some tests may be commented out for better operation.
 - You can also activate the debug mode in any part of the code using the set_flag(TRUE) function, and the information will start being printed from that point on. The set_flag(TRUE) function also works within the scope of the tests. If you want to receive more information about what is happening in the test, you can activate the function. <br> <br> Note: it is more useful to use it in the "test" folder. <br> <br> ![teste](.github/set_flag_true.png)
 
 
-# Project Points :neckbeard:
+# 📢 Project Points
 
 <h2>raycast</h2>
 
