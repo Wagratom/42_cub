@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hectfern <hectfern@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:35:37 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/12 21:31:11 by hectfern         ###   ########.fr       */
+/*   Updated: 2023/02/13 22:32:18 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_basic_infos(t_data *data, char *file_name)
 	data->map.rot_speed = 0.08;
 	data->parser.f[0] = -1;
 	data->parser.c[0] = -1;
+	data->map.player[0] = -1;
 }
 
 void	init_data_or_die(t_data *data, char *file_name)

@@ -12,14 +12,14 @@
 git clone git@github.com:Wagratom/42_cub.git  --recurse-submodules
 ```
 
-apos instalar o repositorio você pode conferir se o "BUFFER SIZE" do head da libft e igual a 1 para evitar leaks de memoria
+* Após instalar o repositório, você pode verificar se o tamanho do "BUFFER SIZE" do cabeçalho da biblioteca "libft" é igual a 1, para evitar vazamentos de memória.
 
 # Makefile
 
+* para gerar o executavel use make
 ```
 Make
 ```
-para gerar o executavel use make
 
 
 ## tests
@@ -70,4 +70,3 @@ Caso queria ativar o modo debug do nosso projeto você pode passar a flag -D apo
 Você também pode ativar o modo debug em qualquer uma parte do codigo usando a função `set_flag(TRUE)`, as informaçoes começarão a ser imprimidas a partir dali. A função `set_flag(TRUE)` também funciona dentro do escopo dos test. Caso queria receber mais informação sobre o que esta ocorrendo no test você pode ativar a função. <br>Obs: e muito mais ultio ultilizala nas pastas test.
 
 ![teste](.github/set_flag_true.png)
-

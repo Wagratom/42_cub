@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/13 14:04:59 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:17:37 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define VALID_CHARS "01NSEW\n\t "
 # define ESPECIAL_CHARS "NSEW"
 
-# define RED 0x00FF0000
 # define RGB_MAROON 0x00800000
 # define RGB_WHITE 0x00FFFFFF
 # define P_COLOR 0x00A200FF
@@ -36,12 +35,12 @@
 # define TILE_SIZE 64
 
 # define MINI_MAP_ERR "Pointer full map is NULL, Not creat mini map"
-# define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the \
-	size of the full map"
 # define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
 # define NULL_ARGV "Invalid flag passed\n"
+# define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the \
+	size of the full map"
 
 # define MLX_NULL "Error: Not init mlx\n"
 
