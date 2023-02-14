@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:58:56 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/10 16:15:58 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:52:11 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ t_bool	check_mod_debug(char *flag)
 	return (TRUE);
 }
 
+t_bool	check_extencion(char *file_name)
+{
+	char	*extencion;
+
+	if (file_name == NULL)
+		return (FALSE);
+	extencion = ft_strchr(file_name, '.');
+	if (!ft_str_eq(extencion, ".cub"))
+		return (FALSE);
+	return (TRUE);
+}
+
 void	valid_arguments(int argc, char *argv[])
 {
 	debug_printc(has_flag(), C, "\tValid arguments...");
@@ -30,8 +42,10 @@ void	valid_arguments(int argc, char *argv[])
 		exit_msg(INVALID_ARGC);
 	if (argv == NULL || *argv == NULL)
 		exit_msg(INVALID_ARGV);
+	if (!check_extencion(argv[0]))
+		exit_msg(INVALID_EXTENCION);
 	if (argv[1] != NULL && !ft_str_eq(argv[1], "-D"))
-		exit_msg(NULL_ARGV);
+		exit_msg(INVALID_FLAG);
 	debug_printc(has_flag(), "Arguments: ", "OK\n");
 }
 

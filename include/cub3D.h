@@ -6,7 +6,7 @@
 /*   By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 13:32:06 by wwallas-          #+#    #+#             */
-/*   Updated: 2023/02/13 22:17:37 by wwalas-          ###   ########.fr       */
+/*   Updated: 2023/02/13 22:51:44 by wwalas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 # define MOD_DEBUG "\tDEBUG MODE ON\n"
 # define INVALID_ARGC "Invalid number of argument\n"
 # define INVALID_ARGV "Invalid arguments passed\n"
-# define NULL_ARGV "Invalid flag passed\n"
+#define INVALID_EXTENCION "Invalid extencion of maping\n"
+# define INVALID_FLAG "Invalid flag passed\n"
 # define INIT_MINI_MAP_ERR "The start of the mini map is bigger than the \
 	size of the full map"
 
