@@ -12,11 +12,11 @@
 git clone git@github.com:Wagratom/42_cub.git  --recurse-submodules
 ```
 
-* Após instalar o repositório, você pode verificar se o tamanho do "BUFFER SIZE" do cabeçalho da biblioteca "libft" é igual a 1, para evitar vazamentos de memória.
+* After installing the repository, you can verify whether the "BUFFER SIZE" of the header file in the "libft" library is equal to 1 in order to prevent memory leaks.
 
 # Makefile
 
-* para gerar o executavel use make
+* To generate the executable, use the command "make".
 ```
 Make
 ```
@@ -24,49 +24,51 @@ Make
 
 ## tests
 
-- Para rodar alguns testes de validação do mapa, você pode usar o comando "make tests". Ele executará todos os testes automaticamente. Alguns testes podem estar comentados, então você pode verificá-los na pasta "tests". Caso altere o código, você pode rodar o comando "make tests" novamente para verificar se nada está fora dos padrões.
-
+- To run some validation tests on the map, you can use the command "make tests". This will run all the tests automatically. Some tests may be commented out, so you can check them in the "tests" folder. If you make changes to the code, you can run the "make tests" command again to verify that everything is still working correctly.
 ```
 Make tests
 ```
-- Caso algum teste de erro seja executado e o arquivo executável não seja deletado, você pode deletá-lo automaticamente para que o código possa ser reexecutado novamente. <br> ![error teste](.github/error_tst.png)
+
+- If a failed test is run and the executable file is not deleted, you can automatically delete it so that the code can be re-run. <br> <br> ![error teste](.github/error_tst.png)
 
 
 
-## test valgrind
+## valgrind test
 
-- O arquivo Makefile também possui a funcionalidade de rodar os testes com o Valgrind para verificar possíveis erros e vazamentos de memória. Basta usar a opção "vg" antes da palavra "teste".
-
+- The Makefile also includes the functionality to run tests with Valgrind to check for potential errors and memory leaks. Simply use the "vg" option before the word "test".
 ```
 Make vgtests
 ```
 
-## unic test
+## single test
 
-- Caso queria você também pode rodar um test individual.
-
+- If you want, you can also run an individual test. You can use the 'test' command and assign the path of the file (without the extension) inside the 'test' folder to the 't' variable. Example:
 ```
-Make test t=<caminho dentro da past test>
-exemplo
-Make test t=parser/extract_data nota que nao colocamos a extenção do arquivo
+Make test t=parser/extract_data
 ```
 
-## unic test vg
+## single test vg
 
-- Para rodar um arquivo de teste individualmente com o Valgrind, basta usar a opção "vg" antes do nome do teste.
-
+- To run an individual test file with Valgrind, simply use the "vg" option before the test name.
 ```
 Make vgtest t=parser/extract_data
 ```
 
-Lembrando que alguns test podem estar comentando para um melhor funcionamento.
+Note that some tests may be commented out for better operation.
 
 # MOD DEGUB 🌈
 
-Caso queria ativar o modo debug do nosso projeto você pode passar a flag -D apos os parametros do executavel
+- If you want to activate the debug mode of our project, you can pass the flag "-D" after the executable parameters. <br> <br>![teste](.github/modo_debug.png)
 
-![teste](.github/modo_debug.png)
+- You can also activate the debug mode in any part of the code using the set_flag(TRUE) function, and the information will start being printed from that point on. The set_flag(TRUE) function also works within the scope of the tests. If you want to receive more information about what is happening in the test, you can activate the function. <br> <br> Note: it is more useful to use it in the "test" folder. <br> <br> ![teste](.github/set_flag_true.png)
 
-Você também pode ativar o modo debug em qualquer uma parte do codigo usando a função `set_flag(TRUE)`, as informaçoes começarão a ser imprimidas a partir dali. A função `set_flag(TRUE)` também funciona dentro do escopo dos test. Caso queria receber mais informação sobre o que esta ocorrendo no test você pode ativar a função. <br>Obs: e muito mais ultio ultilizala nas pastas test.
 
-![teste](.github/set_flag_true.png)
+# Project Points :neckbeard:
+
+<h2>raycast</h2>
+
+*	It uses rays to render a 3D scene on a 2D map. These rays travel through the screen until they hit an object, then the time it took for the ray to hit an object is calculated to determine the size and distance of the object. With these calculations, we can render the object on the screen.
+
+<h2>Flood fill</h2>
+
+*	To check if the map is closed, we use the logic of the Flood Fill algorithm which works as an area filling, where an initial point (player position) is selected and from it the area is expanded, visiting all adjacent positions of the matrix (map) and marking them as "visited". If, after going through all positions in the matrix, and no position is an invalid character, the map is considered closed. Otherwise, it is classified as not closed. <br> <br> If you want to see the algorithm in action, you can uncomment the function in sources/check_exit/check_exit.c.
