@@ -7,6 +7,12 @@
 
 *	to explore the playful practical applications of mathematics without having to understand the specifics.
 
+# 📦 Dependencies
+
+MiniLibX for Linux requires, and, therefore you will need to install the following dependencies:
+```
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+```
 # ⚙️ Installing
 
 ```
