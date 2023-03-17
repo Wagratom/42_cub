@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wwalas- <wwallas-@student.42sp.org.br>     +#+  +:+       +#+         #
+#    By: wwallas- <wwallas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:09:22 by wwallas-          #+#    #+#              #
-#    Updated: 2023/02/14 11:23:13 by wwalas-          ###   ########.fr        #
+#    Updated: 2023/03/17 18:02:38 by wwallas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,9 @@ $(LIBFT):
 
 $(MLX):
 			$(MAKE) -C mlx
+
+run:
+	./cub3D map/fc_map.cub
 
 clean:
 			$(MAKE) -C libft clean
